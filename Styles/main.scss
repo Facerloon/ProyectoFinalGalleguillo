@@ -1,0 +1,89 @@
+// --- Mixins ---
+
+@mixin setSize($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main_header {
+    display: flex;
+    flex-direction: row;
+
+    &_playerinfo {
+        li {
+                display: inline;
+                margin: 0 5px 0 0;
+            }
+    }
+}
+
+.atributes {
+    @include setSize(700px, 300px);
+    display: flex;
+    flex-direction: row;
+    padding: 0 0 0 0;
+    background-color: gray;
+    font-size: 25px;
+
+    &_list {
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        text-align: right;
+
+        li {
+            @include setSize(250px, 50px);
+            background-color: red;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+            align-content: center;
+
+            p {
+                display: inline;
+            }
+        }
+
+    }
+}
+
+.box_number {
+    display: inline;
+    text-align: center;
+    font-size: 25px;
+    @include setSize(70px, 40px);
+    vertical-align: middle;
+}
+
+.box_text_long {
+    display: inline;
+    @include setSize(300px, 25px);
+}
+
+.point_container {
+    display: inline;
+    @include setSize(50px, 30px);
+    text-align: center;
+    font-size: 18px;
+    border-color: white;
+    border: 0px;
+    border-left: black;
+    border-right: black;
+    border-style: dashed;
+    vertical-align: middle;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+h1 {
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}

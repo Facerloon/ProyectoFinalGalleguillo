@@ -7,45 +7,79 @@
 
 * {
     box-sizing: border-box;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+.title {
+    text-align: center;
+    display: block;
+    font-size: 1.8rem;
 }
 
 .main_header {
     display: flex;
     flex-direction: row;
 
+    img {
+        @include setSize(250px, 90px);
+    }
+
     &_playerinfo {
+        margin: 0 0 0 1rem;
+        align-content: center;
+
         li {
-                display: inline;
-                margin: 0 5px 0 0;
-            }
+            display: inline;
+            margin: 0 5px 0 0;
+        }
     }
 }
 
-.atributes {
-    @include setSize(700px, 300px);
+.stats {
     display: flex;
     flex-direction: row;
     padding: 0 0 0 0;
     background-color: gray;
-    font-size: 25px;
+    font-size: 2rem;
 
-    &_list {
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        text-align: right;
+    &_atributes {
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+        width: 40vw;
 
-        li {
-            @include setSize(250px, 50px);
-            background-color: red;
-            margin: 0 0 0 0;
-            padding: 0 0 0 0;
-            align-content: center;
+        &_lists {
+            display: flex;
+            justify-content: center;
 
-            p {
-                display: inline;
+            &_char {
+                padding: 0 0 0 0;
+                margin: 0 0 0 0;
+                background-color: rgb(203, 95, 95);
+                width: 15vw;
+
+                li {
+                    @include setSize(250px, 50px);
+                    margin: 0 0 0 0;
+                    padding: 0 01.57rem 0 0;
+                    align-content: center;
+                    text-align: right;
+
+                    p {
+                        display: inline;
+                    }
+                }
             }
         }
+    }
 
+    &_encnspeed {
+        background-color: blue;
+        display: flex;
+        flex-direction: column;
+        width: 40vw;
+        text-align: center;
     }
 }
 
@@ -53,7 +87,7 @@
     display: inline;
     text-align: center;
     font-size: 25px;
-    @include setSize(70px, 40px);
+    @include setSize(70px, 50px);
     vertical-align: middle;
 }
 

@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <h1>Character Sheet</h1>
     <main class="main_header">
+        <img src="" alt="">
         <ul class="main_header_playerinfo">
             <li>Name: <input class="box_text_long" type="text" name="" id=""></li>
             <li>Player: <input class="box_text_long" type="text" name="" id=""></li>
@@ -22,35 +22,54 @@
             <li>Unspent Points: <input class="box_number" type="number" name="" id=""></li>
         </ul>
     </main>
-    <div class="atributes">
-        <ul class="atributes_list">
-            <li>
-                <p>ST: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-            <li>
-                <p>DX: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-            <li>
-                <p>IQ: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-            <li>
-                <p>HT: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-        </ul>
-        <ul class="atributes_list">
-            <li>
-                <p>HP: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-            <li>
-                <p>WILL: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-            <li>
-                <p>PER: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-            <li>
-                <p>FP: </p> <input class="box_number" type="number"> <input class="point_container" type="number">
-            </li>
-        </ul>
+    <div class="stats">
+        <div class="stats_atributes">
+            <h3 class="title">Atributes</h3>
+            <div class="stats_atributes_lists">
+                <ul class="stats_atributes_lists_char">
+                    <li>
+                        <p>ST: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                    <li>
+                        <p>DX: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                    <li>
+                        <p>IQ: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                    <li>
+                        <p>HT: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                </ul>
+                <ul class="stats_atributes_lists_char">
+                    <li>
+                        <p>HP: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                    <li>
+                        <p>WILL: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                    <li>
+                        <p>PER: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                    <li>
+                        <p>FP: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="stats_encnspeed">
+            <h3 class="title">Speed and Encumbrance Modifiers</h3>
+            <div>
+                <table>
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <td>Basic Speed</tr>
+                        <td>Basic Move</tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <!--<script src="/Scripts/main.js"></script> -->
 </body>

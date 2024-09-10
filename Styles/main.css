@@ -1,40 +1,72 @@
 * {
   box-sizing: border-box;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.title {
+  text-align: center;
+  display: block;
+  font-size: 1.8rem;
 }
 
 .main_header {
   display: flex;
   flex-direction: row;
 }
+.main_header img {
+  width: 250px;
+  height: 90px;
+}
+.main_header_playerinfo {
+  margin: 0 0 0 1rem;
+  align-content: center;
+}
 .main_header_playerinfo li {
   display: inline;
   margin: 0 5px 0 0;
 }
 
-.atributes {
-  width: 700px;
-  height: 300px;
+.stats {
   display: flex;
   flex-direction: row;
   padding: 0 0 0 0;
   background-color: gray;
-  font-size: 25px;
+  font-size: 2rem;
 }
-.atributes_list {
+.stats_atributes {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+.stats_atributes_lists {
+  display: flex;
+  justify-content: center;
+}
+.stats_atributes_lists_char {
   padding: 0 0 0 0;
   margin: 0 0 0 0;
-  text-align: right;
+  background-color: rgb(203, 95, 95);
+  width: 15vw;
 }
-.atributes_list li {
+.stats_atributes_lists_char li {
   width: 250px;
   height: 50px;
-  background-color: red;
   margin: 0 0 0 0;
-  padding: 0 0 0 0;
+  padding: 0 1.57rem 0 0;
   align-content: center;
+  text-align: right;
 }
-.atributes_list li p {
+.stats_atributes_lists_char li p {
   display: inline;
+}
+.stats_encnspeed {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  text-align: center;
 }
 
 .box_number {
@@ -42,7 +74,7 @@
   text-align: center;
   font-size: 25px;
   width: 70px;
-  height: 40px;
+  height: 50px;
   vertical-align: middle;
 }
 

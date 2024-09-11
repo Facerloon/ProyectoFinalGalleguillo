@@ -34,6 +34,11 @@
   font-size: 2rem;
 }
 .stats_atributes {
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  margin: 3px 3px 3px 3px;
+  padding: 1% 4% 2% 4%;
   display: flex;
   flex-direction: column;
   width: 40vw;
@@ -71,9 +76,28 @@
 .stats_encnspeed_cont {
   text-align: left;
 }
+.stats_encnspeed_cont_table2 {
+  margin: 3% 1% 3% 1%;
+}
+.stats_encnspeed_cont_table2_b {
+  font-size: 1rem;
+}
+.stats_encnspeed_cont_table2_b_r_text {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.stats_encnspeed_cont_table2_b_r_score {
+  width: 30px;
+  text-decoration: underline;
+}
 .stats_encnspeed_cont_table {
-  width: 80%;
-  margin-left: 10%;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  margin: 3px 3px 3px 3px;
+  width: 90%;
+  margin: 1% 1% 1% 5%;
+  padding: 1% 1% 1% 1%;
 }
 .stats_encnspeed_cont_table_h {
   font-size: 1.2rem;

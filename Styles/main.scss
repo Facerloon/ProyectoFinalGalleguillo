@@ -5,6 +5,15 @@
     height: $height;
 }
 
+@mixin setBorder() {
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    margin: 3px 3px 3px 3px;
+}
+
+// --- Style ---
+
 * {
     box-sizing: border-box;
     padding: 0 0 0 0;
@@ -40,11 +49,11 @@
     display: flex;
     flex-direction: row;
     padding: 0 0 0 0;
-    background-color: gray;
+    //background-color: gray;
     font-size: 2rem;
 
     &_atributes {
-        background-color: red;
+        //background-color: red;
         display: flex;
         flex-direction: column;
         width: 40vw;
@@ -56,8 +65,8 @@
             &_char {
                 padding: 0 0 0 0;
                 margin: 0 0 0 0;
-                background-color: rgb(203, 95, 95);
-                width: 15vw;
+                //background-color: rgb(203, 95, 95);
+                width: 20vw;
 
                 li {
                     @include setSize(250px, 50px);
@@ -75,12 +84,54 @@
     }
 
     &_encnspeed {
-        background-color: blue;
+        @include setBorder();
+        //background-color: rgb(189, 178, 178);
         display: flex;
         flex-direction: column;
-        width: 40vw;
+        width: 50vw;
         text-align: center;
+
+        &_cont {
+            text-align: left;
+
+            &_table {
+                width: 80%;
+                margin-left: 10%;
+
+                &_h {
+                    font-size: 1.2rem;
+                }
+
+                &_b {
+                    font-size: 0.8rem;
+
+                    &_r {
+
+                        td {
+                            //background-color: red;
+                        }
+
+                        &_text {
+                        }
+
+                        &_score {
+                            width: 60px;
+                            text-decoration: underline;
+                        }
+
+                    }
+                }
+            }
+        }
     }
+}
+
+.box_number_table {
+    display: inline;
+    text-align: center;
+    font-size: .8rem;
+    @include setSize(45px, 25px);
+    vertical-align: middle;
 }
 
 .box_number {
@@ -90,6 +141,8 @@
     @include setSize(70px, 50px);
     vertical-align: middle;
 }
+
+
 
 .box_text_long {
     display: inline;

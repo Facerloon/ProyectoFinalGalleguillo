@@ -31,11 +31,9 @@
   display: flex;
   flex-direction: row;
   padding: 0 0 0 0;
-  background-color: gray;
   font-size: 2rem;
 }
 .stats_atributes {
-  background-color: red;
   display: flex;
   flex-direction: column;
   width: 40vw;
@@ -47,8 +45,7 @@
 .stats_atributes_lists_char {
   padding: 0 0 0 0;
   margin: 0 0 0 0;
-  background-color: rgb(203, 95, 95);
-  width: 15vw;
+  width: 20vw;
 }
 .stats_atributes_lists_char li {
   width: 250px;
@@ -62,11 +59,40 @@
   display: inline;
 }
 .stats_encnspeed {
-  background-color: blue;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  margin: 3px 3px 3px 3px;
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 50vw;
   text-align: center;
+}
+.stats_encnspeed_cont {
+  text-align: left;
+}
+.stats_encnspeed_cont_table {
+  width: 80%;
+  margin-left: 10%;
+}
+.stats_encnspeed_cont_table_h {
+  font-size: 1.2rem;
+}
+.stats_encnspeed_cont_table_b {
+  font-size: 0.8rem;
+}
+.stats_encnspeed_cont_table_b_r_score {
+  width: 60px;
+  text-decoration: underline;
+}
+
+.box_number_table {
+  display: inline;
+  text-align: center;
+  font-size: 0.8rem;
+  width: 45px;
+  height: 25px;
+  vertical-align: middle;
 }
 
 .box_number {

@@ -9,68 +9,126 @@
 </head>
 
 <body>
-    <main class="main_header">
-        <img src="" alt="">
-        <ul class="main_header_playerinfo">
-            <li>Name: <input class="box_text_long" type="text" name="" id=""></li>
-            <li>Player: <input class="box_text_long" type="text" name="" id=""></li>
-            <li>Point Total: <input class="box_number" type="number" name="" id=""></li>
-            <li>Ht: <input class="box_number" type="number" name="" id=""></li>
-            <li>Wt: <input class="box_number" type="number" name="" id=""></li>
-            <li>Size Modifier: <input class="box_number" type="number" name="" id=""></li>
-            <li>Age: <input class="box_number" type="number" name="" id=""></li>
-            <li>Unspent Points: <input class="box_number" type="number" name="" id=""></li>
-        </ul>
+    <main>
+        <main class="main_header">
+            <img src="/Multimedia/Gurps Logo Standard.jpg">
+            <ul class="main_header_playerinfo">
+                <li>Name: <input class="box_text_long" type="text" name="" id=""></li>
+                <li>Player: <input class="box_text_long" type="text" name="" id=""></li>
+                <li>Ht: <input class="box_number" type="number" name="" id=""></li>
+                <li>Wt: <input class="box_number" type="number" name="" id=""></li>
+                <li>Size Modifier: <input class="box_number" type="number" name="" id=""></li>
+                <li>Age: <input class="box_number" type="number" name="" id=""></li>
+                <li>Point Total: <input class="box_number" type="number" name="" id=""></li>
+                <li>Unspent Points: <input class="box_number" type="number" name="" id=""></li>
+            </ul>
+        </main>
+        <div class="stats">
+            <div class="stats_atributes">
+                <h3 class="title">Atributes</h3>
+                <div class="stats_atributes_lists">
+                    <ul class="stats_atributes_lists_char">
+                        <li>
+                            <p>ST: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                        <li>
+                            <p>DX: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                        <li>
+                            <p>IQ: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                        <li>
+                            <p>HT: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                    </ul>
+                    <ul class="stats_atributes_lists_char">
+                        <li>
+                            <p>HP: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                        <li>
+                            <p>WILL: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                        <li>
+                            <p>PER: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                        <li>
+                            <p>FP: </p> <input value="10" class="box_number" type="number"> <input
+                                class="point_container" type="number">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stats_encnspeed">
+                <h3 class="title">Speed and Encumbrance Modifiers</h3>
+                <div class="stats_encnspeed_cont">
+                    <table class="stats_encnspeed_cont_table">
+                        <thead class="stats_encnspeed_cont_table_h">
+                            <th>Encumbrance</th>
+                            <th></th>
+                            <th>Move</th>
+                            <th></th>
+                            <th>Dodge</th>
+                            <th></th>
+                        </thead>
+                        <tbody class="stats_encnspeed_cont_table_b">
+                            <tr class="stats_encnspeed_cont_table_b_r">
+                                <td class="stats_encnspeed_cont_table_b_r_text">None (0) = BL</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">20</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 1</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">5</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">8</td>
+                            </tr>
+                            <!---->
+                            <tr class="stats_encnspeed_cont_table_b_r">
+                                <td class="stats_encnspeed_cont_table_b_r_text">Light (1) = 2 x BL</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">40</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.8</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">4</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -1</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">7</td>
+                            </tr>
+                            <!---->
+                            <tr class="stats_encnspeed_cont_table_b_r">
+                                <td class="stats_encnspeed_cont_table_b_r_text">Medium (2) = 3 x BL</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">60</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.6</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">3</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -2</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">6</td>
+                            </tr>
+                            <!---->
+                            <tr class="stats_encnspeed_cont_table_b_r">
+                                <td class="stats_encnspeed_cont_table_b_r_text">Heavy (3) = 6 x BL</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">120</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.4</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">2</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -3</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">5</td>
+                            </tr>
+                            <!---->
+                            <tr class="stats_encnspeed_cont_table_b_r">
+                                <td class="stats_encnspeed_cont_table_b_r_text">X-Heavy (4) = 10 x BL</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">200</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.2</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">1</td>
+                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -4</td>
+                                <td class="stats_encnspeed_cont_table_b_r_score">4</td>
+                            </tr>
+                            <!---->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </main>
-    <div class="stats">
-        <div class="stats_atributes">
-            <h3 class="title">Atributes</h3>
-            <div class="stats_atributes_lists">
-                <ul class="stats_atributes_lists_char">
-                    <li>
-                        <p>ST: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                    <li>
-                        <p>DX: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                    <li>
-                        <p>IQ: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                    <li>
-                        <p>HT: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                </ul>
-                <ul class="stats_atributes_lists_char">
-                    <li>
-                        <p>HP: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                    <li>
-                        <p>WILL: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                    <li>
-                        <p>PER: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                    <li>
-                        <p>FP: </p> <input value="10" class="box_number" type="number"> <input class="point_container" type="number">
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="stats_encnspeed">
-            <h3 class="title">Speed and Encumbrance Modifiers</h3>
-            <div>
-                <table>
-                    <thead>
-
-                    </thead>
-                    <tbody>
-                        <td>Basic Speed</tr>
-                        <td>Basic Move</tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
     <!--<script src="/Scripts/main.js"></script> -->
 </body>
 

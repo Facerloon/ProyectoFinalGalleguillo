@@ -1,0 +1,824 @@
+<!--Custom Form-->
+<html>
+
+<head>
+    <style type="text/css">
+        .divmainform {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-style: normal;
+            line-height: 1.6;
+            letter-spacing: 0;
+            direction: ltr;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration-color: none;
+            --grayFonts: #a6a6a6;
+            --blueLinkActivee: #588EBC;
+        }
+
+        .divmainform li,
+        a,
+        button {
+            font-size: 16px;
+            color: var(--grayFonts, gray);
+            text-decoration: none;
+        }
+
+        .titleSection h1 {
+            color: var(--grayFonts, gray);
+        }
+
+        .titleSection h2 {
+            color: var(--blueLinkActivee, blue);
+        }
+
+        .titleSection.numbertit {
+            text-align: left;
+        }
+
+        .underline {
+            border-bottom: 2px solid var(--blueLinkActivee, gray);
+            display: inline-block;
+            line-height: 1.5;
+        }
+
+        .logo {
+            cursor: pointer;
+            margin-right: auto;
+        }
+
+        .divline {
+            border-bottom: 5px solid var(--grayFonts, gray);
+            line-height: 3;
+            width: 100%;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .numtitle {
+            color: var(--blueLinkActivee, blue);
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .middletitle {
+            color: var(--blueLinkActivee, blue);
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .submtitle {
+            color: var(--grayFonts, gray);
+            font-size: 0.8em;
+            text-align: right;
+        }
+
+        .imginfoform {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+        }
+
+        .imginfocontainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 1.5em;
+        }
+
+        .titlenum {
+            width: 100%;
+        }
+
+        .descinfoimg {
+            color: var(--grayFonts, gray);
+            font-size: 0.85em;
+            text-align: left;
+            margin-left: 1em;
+            max-width: 350px;
+        }
+
+        .checkBtn {
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
+            color: #262b33;
+        }
+
+        #check {
+            display: none;
+        }
+
+        .divmainform section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100px;
+            margin-top: 0.5rem;
+            padding: 1rem;
+        }
+
+        .divmainform ul {
+            text-align: justify;
+        }
+
+        #home {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #principalTitle {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 1.25rem;
+            color: var(--grayFonts, gray);
+            margin-top: 1rem;
+        }
+
+        #Presentation {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            color: var(--grayFonts, gray);
+        }
+
+        #imgPresentation {
+            display: flex;
+            justify-content: center;
+        }
+
+        .groupBtnApp {
+            margin-top: 4rem;
+        }
+
+        .btn-icon {
+            padding: 15px 50px;
+            background-color: #22233b;
+            color: #ffffff;
+            display: inline-block;
+            border-radius: 100px;
+            margin-right: 10px;
+            -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-icon:focus,
+        .btn-icon:hover {
+            color: #ffffff;
+            background-color: var(--blueLinkActivee, blue);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-icon .btn-content {
+            position: relative;
+            padding-left: 50px;
+            display: block;
+        }
+
+        .btn-icon .btn-content .icon {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            width: 30px;
+        }
+
+        .btn-icon .btn-content .icon img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-icon .btn-content small {
+            display: block;
+            font-size: 12px;
+        }
+
+        .btn-icon .btn-content strong {
+            display: block;
+            font-size: 18px;
+        }
+
+        /*Form*/
+        .divmainform .input {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            width: 100%;
+            padding: 1rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid var(--grayFonts, gray);
+            outline: none;
+            display: inline-flex;
+            color: var(--grayFonts, gray);
+            font-size: 0.80rem;
+        }
+
+        .divmainform .input::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: var(--grayFonts, gray);
+            opacity: 1;
+            /* Firefox */
+        }
+
+        .divmainform select.input {
+            padding-bottom: 0.85rem;
+        }
+
+        .divmainform .inputextra {
+            width: 100%;
+            height: 83%;
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--grayFonts, gray);
+            outline: none;
+            display: inline-flex;
+        }
+
+        .divmainform .inputextra label {
+            color: var(--grayFonts, gray);
+            font-size: 0.7rem;
+        }
+
+        .divmainform .filelabel {
+            color: var(--grayFonts, gray);
+            /*display: flex;*/
+        }
+
+        .form-group {
+            margin: 0 auto 1.25rem auto;
+        }
+
+        .form-double {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .flexsimple {
+            flex-grow: 1 !important;
+        }
+
+        .flexdouble {
+            flex-grow: 3 !important;
+        }
+
+        .form-group.last {
+            margin: 0 0 1.25rem 0.5rem;
+        }
+
+        #formContact {
+            margin-top: 1.5rem;
+        }
+
+        .btn-default {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            padding: 20px 50px;
+            border: 1px solid var(--blueLinkActivee, blue);
+            border-radius: 100px;
+            color: var(--blueLinkActivee, blue);
+            padding: 10px 30px;
+            display: inline-block;
+            font-weight: 700;
+            background-color: #ffffff;
+            transition: 0.3s;
+        }
+
+        .btn-default:hover {
+            background-color: var(--blueLinkActivee, blue);
+            color: #ffffff;
+        }
+
+        #video {
+            box-shadow: 0 0 10px;
+            margin-top: 2em;
+        }
+
+        #full {
+            display: block;
+        }
+
+        #mini {
+            display: none;
+        }
+
+        /*Price table*/
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .pricing-table {
+            background: #fbfbfb;
+            flex: 1;
+            margin: 10px;
+            text-transform: uppercase;
+        }
+
+        .pricing-header {
+            color: #fff;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .iconTablePrice {
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .price span {
+            color: var(--blueLinkActivee, blue);
+            font-weight: 700;
+            font-size: 30px;
+        }
+
+        .iconTablePrice span {
+            font-size: 30px;
+        }
+
+        .title {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            width: 80%;
+            max-width: 360px;
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .pricing-list {
+            padding: 10px 20px;
+        }
+
+        .pricing-list li {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #344;
+            text-align: center;
+        }
+
+        .border {
+            width: 80px;
+            height: 1px;
+            background: #ddd;
+            margin: auto;
+        }
+
+        .pricing-table a {
+            display: block;
+            width: 80%;
+            margin: auto;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            border: 1px solid;
+            max-width: 360px;
+            transition: .2s linear;
+        }
+
+        .pricing-table a:hover {
+            border-radius: 30px;
+        }
+
+        @media(max-width:858px) {
+            .checkBtn {
+                display: block;
+            }
+
+            #check:checked~.checkBtn {
+                color: var(--blueLinkActivee, blue);
+            }
+
+            #home {
+                flex-direction: column;
+            }
+
+            .form-double {
+                display: flex;
+                flex-direction: column !important;
+            }
+
+            .form-double.filescontent {
+                justify-content: center !important;
+            }
+
+            .form-double .form-group {
+                margin: 0 0 1.25rem 0 !important;
+            }
+
+            .btn-icon.playstore {
+                margin-top: 1rem;
+            }
+
+            #Presentation {
+                width: 100%;
+            }
+
+            #principalTitle {
+                font-size: 2rem;
+            }
+
+            .description {
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
+
+            #circleImage {
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+                background-image: url("img/phone-talk1.jpg");
+                background-size: cover;
+                margin-top: 1rem;
+            }
+
+            #full {
+                display: none !important;
+            }
+
+            #mini {
+                display: block !important;
+            }
+        }
+
+        @media screen and (max-width:780px) {
+            .pricing-table {
+                flex: 100%;
+            }
+        }
+    </style>
+    <script>
+        // Get height of document
+        function getDocHeight(doc) {
+            doc = doc || document;
+            // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
+            var body = doc.body, html = doc.documentElement;
+            var height = Math.max(body.scrollHeight, body.offsetHeight,
+                html.clientHeight, html.scrollHeight, html.offsetHeight);
+            return height;
+        }
+        // send docHeight onload
+        function sendDocHeightMsg(e) {
+            var ht = getDocHeight();
+            parent.postMessage(JSON.stringify({ 'docHeight': ht }), '*');
+            $_change_selector("category", "Rubro");
+            $_change_selector("custentity_l54_tipo_contribuyente", "Tipo Contribuyente");
+            $_change_selector("custentity_l54_tipo_contribuyente_iibb", "Tipo Contribuyente IIBB");
+            $_change_selector("country", "Pais *", 'AR');
+        }
+        // assign onload handler
+        if (window.addEventListener) {
+            window.addEventListener('load', sendDocHeightMsg, false);
+        } else if (window.attachEvent) { // ie8
+            window.attachEvent('onload', sendDocHeightMsg);
+        }
+        function updateVatregnumber() {
+            let l54cuitObj = document.querySelector('#custentity_l54_cuit_entity');
+            let l54CuitValue = l54cuitObj.value;
+            /*
+            l54CuitValue = l54CuitValue.replace(/[^\d]/g, '');
+            l54cuitObj.value = l54CuitValue;
+            */
+            let vatregnumberObj = document.querySelector('#vatregnumber');
+            vatregnumberObj.value = l54CuitValue;
+        }
+        function $_change_selector(id_selector, name, toBlock) {
+            //usando un Select Vacio y agregando datos del NSTAG
+            /*
+            let countryNLSelect = document.querySelectorAll('#' + id_selector);
+            let countrySelectHtml = countryNLSelect[1].innerHTML;
+            countryNLSelect[0].innerHTML = countrySelectHtml;
+            countryNLSelect[0].options[0].disabled = true;
+            countryNLSelect[0].options[0].hidden = true;
+            countryNLSelect[0].options[0].text = name;
+            console.log(countrySelectHtml);
+            */
+            //usando el NSTAG y cambiando el Label
+            //let NLabel = document.querySelector('#' + id_selector + '_fs_lbl');
+            //NLabel.hidden = true;
+            let NLSelect = document.querySelector('#' + id_selector);
+            if (toBlock) {
+                var opt;
+                for (var i = 0, len = NLSelect.options.length; i < len; i++) {
+                    opt = NLSelect.options[i].value;
+                    if (opt == toBlock) {
+                        NLSelect.options[i].selected = true;
+                        /*NLSelect.disabled = true;*/
+                        break;
+                    }
+                }
+            } else {
+                NLSelect.options[0].disabled = true;
+                NLSelect.options[0].hidden = true;
+                NLSelect.options[0].text = name;
+                NLSelect.options[0].value = "";
+            }
+        }
+        /*
+        function $_GET(q,s) {
+        s = s ? s : window.location.search;
+        var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i');
+        return (s=s.replace(/^[?]/,'&').match(re)) ? (typeof s[1] == 'undefined' ? » : decodeURIComponent(s[1])) : undefined;
+        }
+        var paramsc = $_GET('success');
+        */
+        /*
+        window.addEventListener("load", function(){
+        $_change_selector("category", "Rubro");
+        $_change_selector("custentity_l54_tipo_contribuyente","Tipo Contribuyente");
+        $_change_selector("custentity_l54_tipo_contribuyente_iibb", "Tipo Contribuyente IIBB");
+        $_change_selector("country", "Pais *");
+        });
+        */
+    </script>
+</head>
+
+<body>
+    <div class="divmainform">
+        <section class="titleSection" id="contact">
+            <section class="titleSection" id="newclient">
+                <h2><span class="underline">NUEVO CLIENTE</span>
+                </h2>
+                <p class="description">¡Queremos que seas parte de nuestra cartera de clientes y puedas disfrutar de los
+                    beneficios que te ofrecemos!
+                </p>
+                <p class="description">Para poder continuar con el proceso de alta de nuevo cliente te pedimos que por
+                    favor sigas los procedimientos detallados a continuación y te responderemos a la brevedad.
+                </p>
+            </section>
+            <div class="divline">
+            </div>
+            <section class="titleSection" id="documentacionimp">
+                <h2><span class="underline">DOCUMENTACIÓN IMPOSITIVA</span>
+                </h2>
+                <p class="description">Para poder avanzar con el alta necesitamos:
+                </p>
+                <ul>
+                    <li>Constancia de C.U.I.T</li>
+                    <li>Formulario de Inscripción de Ingresos Brutos (En caso de Convenio Multilateral Form. CM01 y CM02
+                        si corresponde).</li>
+                    <li>Convenio Multilateral (Formulario CM05 actualizado con su acuse de presentación.)</li>
+                    <li>Formulario de Inscripción de Ingresos Brutos.</li>
+                    <li>Comprobantes de excención si tuviere.</li>
+                    <li>Empresa registrada bajo el rubro de Informática/Telefonía.</li>
+                    <li>Registro y envio de formulario a completar debajo.</li>
+                </ul>
+            </section>
+            <div class="divline">
+            </div>
+            <div id="formContact">
+                <NLFORM>
+                    <section class="titleSection numbertit" id="infocom">
+                        <span class="titlenum"><span class="numtitle">1</span> <span class=""><span
+                                    class="middletitle underline"> Información Comercial </span> <span
+                                    class="submtitle">(Los campos marcados con * son obligatorios)</span></span></span>
+                    </section>
+                    <div class="form-double">
+                        <div class="form-group last flexsimple">
+                            <input type="text" class="input" pattern="[0-9]{6,12}" autofocus
+                                name="custentity_l54_cuit_entity" id="custentity_l54_cuit_entity" placeholder="CUIT *"
+                                required onchange="updateVatregnumber()">
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="text" class="input" name="custentity_l54_nombre_legal"
+                                id="custentity_l54_nombre_legal" placeholder="Razón Social">
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="text" class="input" name="companyname" id="companyname"
+                                placeholder="Nombre de Fantasía">
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <NLCUSTENTITY_L54_TIPO_CONTRIBUYENTE>
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="text" class="input" name="custentity_l54_cod_iibb" id="custentity_l54_cod_iibb"
+                                placeholder="N° Ingresos Brutos">
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <nlcustentity_l54_tipo_contribuyente_iibb>
+                        </div>
+                    </div>
+                    <div class="form-double">
+                        <div class="form-group last flexsimple">
+                            <!--<select name="category" id="category" class="input" placeholder="Rubro *"></select>-->
+                            <NLCATEGORY>
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="email" class="input" name="email" id="email" placeholder="Email *">
+                        </div>
+                        <div class="form-group last flexdouble">
+                            <input type="url" class="input" name="url" id="url" placeholder="Web">
+                        </div>
+                    </div>
+                    <div class="form-double">
+                        <div class="form-group last flexsimple">
+                            <NLCOUNTRY>
+                        </div>
+                        <div class="form-group last flexdouble">
+                            <select name="state" id="state" class="input">
+                                <option value="" selected="" disabled="" hidden="">Provincia</option>
+                                <option value="B0">Buenos Aires</option>
+                                <option value="C0">Capital Federal</option>
+                                <option value="K0">Catamarca</option>
+                                <option value="H0">Chaco</option>
+                                <option value="U0">Chubut</option>
+                                <option value="X0">Cordoba</option>
+                                <option value="W0">Corrientes</option>
+                                <option value="E0">Entre Rios</option>
+                                <option value="P0">Formosa</option>
+                                <option value="Y0">Jujuy</option>
+                                <option value="L0">La Pampa</option>
+                                <option value="F0">La Rioja</option>
+                                <option value="M0">Mendoza</option>
+                                <option value="N0">Misiones</option>
+                                <option value="Q0">Neuquen</option>
+                                <option value="R0">Rio Negro</option>
+                                <option value="A0">Salta</option>
+                                <option value="J0">San Juan</option>
+                                <option value="D0">San Luis</option>
+                                <option value="Z0">Santa Cruz</option>
+                                <option value="S0">Santa Fe</option>
+                                <option value="G0">Santiago del Estero</option>
+                                <option value="V0">Tierra del Fuego</option>
+                                <option value="T0">Tucuman</option>
+                            </select>
+                            <!--
+<input type="text" class="input" name="state" id="state" placeholder="Provincia *">
+-->
+                        </div>
+                        <div class="form-group last flexdouble">
+                            <input type="text" class="input" name="city" id="city" placeholder="Ciudad *">
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="number" class="input" name="zipcode" id="zipcode" placeholder="CP *">
+                        </div>
+                    </div>
+                    <div class="form-double">
+                        <div class="form-group last flexdouble">
+                            <input type="text" class="input" name="address1" id="address1"
+                                placeholder="Dirección Comercial *">
+                        </div>
+                    </div>
+                    <div class="form-double filescontent" style="justify-content: center !important;">
+                        <div class="form-group last flexdouble">
+                            <label for="file1" class="filelabel">Formulario de CUIT Actualizado</label>
+                            <input type="file" class="input" name="file[0]" id="file[0]">
+                        </div>
+                        <div class="form-group last flexdouble">
+                            <label for="file2" class="filelabel">Formulario de Inscripción a Ingresos Brutos</label>
+                            <input type="file" class="input" name="file[1]" id="file[1]">
+                        </div>
+                    </div>
+                    <section class="titleSection numbertit" id="infocom">
+                        <span class="titlenum"><span class="numtitle">2</span> <span class=""><span
+                                    class="middletitle underline"> Información Personal </span> <span
+                                    class="submtitle">(Los campos marcados con * son obligatorios)</span></span></span>
+                    </section>
+                    <div class="form-double">
+                        <div class="form-group last flexdouble">
+                            <input type="text" class="input" name="firstname" id="firstname" placeholder="Nombre *"
+                                required>
+                        </div>
+                        <div class="form-group last flexdouble">
+                            <input type="text" class="input" name="lastname" id="lastname" placeholder="Apellido *"
+                                required>
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="tel" class="input" name="homephone" id="homephone"
+                                placeholder="Telefono Fijo *">
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="tel" class="input" name="phone" id="phone" placeholder="Telefono Celular *">
+                        </div>
+                        <div class="form-group last flexsimple">
+                            <input type="email" class="input" name="altemail" id="altemail"
+                                placeholder="Email de Contacto *">
+                        </div>
+                    </div>
+                    <div class="form-group last">
+                        <textarea class="input" id="comments" name="comments" rows="5"
+                            placeholder="Comentarios"></textarea>
+                    </div>
+                    <section class="titleSection" id="submitbutton">
+                        <div class="form-group">
+                            <input id="submit" type="submit" value="ENVIAR FORMULARIO" class="btn-default">
+                        </div>
+                        <p class="description">Somos el proveedor de productos informáticos que necesitas, te brindamos:
+                        </p>
+                    </section>
+                    <!--
+<select name="leadsource" id="leadsource"> <option value="-6" selected="">Web</option> </select>
+<input name="leadsource" id="leadsource" hidden="" datatype="integer" value="-6">
+<input name="custentity_l54_id_tipo_doc_afip" id="custentity_l54_id_tipo_doc_afip" hidden="" datatype="integer" value="80">
+-->
+                    <input name="subsidiary" id="subsidiary" hidden="" value="7">
+                    <input name="vatregnumber" id="vatregnumber" hidden="" value="">
+                    <input name="currency" id="currency" hidden="" value="1">
+                    <input name="pricelevel" id="pricelevel" hidden="" value="1">
+                    <input name="terms" id="terms" hidden="" value="8">
+                    <input name="custentity_formadepagovalores" id="custentity_formadepagovalores" hidden="" value="14">
+                    <input name="weblead" id="weblead" type="checkbox" checked="" value="T" hidden="">
+                    <input name="language" id="language" hidden="" value="es_ES">
+                    <input name="custentity_l54_tipo_documento" id="custentity_l54_tipo_documento" hidden=""
+                        datatype="integer" value="3">
+                    <div hidden="">
+                        <NLCUSTENTITY_ESTADO_FORMULARIOS>
+                            <NLSUBSIDIARY>
+                                <NLCUSTENTITY_L54_NOMBRE_LEGAL>
+                                    <NLCUSTENTITY_L54_CUIT_ENTITY>
+                                        <NLCOMPANYNAME>
+                                            <NLEMAIL>
+                                                <NLURL>
+                                                    <NLCUSTENTITY_L54_TIPO_CONTRIBUYENTE>
+                                                        <NLCUSTENTITY_L54_COD_IIBB>
+                                                            <NLCITY>
+                                                                <NLSTATE>
+                                                                    <NLZIPCODE>
+                                                                        <NLADDRESS1>
+                                                                            <NLFILE>
+                                                                                <NLFIRSTNAME>
+                                                                                    <NLLASTNAME>
+                                                                                        <NLHOMEPHONE>
+                                                                                            <NLPHONE>
+                                                                                                <NLALTEMAIL>
+                                                                                                    <NLCOMMENTS>
+                                                                                                        <NLLEADSOURCE>
+                                                                                                            <NLWEBLEAD>
+                                                                                                                <NLCUSTENTITY_L54_ID_TIPO_DOC_AFIP>
+                                                                                                                    <NLCUSTENTITY_L54_TIPO_DOCUMENTO>
+                                                                                                                        <NLLANGUAGE>
+                                                                                                                            <NLVATREGNUMBER>
+                                                                                                                                <NLCURRENCY>
+                                                                                                                                    <NLPRICELEVEL>
+                                                                                                                                        <NLTERMS>
+                                                                                                                                            <NLCUSTENTITY_FORMADEPAGOVALORES>
+                    </div>
+                </NLFORM>
+            </div>
+            <section class="titleSection" id="imgforcust">
+                <div class="rowspec" style="display: flex; flex-direction: row;">
+                    <div class="imginfocontainer">
+                        <div class="imginfoform"
+                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_1.png');">
+                        </div>
+                        <div class="descinfoimg">Amplia gama de productos a un precio competitivo con distintos medios
+                            de pago y financiación.
+                        </div>
+                    </div>
+                    <div class="imginfocontainer">
+                        <div class="imginfoform"
+                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_2.png');">
+                        </div>
+                        <div class="descinfoimg">Logística eficiente, distribución a todos los puntos del país.
+                        </div>
+                    </div>
+                </div>
+                <div class="rowspec" style="display: flex; flex-direction: row;">
+                    <div class="imginfocontainer">
+                        <div class="imginfoform"
+                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_3.png');">
+                        </div>
+                        <div class="descinfoimg">Atención personalizada, respuesta inmediata y servicio post-venta.
+                        </div>
+                    </div>
+                    <div class="imginfocontainer">
+                        <div class="imginfoform"
+                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_4.png');">
+                        </div>
+                        <div class="descinfoimg">Flexibilidad para que puedas comprar en cualquier horario desde
+                            cualquier punto del país.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="titleSection" id="graciasjb">
+                <h2><span class="underline">¡GRACIAS!</span>
+                </h2>
+                <p class="description">Presentados todos los papeles y aprobada su solicitud, recibiras en el transcurso
+                    de las siguientes 48 hs hábiles un e-mail de bienvenida a la dirección que hayas indicado en el
+                    formulario de inscripción.
+                </p>
+                <p class="description">Si necesitas información adicional por favor contáctanos a info@ceven.com
+                </p>
+            </section>
+        </section>
+    </div>
+</body>
+
+</html>
+<!--Custom Form-->

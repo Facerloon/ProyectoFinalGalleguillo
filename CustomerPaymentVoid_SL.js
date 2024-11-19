@@ -14,6 +14,8 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
          * @Since 2015.2
          */
         function onRequest(context) {
+            const proceso = `FMG - Test Logs`;
+            const curScript = runtime.getCurrentScript();
             const FLD_CTR_FILENUMBER = 'custbody_ctr_hs_file_number';
             const FLD_CTR_VOIDREASON = 'custbody_ctr_voidreason';
             const FLD_FORELECBANKPAYMENTDD = 'custbody_9997_is_for_ep_dd'; //FOR ELECTRONIC BANK PAYMENT (DIRECT DEBIT)
@@ -66,7 +68,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     //New Behavior: redirect to refund page in edit mode
                     /*redirect.redirect({
                         url: '/app/accounting/transactions/custrfnd.nl?whence=',
-                        parameters: {paymentid: custPaymentId, voidreasonid: voidReasonId}
+                        parameters: { paymentid: custPaymentId, voidreasonid: voidReasonId }
                     });*/
 
                     var recCustPayment = record.load({ type: 'customerpayment', id: custPaymentId, isDynamic: false });
@@ -75,6 +77,8 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     var fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
                     var fAmount = recCustPayment.getValue({ fieldId: 'payment' });
                     var refTranNum = getVoidNumber();
+                    log.debug(proceso, `80. Ref Number: ${refTranNum}`);
+                    log.debug(proceso, `81. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
                     var refundMemo = 'Void Check ' + refNumber + ' ' + fileNumber;
 
                     //Get Deposit Account and make deposit if Payment is undeposited
@@ -91,11 +95,13 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
                     if (cashAcct == ACCT_UNDEPFUNDS) {
                         var depAcctSearch = getPaymentDeposits(custPaymentId);
+                        log.debug(proceso, `98. depAcctSearch: ${JSON.stringify(depAcctSearch)}`);
+                        log.debug(proceso, `99. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
                         var bDepositFound = false;
 
                         if (depAcctSearch.length > 0) {
-                            var depAcct = depAcctSearch[0].getValue({ name: 'accountmain', join: 'applyingtransaction' });
-                            var depId = depAcctSearch[0].getValue({ name: 'applyingtransaction' });
+                            var depAcct = depAcctSearch[0].accountmain;
+                            var depId = depAcctSearch[0].applyingtransaction;
 
                             if (depAcct && depAcct != '') {
                                 cashAcct = depAcct;
@@ -113,6 +119,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     var fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
                     var arAcct = recCustPayment.getValue({ fieldId: 'aracct' });
                     var nLines = recCustPayment.getLineCount({ sublistId: 'apply' });
+                    log.debug(proceso, `122. ${curScript.getRemainingUsage()}`);
 
                     //Unapply invoices
                     if (nLines > 0) {
@@ -128,6 +135,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     //after choosing a void reason, the refund will be generated.
                     if (cashAcct && cashAcct != '') {
                         var refTranNum = getVoidNumber();
+                        log.debug(proceso, `138. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
                         var refundMemo = 'Void Check ' + refNumber + ' ' + fileNumber;
                         var recRefund = record.create({ type: 'customerrefund', isDynamic: true });
                         recRefund.setValue('customer', customerId);
@@ -148,6 +156,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         //refund should be applied to the customer payment after everything
                         var refundLines = recRefund.getLineCount({ sublistId: 'apply' });
                         log.debug('refundLines:' + refundLines, 'tranid:' + refTranNum);
+                        log.debug(proceso, `159. ${curScript.getRemainingUsage()}`);
 
                         for (var i = 0; i < refundLines; i++) {
                             var creditsLineId = recRefund.getSublistValue({ sublistId: 'apply', fieldId: 'internalid', line: i });
@@ -204,15 +213,15 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 'and',
                 ['mainline', 'is', 'T'],
                 'and',
-                ['numbertext', 'startswith', 'Void-']
+                ['numbertext', 'startswith', 'Void-'],
             ]
 
             voidSearchOptions['columns'] = [search.createColumn({ name: 'tranid', sort: search.Sort.DESC })];
-            var voidSearch = getAllSearchResults(voidSearchOptions);
-            //log.debug('voidSearch.length', voidSearch.length);
+            var voidSearch = getAllSearchResults2(voidSearchOptions, true);
+            log.debug('voidSearch.length', `221. Void Search (${voidSearch.length}): ${JSON.stringify(voidSearch)}`);
 
             if (voidSearch.length > 0) {
-                var sTranId = voidSearch[0].getValue({ name: 'tranid' });
+                var sTranId = voidSearch[0].tranid;
                 var fVoidNum = parseFloat(sTranId.split('-')[1]) + 1;
                 voidNumber = voidPrefix + (fVoidNum.toFixed(0));
                 //log.debug('Current Void Number', sTranId);
@@ -234,6 +243,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 const authnetLocation = addtnlArgs.authnetLocation;
                 var idSubsidiary = subsidiaryLookUp.subsidiary[0].value;
                 var idDepAcct = authnetAccount ? authnetAccount : getDepositAccount(idSubsidiary);
+                log.debug('makeDeposit', `246. idDepAcct: ${idDepAcct}`);
 
                 if (idDepAcct && idDepAcct != '') {
                     let recDeposit = null;
@@ -286,7 +296,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
             return idDepAcct;
         }
 
-        function getDepositAccount(idSubsidiary) {
+        /*function getDepositAccount(idSubsidiary) {
             var depAcctSearchOptions = new Object();
             depAcctSearchOptions['type'] = 'account';
             depAcctSearchOptions['filters'] = [
@@ -304,7 +314,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
             }
 
             return null;
-        }
+        }*/
 
         function getPaymentDeposits(custPaymentId) {
             var depAcctSearchOptions = new Object();
@@ -315,10 +325,12 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 ['mainline', 'is', 'T']
             ]
             depAcctSearchOptions['columns'] = ['transactionname', 'applyingtransaction', 'applyingtransaction.accountmain'];
-            return getAllSearchResults(depAcctSearchOptions);
+            return getAllSearchResults2(depAcctSearchOptions);
         }
 
-        function getAllSearchResults(options) {
+        /*function getAllSearchResults(options) {
+            const curScript = runtime.getCurrentScript();
+            log.debug(`getAllSearchResults`, `333. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             var stRecordType = options.type;
             var stSavedSearch = options.searchId;
             var arrFilters = options.filters;
@@ -338,7 +350,163 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 end += 1000;
                 count = results.length;
             }
+            log.debug(`getAllSearchResults`, `353. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `354. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
             return arrResults;
+        }*/
+
+        let getAllSearchResults2 = (options, voidSearch) => {
+            const curScript = runtime.getCurrentScript();
+            log.debug(`getAllSearchResults`, `360. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            const functionProcess = `getAllSearchResults2()`;
+
+            let data = [];
+
+            try {
+
+                let searchObj = null;
+                let stRecordType = options.type;
+                let stSavedSearch = options.searchId;
+                let arrFilters = options.filters;
+                let arrColumns = options.columns;
+
+                searchObj = (stSavedSearch) ? arrFilters ? search.load({ id: stSavedSearch, filters: arrFilters }) :
+                    search.load({ id: stSavedSearch }) :
+                    search.create({ type: stRecordType, filters: arrFilters, columns: arrColumns });
+
+                if (!isEmpty(searchObj)) {
+
+                    let resultSearch = searchObj.run();
+                    let completeResultSet = [];
+                    let resultIndex = 0;
+                    let resultStep = 1000; // Number of records returned in one step (maximum is 1000)
+                    let result; // temporary variable used to store the result set
+
+                    do {
+                        // fetch one result set
+                        result = resultSearch.getRange({
+                            start: resultIndex,
+                            end: resultIndex + resultStep
+                        });
+                        if (!isEmpty(result) && result.length > 0) {
+                            if (resultIndex == 0) completeResultSet = result;
+                            else completeResultSet = completeResultSet.concat(result);
+                        }
+                        // increase pointer
+                        resultIndex = resultIndex + resultStep;
+                        // once no records are returned we already got all of them
+
+                        if (voidSearch == true) {
+                            if (completeResultSet.length > 0)
+                                break;
+                        }
+
+                    } while (!isEmpty(result) && result.length > 0 && result.length == 1000)
+
+                    for (let j = 0; j < completeResultSet.length; j++) {
+                        let obj = {};
+
+                        for (let k = 0; k < resultSearch.columns.length; k++) {
+                            obj[`${resultSearch.columns[k].name}`] = completeResultSet[j].getValue(resultSearch.columns[k]);
+                        }
+
+                        data.push(obj)
+                    }
+                }
+            }
+            catch (e) {
+                log.error(functionProcess, `418. Error: ${e.message}`);
+            }
+
+            log.debug(`getAllSearchResults`, `421. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            return data;
+        }
+
+        let getDepositAccount = (idSubsidiary) => {
+
+            const functionProcess = `PTLY - getDepositAccount()`
+
+            let result = null;
+            let data = [];
+
+            try {
+
+                let filters = [
+                    ['type', 'anyof', 'Bank'],
+                    'and',
+                    ['isinactive', 'is', 'F'],
+                    'and',
+                    ['subsidiary', 'anyof', idSubsidiary]
+                ];
+                let columns = ['internalid', 'subsidiary', search.createColumn({ name: 'number', sort: search.Sort.ASC })];
+
+                let searchObj = search.create({
+                    type: 'account',
+                    columns: columns,
+                    filters: filters
+                });
+
+                let resultSearch = searchObj.run();
+                let completeResultSet = [];
+                let resultIndex = 0;
+                let resultStep = 1000; // Number of records returned in one step (maximum is 1000)
+                let result; // temporary variable used to store the result set
+
+                do {
+                    // fetch one result set
+                    result = resultSearch.getRange({
+                        start: resultIndex,
+                        end: resultIndex + resultStep
+                    });
+                    if (!isEmpty(result) && result.length > 0) {
+                        if (resultIndex == 0) completeResultSet = result;
+                        else completeResultSet = completeResultSet.concat(result);
+                    }
+                    // increase pointer
+                    resultIndex = resultIndex + resultStep;
+                    // once no records are returned we already got all of them
+                } while (!isEmpty(result) && result.length > 0 && result.length == 1000)
+
+                for (let j = 0; j < completeResultSet.length; j++) {
+                    let obj = {};
+
+                    for (let k = 0; k < resultSearch.columns.length; k++) {
+                        obj[`${resultSearch.columns[k].name}`] = completeResultSet[j].getValue(resultSearch.columns[k]);
+                    }
+
+                    data.push(obj)
+                }
+
+                if (data.length > 0) {
+                    result = data[0].internalid;
+                }
+            }
+            catch (e) {
+                log.error(functionProcess, `485. Error: ${e.message}`);
+            }
+
+            log.debug(functionProcess, `488. Result: ${result}`);
+            return result;
+        }
+
+        let isEmpty = (value) => {
+
+            if (value === ``)
+                return true;
+
+            if (value === null)
+                return true;
+
+            if (value === undefined)
+                return true;
+
+            if (value === `undefined`)
+                return true;
+
+            if (value === `null`)
+                return true;
+
+            return false;
         }
 
         return {

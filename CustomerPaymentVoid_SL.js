@@ -14,7 +14,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
          * @Since 2015.2
          */
         function onRequest(context) {
-            const proceso = `FMG - Test Logs`;
+            const proceso = `CustomerPaymentVoid - Script Units Usage`;
             const curScript = runtime.getCurrentScript();
             const FLD_CTR_FILENUMBER = 'custbody_ctr_hs_file_number';
             const FLD_CTR_VOIDREASON = 'custbody_ctr_voidreason';
@@ -119,7 +119,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     var fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
                     var arAcct = recCustPayment.getValue({ fieldId: 'aracct' });
                     var nLines = recCustPayment.getLineCount({ sublistId: 'apply' });
-                    log.debug(proceso, `122. ${curScript.getRemainingUsage()}`);
+                    log.debug(proceso, `122. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
 
                     //Unapply invoices
                     if (nLines > 0) {
@@ -135,7 +135,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     //after choosing a void reason, the refund will be generated.
                     if (cashAcct && cashAcct != '') {
                         var refTranNum = getVoidNumber();
-                        log.debug(proceso, `138. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+                        //log.debug(proceso, `138. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
                         var refundMemo = 'Void Check ' + refNumber + ' ' + fileNumber;
                         var recRefund = record.create({ type: 'customerrefund', isDynamic: true });
                         recRefund.setValue('customer', customerId);
@@ -156,7 +156,6 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         //refund should be applied to the customer payment after everything
                         var refundLines = recRefund.getLineCount({ sublistId: 'apply' });
                         log.debug('refundLines:' + refundLines, 'tranid:' + refTranNum);
-                        log.debug(proceso, `159. ${curScript.getRemainingUsage()}`);
 
                         for (var i = 0; i < refundLines; i++) {
                             var creditsLineId = recRefund.getSublistValue({ sublistId: 'apply', fieldId: 'internalid', line: i });
@@ -190,6 +189,8 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         }
                     }
 
+                    log.debug(proceso, `192. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+
                     var sOutput = '<html><script>';
                     //sOutput += 'window.parent.document.getElementsByClassName("x-tool x-tool-close")[0].click();';
                     sOutput += 'window.parent.open("/app/accounting/transactions/custrfnd.nl?id=' + refundId + '&e=T", "_self");';
@@ -218,7 +219,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
             voidSearchOptions['columns'] = [search.createColumn({ name: 'tranid', sort: search.Sort.DESC })];
             var voidSearch = getAllSearchResults2(voidSearchOptions, true);
-            log.debug('voidSearch.length', `221. Void Search (${voidSearch.length}): ${JSON.stringify(voidSearch)}`);
+            //log.debug('voidSearch.length', `222. Void Search (${voidSearch.length}): ${JSON.stringify(voidSearch)}`);
 
             if (voidSearch.length > 0) {
                 var sTranId = voidSearch[0].tranid;
@@ -243,7 +244,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 const authnetLocation = addtnlArgs.authnetLocation;
                 var idSubsidiary = subsidiaryLookUp.subsidiary[0].value;
                 var idDepAcct = authnetAccount ? authnetAccount : getDepositAccount(idSubsidiary);
-                log.debug('makeDeposit', `246. idDepAcct: ${idDepAcct}`);
+                log.debug('makeDeposit', `247. idDepAcct: ${idDepAcct}`);
 
                 if (idDepAcct && idDepAcct != '') {
                     let recDeposit = null;
@@ -330,7 +331,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
         /*function getAllSearchResults(options) {
             const curScript = runtime.getCurrentScript();
-            log.debug(`getAllSearchResults`, `333. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `334. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             var stRecordType = options.type;
             var stSavedSearch = options.searchId;
             var arrFilters = options.filters;
@@ -350,14 +351,14 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 end += 1000;
                 count = results.length;
             }
-            log.debug(`getAllSearchResults`, `353. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-            log.debug(`getAllSearchResults`, `354. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
+            log.debug(`getAllSearchResults`, `354. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `355. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
             return arrResults;
         }*/
 
         let getAllSearchResults2 = (options, voidSearch) => {
             const curScript = runtime.getCurrentScript();
-            log.debug(`getAllSearchResults`, `360. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `361. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             const functionProcess = `getAllSearchResults2()`;
 
             let data = [];
@@ -415,10 +416,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `418. Error: ${e.message}`);
+                log.error(functionProcess, `419. Error: ${e.message}`);
             }
 
-            log.debug(`getAllSearchResults`, `421. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `422. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             return data;
         }
 
@@ -482,10 +483,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `485. Error: ${e.message}`);
+                log.error(functionProcess, `486. Error: ${e.message}`);
             }
 
-            log.debug(functionProcess, `488. Result: ${result}`);
+            log.debug(functionProcess, `489. Result: ${result}`);
             return result;
         }
 

@@ -242,6 +242,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
             var idDeposit = '';
             var bLineFound = false;
+            let dLineFound = false;
 
             try {
                 var subsidiaryLookUp = search.lookupFields({ type: 'customerpayment', id: idPayment, columns: ['subsidiary'] });
@@ -250,7 +251,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 const authnetLocation = addtnlArgs.authnetLocation;
                 var idSubsidiary = subsidiaryLookUp.subsidiary[0].value;
                 var idDepAcct = authnetAccount ? authnetAccount : getDepositAccount(idSubsidiary);
-                log.debug('makeDeposit', `253. idDepAcct: ${idDepAcct} | idLocation: ${authnetLocation}`);
+                log.debug('makeDeposit', `254. idDepAcct: ${idDepAcct} | idLocation: ${authnetLocation}`);
 
                 if (idDepAcct && idDepAcct != '') {
 
@@ -300,30 +301,34 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                                 });
 
                                 bLineFound = true;
+                            }
+                            else if (lineId == refundId) {
+
+                                recDeposit.setCurrentSublistValue({
+                                    sublistId: 'payment',
+                                    fieldId: 'deposit',
+                                    value: true
+                                });
+
+                                dLineFound = true;
+                            }
+
+                            if (dLineFound && bLineFound) {
                                 break;
                             }
                         }
                     }
 
-                    log.debug('makeDeposit', `308. Line IDS (${lineIds.length}): ${JSON.stringify(lineIds)} | Payment ID: ${idPayment} | Refund ID: ${refundId}`);
+                    let depositAmount = recDeposit.getValue({
+                        fieldId: 'total'
+                    });
 
-                    if (bLineFound) {
+                    log.debug('makeDeposit', `327. Payment ID: ${idPayment} | Refund ID: ${refundId} | Deposit Amount: ${depositAmount}`);
+
+                    if (bLineFound && dLineFound && depositAmount == 0) {
                         idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
                     }
-                    else {
-                        const refundIndex = lineIds.indexOf(refundId);
-                        if (refundIndex !== -1) {
-                            recDeposit.selectLine({ sublistId: 'payment', line: refundIndex });
-                            recDeposit.setCurrentSublistValue({ sublistId: 'payment', fieldId: 'deposit', value: true });
-                            bLineFound = true;
-                        }
-
-                        if (bLineFound) {
-                            idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
-                        }
-                    }
-
-                    log.debug('makeDeposit', `326. Id Deposit: ${idDeposit}`);
+                    log.debug('makeDeposit', `332. Id Deposit: ${idDeposit}`);
 
                     /*const paymentIndex = idDepLineIds.indexOf(idPayment);
                     if (paymentIndex !== -1) {
@@ -342,8 +347,8 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
                 //log.debug('Make Deposit', 'idDeposit:' + idDeposit + ' idDepAcct:' + idDepAcct);
             } catch (e) {
-                //log.error('makeDeposit error paymentID:' + idPayment, `345. ${e}`);
-                log.error('makeDeposit error paymentID:' + idPayment, `346. ${e.message}`);
+                //log.error('makeDeposit error paymentID:' + idPayment, `351. ${e}`);
+                log.error('makeDeposit error paymentID:' + idPayment, `352. ${e.message}`);
             }
 
             return idDepAcct;
@@ -383,7 +388,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
         /*function getAllSearchResults(options) {
             const curScript = runtime.getCurrentScript();
-            log.debug(`getAllSearchResults`, `386. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `392. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             var stRecordType = options.type;
             var stSavedSearch = options.searchId;
             var arrFilters = options.filters;
@@ -403,14 +408,14 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 end += 1000;
                 count = results.length;
             }
-            log.debug(`getAllSearchResults`, `406. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-            log.debug(`getAllSearchResults`, `407. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
+            log.debug(`getAllSearchResults`, `412. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `413. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
             return arrResults;
         }*/
 
         let getAllSearchResults2 = (options, voidSearch) => {
             const curScript = runtime.getCurrentScript();
-            //log.debug(`getAllSearchResults`, `413. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `419. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             const functionProcess = `getAllSearchResults2()`;
 
             let data = [];
@@ -468,10 +473,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `471. Error: ${e.message}`);
+                log.error(functionProcess, `477. Error: ${e.message}`);
             }
 
-            //log.debug(`getAllSearchResults`, `474. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `480. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             return data;
         }
 
@@ -535,10 +540,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `538. Error: ${e.message}`);
+                log.error(functionProcess, `544. Error: ${e.message}`);
             }
 
-            log.debug(functionProcess, `541. Result: ${result}`);
+            log.debug(functionProcess, `547. Result: ${result}`);
             return result;
         }
 

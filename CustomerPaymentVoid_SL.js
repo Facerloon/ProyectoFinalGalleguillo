@@ -305,7 +305,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         }
                     }
 
-                    log.debug('makeDeposit', `308. recId: ${recId} | Line IDS (${lineIds.length}): ${JSON.stringify(lineIds)} | Payment ID: ${idPayment} | Refund ID: ${refundId}`);
+                    log.debug('makeDeposit', `308. Line IDS (${lineIds.length}): ${JSON.stringify(lineIds)} | Payment ID: ${idPayment} | Refund ID: ${refundId}`);
 
                     if (bLineFound) {
                         idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
@@ -323,7 +323,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         }
                     }
 
-                    log.debug('makeDeposit', `326. recId: ${recId} | Id Deposit: ${idDeposit}`);
+                    log.debug('makeDeposit', `326. Id Deposit: ${idDeposit}`);
 
                     /*const paymentIndex = idDepLineIds.indexOf(idPayment);
                     if (paymentIndex !== -1) {

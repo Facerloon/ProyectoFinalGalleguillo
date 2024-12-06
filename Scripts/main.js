@@ -42,7 +42,7 @@ addAdvantageBtn.addEventListener('click', (event) => {
 
     let advantageText = document.getElementById("advAddText");
     let advantageCost = document.getElementById("advAddCost");
-    //console.log(`45. New Advantage Text: ${advantageText} | New Advantage Cost: ${advantageCost}`);
+    //console.log(`45. New Advantage Text: ${advantageText.value} | New Advantage Cost: ${advantageCost.value}`);
 
     if (!isEmpty(advantageCost.value) && !isEmpty(advantageText.value)) {
 
@@ -57,11 +57,11 @@ addAdvantageBtn.addEventListener('click', (event) => {
         advantageText.value = '';
         advantageCost.value = '';
 
-        let removeAdvantageBtns = document.querySelectorAll(".main_list_elementAdded_rmvbtn");
+        let removeAdvantageBtns = document.querySelectorAll(".main_list_elementAdded_rmvbtn"); 
         //console.log(`60. Remove Buttons Quantity: ${removeAdvantageBtns.length}: ${removeAdvantageBtns}`);
 
         for (let i = 0; i < removeAdvantageBtns.length; i++) {
-            removeButton = removeAdvantageBtns[i];
+            removeButton = removeAdvantageBtns[i]; // Se le agrega el evento para borrar el elemento de la lista
             removeButton.addEventListener('click', (event) => {
                 //console.log(`65. Event Target: ${event.target}`);
                 event.target.parentElement.remove();

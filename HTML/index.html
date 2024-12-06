@@ -1,153 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Personaje - GURPS</title>
     <link rel="stylesheet" href="/Styles/main.css">
-    <title>GURPS 4th Edition Online Sheet Maker</title>
 </head>
 
 <body>
-    <main>
-        <main class="main_header">
-            <img src="/Multimedia/Gurps Logo Standard.jpg">
-            <ul class="main_header_playerinfo">
-                <li>Name: <input class="box_text_long" type="text" name="" id=""></li>
-                <li>Player: <input class="box_text_long" type="text" name="" id=""></li>
-                <li>Ht: <input class="box_number" type="number" name="" id=""></li>
-                <li>Wt: <input class="box_number" type="number" name="" id=""></li>
-                <li>Size Modifier: <input class="box_number" type="number" name="" id=""></li>
-                <li>Age: <input class="box_number" type="number" name="" id=""></li>
-                <li>Point Total: <input class="box_number" type="number" name="" id=""></li>
-                <li>Unspent Points: <input class="box_number" type="number" name="" id=""></li>
-            </ul>
-        </main>
-        <div class="stats">
-            <div class="stats_atributes">
-                <h3 class="title">Atributes</h3>
-                <div class="stats_atributes_lists">
-                    <ul class="stats_atributes_lists_char">
-                        <li>
-                            <p>ST: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                        <li>
-                            <p>DX: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                        <li>
-                            <p>IQ: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                        <li>
-                            <p>HT: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                    </ul>
-                    <ul class="stats_atributes_lists_char">
-                        <li>
-                            <p>HP: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                        <li>
-                            <p>WILL: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                        <li>
-                            <p>PER: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                        <li>
-                            <p>FP: </p> <input value="10" class="box_number" type="number"> <input
-                                class="point_container" type="number">
-                        </li>
-                    </ul>
+    <header>
+        <h1>Hoja de Personaje - GURPS</h1>
+    </header>
+    <div class="container">
+        <form>
+            <!-- Información Básica -->
+            <div class="field-group">
+                <label for="nombre">Nombre del Personaje</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Introduce el nombre">
+            </div>
+            <div class="grid">
+                <div class="field-group">
+                    <label for="jugador">Jugador</label>
+                    <input type="text" id="jugador" name="jugador">
+                </div>
+                <div class="field-group">
+                    <label for="puntos">Puntos Totales</label>
+                    <input type="number" id="puntos_totales" name="puntos">
                 </div>
             </div>
-            <div class="stats_encnspeed">
-                <h3 class="title">Speed and Encumbrance Modifiers</h3>
-                <div class="stats_encnspeed_cont">
-                    <table class="stats_encnspeed_cont_table2">
-                        <tbody class="stats_encnspeed_cont_table2_b">
-                            <tr class="stats_encnspeed_cont_table2_b_r">
-                                <td class="stats_encnspeed_cont_table2_b_r_text">BASIC LIFT (ST x ST)/5</td>
-                                <td class="stats_encnspeed_cont_table2_b_r_score">20</td>
-                                <td class="stats_encnspeed_cont_table2_b_r_text">DAMAGE Thr</td>
-                                <td class="stats_encnspeed_cont_table2_b_r_score"></td>
-                                <td>Sw</td>
-                                <td class="stats_encnspeed_cont_table2_b_r_score"></td>
-                            </tr>
-                            <tr class="stats_encnspeed_cont_table2_b_r"></tr>
-                                <td class="stats_encnspeed_cont_table2_b_r_text">BASIC SPEED</td>
-                                <td class="stats_encnspeed_cont_table2_b_r_score">20</td>
-                                <td class="stats_encnspeed_cont_table2_b_r_text">BASIC MOVE</td>
-                                <td class="stats_encnspeed_cont_table2_b_r_score">5</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="stats_encnspeed_cont_table">
-                        <thead class="stats_encnspeed_cont_table_h">
-                            <th>Encumbrance</th>
-                            <th></th>
-                            <th>Move</th>
-                            <th></th>
-                            <th>Dodge</th>
-                            <th></th>
-                        </thead>
-                        <tbody class="stats_encnspeed_cont_table_b">
-                            <tr class="stats_encnspeed_cont_table_b_r">
-                                <td class="stats_encnspeed_cont_table_b_r_text">None (0) = BL</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">20</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 1</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">5</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">8</td>
-                            </tr>
-                            <!---->
-                            <tr class="stats_encnspeed_cont_table_b_r">
-                                <td class="stats_encnspeed_cont_table_b_r_text">Light (1) = 2 x BL</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">40</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.8</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">4</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -1</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">7</td>
-                            </tr>
-                            <!---->
-                            <tr class="stats_encnspeed_cont_table_b_r">
-                                <td class="stats_encnspeed_cont_table_b_r_text">Medium (2) = 3 x BL</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">60</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.6</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">3</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -2</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">6</td>
-                            </tr>
-                            <!---->
-                            <tr class="stats_encnspeed_cont_table_b_r">
-                                <td class="stats_encnspeed_cont_table_b_r_text">Heavy (3) = 6 x BL</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">120</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.4</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">2</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -3</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">5</td>
-                            </tr>
-                            <!---->
-                            <tr class="stats_encnspeed_cont_table_b_r">
-                                <td class="stats_encnspeed_cont_table_b_r_text">X-Heavy (4) = 10 x BL</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">200</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">BM x 0.2</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">1</td>
-                                <td class="stats_encnspeed_cont_table_b_r_text">Dodge -4</td>
-                                <td class="stats_encnspeed_cont_table_b_r_score">4</td>
-                            </tr>
-                            <!---->
-                        </tbody>
-                    </table>
+
+            <!-- Atributos -->
+            <h2>Atributos</h2>
+            <div class="grid">
+                <div class="field-group">
+                    <label for="fuerza" class="main_attribute">Fuerza (ST) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="fuerza" name="fuerza">
+                </div>
+                <div class="field-group">
+                    <label for="destreza" class="main_attribute">Destreza (DX) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="destreza" name="destreza">
+                </div>
+                <div class="field-group">
+                    <label for="inteligencia" class="main_attribute">Inteligencia (IQ) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="inteligencia" name="inteligencia">
+                </div>
+                <div class="field-group">
+                    <label for="salud" class="main_attribute">Salud (HT) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                </div>
+                <div class="field-group">
+                    <label for="salud" class="main_attribute">Puntos de Vida (HP) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                </div>
+                <div class="field-group">
+                    <label for="salud" class="main_attribute">Voluntad (WILL) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                </div>
+                <div class="field-group">
+                    <label for="salud" class="main_attribute">Percepcion (PER) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                </div>
+                <div class="field-group">
+                    <label for="salud" class="main_attribute">Fatiga (FP) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="salud" name="salud">
                 </div>
             </div>
-        </div>
-    </main>
+
+            <!-- Ventajas y Desventajas -->
+            <h2>Ventajas y Desventajas</h2>
+            <div class="field-group">
+                <label for="ventajas">Ventajas</label>
+                <ul class="main_list" id="advantageList">
+                    <li class="main_list_element"><input type="text" id="advAddText" class="main_list_element_textInput" placeholder="Nombre y detalles de ventaja"> <input type="number" id="advAddCost" class="main_list_element_costInput" placeholder="Costo"> <button id="addAdvBtn" type="button" class="main_list_element_addbtn">+</button></li>
+                </ul>
+            </div>
+            <div class="field-group">
+                <label for="desventajas">Desventajas</label>
+                <ul class="main_list" id="disadvantageList">
+                    <li class="main_list_element"><input type="text" id="advAddText" class="main_list_element_textInput" placeholder="Nombre y detalles de ventaja"> <input type="number" id="advAddCost" class="main_list_element_costInput" placeholder="Costo"> <button id="addAdvBtn" type="button" class="main_list_element_addbtn">+</button></li>
+                </ul>
+            </div>
+
+            <!-- Habilidades -->
+            <h2>Habilidades</h2>
+            <div class="field-group">
+                <label for="habilidades">Habilidades</label>
+                <textarea id="habilidades" name="habilidades" placeholder="Lista de habilidades"></textarea>
+            </div>
+
+            <!-- Equipamiento -->
+            <h2>Equipamiento</h2>
+            <div class="field-group">
+                <label for="equipamiento">Equipamiento</label>
+                <textarea id="equipamiento" name="equipamiento" placeholder="Lista de equipamiento"></textarea>
+            </div>
+
+            <!-- Notas -->
+            <h2>Notas Adicionales</h2>
+            <div class="field-group">
+                <label for="notas">Notas</label>
+                <textarea id="notas" name="notas" placeholder="Notas adicionales"></textarea>
+            </div>
+
+            <!-- Botón -->
+            <button id="submitBtn" type="submit">Guardar Personaje</button>
+        </form>
+    </div>
     <script src="/Scripts/main.js"></script>
 </body>
 

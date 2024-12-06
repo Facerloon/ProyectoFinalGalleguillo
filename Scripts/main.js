@@ -1,43 +1,76 @@
-const primaryAttributesCost = 10; // Valor fijo, siempre cuestan 10
+const primaryAttributesCost = 10; // Valor fijo, el costo base siempre es 10
 const mainAttributesBasis = 10; // Valor fijo, siempre empiezan en 10
-let finalCost = 0;
-let mainAttributesData = ["strength", "dexterity", "intelligence", "health"];
-let mainAttributesResult = [];
+//const evento = new Event('contenidoActualizado');
 
-for (let i = 0; i < mainAttributesData.length; i++) {
+// --------- Manejo de Atributos Principales ---------
 
-    let attributeName = mainAttributesData[i];
-    let getData = getAttributeData(attributeName, primaryAttributesCost);
+let mainAttributes = document.getElementsByClassName("main_attribute");
+let mainAttributesValues = document.getElementsByClassName("main_attribute_value");
+let mainAttributesCost = document.querySelectorAll(".cost_value");
+console.log(`10. Main Attributes: ${mainAttributes} | Cost Boxed Quantity: ${mainAttributesCost.length}`);
 
-    if (!isEmpty(getData)) {
-        finalCost += getData.points;
-        mainAttributesResult.push(getData);
-    }
-    else {
-        console.log(`17. Line: ${i} | Error inesperado en atributo ${attributeName}`);
-        break;
-    }
+for (let i = 0; i < 8 /* Valor fijo, siempre son 8*/; i++) {
+    // Se setean dinamicamente los valores de cada atributo
+    let attibuteBasis = mainAttributesValues[i];
+    console.log(`15. Attribute: ${attibuteBasis.innerHTML}`);
+    attibuteBasis.setAttribute('value', primaryAttributesCost);
+
+    attibuteBasis.addEventListener('input', (event) => {
+
+        if (event.target.value > 20) {
+            event.target.value = 20;
+        } // 20 es el valor maximo
+        else if (event.target.value < 1) {
+            event.target.value = 1;
+        } // 1 es el valor minimo
+
+        let attributeId = event.target.id;
+        let newValue = event.target.value;
+        let newPointCost = sumValue(primaryAttributesCost, newValue, mainAttributesBasis);
+        console.log(`30. Atributo: ${attributeId} | Nuevo Valor: ${newValue} | Nuevo Cost: ${newPointCost}`)
+
+        let attributeCostElement = mainAttributesCost[i];
+        attributeCostElement.innerHTML = newPointCost;
+        updateTotalCost();
+    });
 }
 
-let responseMessage = ``;
+// --------- Manejo de Listas de Ventajas y Desventajas ---------
 
-for (let i = 0; i < mainAttributesResult.length; i++) {
+let addAdvantageBtn = document.getElementById("addAdvBtn");
+addAdvantageBtn.addEventListener('click', (event) => {
 
-    let attributeName = mainAttributesResult[i].attribute;
-    let attributevalue = mainAttributesResult[i].value;
-    let attributePoints = mainAttributesResult[i].points;
+    let advantageText = document.getElementById("advAddText");
+    let advantageCost = document.getElementById("advAddCost");
+    //console.log(`45. New Advantage Text: ${advantageText} | New Advantage Cost: ${advantageCost}`);
 
-    if (i !== 0) {
-        responseMessage += `\n`;
+    if (!isEmpty(advantageCost.value) && !isEmpty(advantageText.value)) {
+
+        let advantageList = document.getElementById("advantageList");
+        let firstElement = advantageList.firstChild;
+
+        let newElement = document.createElement('li');
+        newElement.innerHTML = `<span class="main_list_elementAdded_text">${advantageText.value}</span> [<span class="cost_value">${advantageCost.value}</span>] <button type="button" class="main_list_elementAdded_rmvbtn">-</button>`;
+        advantageList.insertBefore(newElement, firstElement);
+        updateTotalCost();
+
+        advantageText.value = '';
+        advantageCost.value = '';
+
+        let removeAdvantageBtns = document.querySelectorAll(".main_list_elementAdded_rmvbtn");
+        //console.log(`60. Remove Buttons Quantity: ${removeAdvantageBtns.length}: ${removeAdvantageBtns}`);
+
+        for (let i = 0; i < removeAdvantageBtns.length; i++) {
+            removeButton = removeAdvantageBtns[i];
+            removeButton.addEventListener('click', (event) => {
+                //console.log(`65. Event Target: ${event.target}`);
+                event.target.parentElement.remove();
+            });
+        }
     }
+});
 
-    responseMessage += `Atributo: ${attributeName} | Valor: ${attributevalue} | Puntos Utilizados: ${attributePoints}`;
-}
-
-console.log(`37. Costo total: ${finalCost}\n\nInformacion de Atributos:\n${responseMessage}`);
-alert(`Costo total: ${finalCost}\n\nInformacion de Atributos:\n${responseMessage}`);
-
-// Funciones
+// --------- Funciones ---------
 
 function getAttributeData(attribute, cost) {
 
@@ -48,35 +81,6 @@ function getAttributeData(attribute, cost) {
         points: 0
     }
 
-    while (isEmpty(attributteObj.value)) {
-
-        let newValue = prompt(`Indique el valor de ${attribute} que quiera asignarle a su personaje. Debe ser un numero entre 1 y 20`);
-
-        if (!isEmpty(newValue)) {
-
-            if (!isNaN(newValue)) {
-                newValue = parseInt(newValue);
-
-                if (newValue > 0 && newValue <= 20) {
-
-                    attributteObj.value = newValue;
-                    attributteObj.points += sumValue(primaryAttributesCost, newValue, mainAttributesBasis);
-                    console.log(`62. Nuevo valor de ${attribute} cargado correctamente: ${newValue}`);
-
-                }
-                else {
-                    alert(`El valor del atributo debe ser un numero entre 1 y 20`);
-                }
-            }
-            else {
-                alert(`Por favor, ingrese un valor numerico.`);
-            }
-        }
-        else {
-            alert(`Por favor, ingrese el valor a asignar.`);
-        }
-    }
-
     return attributteObj;
 }
 
@@ -84,6 +88,21 @@ function sumValue(cost, score, basis) {
     let result = (score - basis) * cost;
     console.log(result);
     return result;
+}
+
+function updateTotalCost() {
+
+    let finalCost = 0;
+    let mainAttributesCost = document.querySelectorAll(".cost_value");
+    //console.log(`93. Cost Boxed Quantity: ${mainAttributesCost.length}`);
+    let totalCost = document.getElementById("puntos_totales");
+
+    for (let i = 0; i < mainAttributesCost.length; i++) {
+        let costValue = !isEmpty(mainAttributesCost[i].innerHTML) ? parseFloat(mainAttributesCost[i].innerHTML) : 0;
+        finalCost += costValue;
+    }
+
+    totalCost.setAttribute('value', finalCost);
 }
 
 function isEmpty(value) {

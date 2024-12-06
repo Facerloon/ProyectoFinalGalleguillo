@@ -26,44 +26,44 @@
                 </div>
                 <div class="field-group">
                     <label for="puntos">Puntos Totales</label>
-                    <input type="number" id="puntos_totales" name="puntos">
+                    <input type="number" id="puntos_totales" disabled="true" name="puntos">
                 </div>
             </div>
 
             <!-- Atributos -->
             <h2>Atributos</h2>
             <div class="grid">
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="fuerza" class="main_attribute">Fuerza (ST) [<span class="cost_value">0</span>]</label>
                     <input type="number" class="main_attribute_value" id="fuerza" name="fuerza">
                 </div>
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="destreza" class="main_attribute">Destreza (DX) [<span class="cost_value">0</span>]</label>
                     <input type="number" class="main_attribute_value" id="destreza" name="destreza">
                 </div>
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="inteligencia" class="main_attribute">Inteligencia (IQ) [<span class="cost_value">0</span>]</label>
                     <input type="number" class="main_attribute_value" id="inteligencia" name="inteligencia">
                 </div>
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Salud (HT) [<span class="cost_value">0</span>]</label>
                     <input type="number" class="main_attribute_value" id="salud" name="salud">
                 </div>
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Puntos de Vida (HP) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                    <input type="number" class="main_attribute_value" id="puntos_golpe" name="salud">
                 </div>
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Voluntad (WILL) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                    <input type="number" class="main_attribute_value" id="voluntad" name="salud">
                 </div>
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Percepcion (PER) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                    <input type="number" class="main_attribute_value" id="percepcion" name="salud">
                 </div>
-                <div class="field-group">
+                <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Fatiga (FP) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="salud" name="salud">
+                    <input type="number" class="main_attribute_value" id="fatiga" name="salud">
                 </div>
             </div>
 
@@ -78,7 +78,7 @@
             <div class="field-group">
                 <label for="desventajas">Desventajas</label>
                 <ul class="main_list" id="disadvantageList">
-                    <li class="main_list_element"><input type="text" id="advAddText" class="main_list_element_textInput" placeholder="Nombre y detalles de ventaja"> <input type="number" id="advAddCost" class="main_list_element_costInput" placeholder="Costo"> <button id="addAdvBtn" type="button" class="main_list_element_addbtn">+</button></li>
+                    <li class="main_list_element"><input type="text" id="disadvAddText" class="main_list_element_textInput" placeholder="Nombre y detalles de desventaja"> <input type="number" id="disadvAddCost" class="main_list_element_costInput" placeholder="Costo"> <button id="addDisadvBtn" type="button" class="main_list_element_addbtn">+</button></li>
                 </ul>
             </div>
 
@@ -104,7 +104,7 @@
             </div>
 
             <!-- Botón -->
-            <button id="submitBtn" type="submit">Guardar Personaje</button>
+            <button id="submitBtn" type="button" onclick="getMainAttributesData()">Guardar Personaje</button>
         </form>
     </div>
     <script src="/Scripts/main.js"></script>

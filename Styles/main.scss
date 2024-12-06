@@ -1,193 +1,151 @@
-// --- Mixins ---
-
-@mixin setSize($width, $height) {
-    width: $width;
-    height: $height;
-}
-
-@mixin setBorder() {
-    border-color: black;
-    border-width: 2px;
-    border-style: solid;
-    margin: 3px 3px 3px 3px;
-}
-
-// --- Style ---
-
 * {
     box-sizing: border-box;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-}
-
-.title {
-    text-align: center;
-    display: block;
-    font-size: 1.8rem;
-}
-
-.main_header {
-    display: flex;
-    flex-direction: row;
-
-    img {
-        @include setSize(250px, 90px);
-    }
-
-    &_playerinfo {
-        margin: 0 0 0 1rem;
-        align-content: center;
-
-        li {
-            display: inline;
-            margin: 0 5px 0 0;
-        }
-    }
-}
-
-.stats {
-    display: flex;
-    flex-direction: row;
-    padding: 0 0 0 0;
-    //background-color: gray;
-    font-size: 2rem;
-
-    &_atributes {
-        @include setBorder();
-        padding: 1% 4% 2% 4%;
-        display: flex;
-        flex-direction: column;
-        width: 40vw;
-
-        &_lists {
-            display: flex;
-            justify-content: center;
-
-            &_char {
-                padding: 0 0 0 0;
-                margin: 0 0 0 0;
-                //background-color: rgb(203, 95, 95);
-                width: 20vw;
-
-                li {
-                    @include setSize(250px, 50px);
-                    margin: 0 0 0 0;
-                    padding: 0 01.57rem 0 0;
-                    align-content: center;
-                    text-align: right;
-
-                    p {
-                        display: inline;
-                    }
-                }
-            }
-        }
-    }
-
-    &_encnspeed {
-        @include setBorder();
-        display: flex;
-        flex-direction: column;
-        width: 50vw;
-        text-align: center;
-
-        &_cont {
-            text-align: left;
-
-            &_table2 {
-                margin: 3% 1% 3% 1%;
-
-                &_b {
-                    font-size: 1rem;
-
-                    &_r {
-
-                        &_text {
-                            width: fit-content;
-                        }
-
-                        &_score {
-                            width: 30px;
-                            text-decoration: underline;
-                        }
-
-                    }
-                }
-            }
-
-            &_table {
-                @include setBorder();
-                width: 90%;
-                margin: 1% 1% 1% 5%;
-                padding: 1% 1% 1% 1%;
-                //background-color: red;
-
-                &_h {
-                    font-size: 1.2rem;
-                }
-
-                &_b {
-                    font-size: 0.8rem;
-
-                    &_r {
-
-                        &_score {
-                            width: 60px;
-                            text-decoration: underline;
-                        }
-
-                    }
-                }
-            }
-        }
-    }
-}
-
-.box_number_table {
-    display: inline;
-    text-align: center;
-    font-size: .8rem;
-    @include setSize(45px, 25px);
-    vertical-align: middle;
-}
-
-.box_number {
-    display: inline;
-    text-align: center;
-    font-size: 25px;
-    @include setSize(70px, 50px);
-    vertical-align: middle;
-}
-
-
-
-.box_text_long {
-    display: inline;
-    @include setSize(300px, 25px);
-}
-
-.point_container {
-    display: inline;
-    @include setSize(50px, 30px);
-    text-align: center;
-    font-size: 18px;
-    border-color: white;
-    border: 0px;
-    border-left: black;
-    border-right: black;
-    border-style: dashed;
-    vertical-align: middle;
-}
-
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 h1 {
-    color: black;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-li {
-    list-style-type: none;
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.field-group {
+    margin-bottom: 20px;
+}
+
+.main_list {
+    padding: 2% 2% 2% 2%;
+
+
+
+    &_element {
+        margin-bottom: 2px;
+        list-style-type: circle;
+
+        &_textInput {
+            display: inline-block;
+            border: none;
+            text-align: left;
+            border: 1px solid black;
+            width: 75%;
+            height: 30px;
+            font-size: 0.8rem;
+        }
+
+        &_costInput {
+            display: inline-block;
+            border: none;
+            text-align: center;
+            border: 1px solid black;
+            width: 15%;
+            height: 30px;
+            font-size: 0.8rem;
+        }
+
+        &_addbtn {
+            padding: 1% 1% 1% 1%;
+            background-color: white;
+            font-size: 1.2rem;
+            font-weight: bolder;
+            width: 3%;
+            color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        &_addbtn:hover {
+            color: #0056b3;
+        }
+    }
+
+    &_elementAdded {
+        margin-bottom: 2px;
+
+        &_rmvbtn {
+            padding: 1% 1% 1% 1%;
+            background-color: white;
+            font-size: 1.2rem;
+            font-weight: bolder;
+            width: 3%;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        &_rmvbtn:hover {
+            color: red;
+        }
+
+    }
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+#submitBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#submitBtn:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }

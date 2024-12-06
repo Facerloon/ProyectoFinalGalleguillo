@@ -17,7 +17,7 @@
             <!-- Información Básica -->
             <div class="field-group">
                 <label for="nombre">Nombre del Personaje</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Introduce el nombre">
+                <input type="text" id="nombre_personaje" name="nombre" placeholder="Introduce el nombre">
             </div>
             <div class="grid">
                 <div class="field-group">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="field-group">
                     <label for="puntos">Puntos Totales</label>
-                    <input type="number" id="puntos_totales" disabled="true" name="puntos">
+                    <input type="number" id="puntos_totales" value="0" disabled="true" name="puntos">
                 </div>
             </div>
 
@@ -86,25 +86,26 @@
             <h2>Habilidades</h2>
             <div class="field-group">
                 <label for="habilidades">Habilidades</label>
-                <textarea id="habilidades" name="habilidades" placeholder="Lista de habilidades"></textarea>
+                <textarea id="habilidades" name="habilidades" placeholder="Proximamente"></textarea>
             </div>
 
             <!-- Equipamiento -->
             <h2>Equipamiento</h2>
             <div class="field-group">
                 <label for="equipamiento">Equipamiento</label>
-                <textarea id="equipamiento" name="equipamiento" placeholder="Lista de equipamiento"></textarea>
+                <textarea id="equipamiento" name="equipamiento" placeholder="Proximamente"></textarea>
             </div>
 
             <!-- Notas -->
             <h2>Notas Adicionales</h2>
             <div class="field-group">
                 <label for="notas">Notas</label>
-                <textarea id="notas" name="notas" placeholder="Notas adicionales"></textarea>
+                <textarea id="notas" name="notas" placeholder="Proximamente"></textarea>
             </div>
 
             <!-- Botón -->
-            <button id="submitBtn" type="button" onclick="getMainAttributesData()">Guardar Personaje</button>
+            <button class="submitBtn" type="button" onclick="saveCharacter()">Guardar Personaje</button>
+            <button class="submitBtn" type="button" onclick="loadCharacter()">Cargar Personaje</button>
         </form>
     </div>
     <script src="/Scripts/main.js"></script>

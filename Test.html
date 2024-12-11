@@ -1,824 +1,481 @@
-<!--Custom Form-->
-<html>
+<NLFORM>
+    <html lang="en">
 
-<head>
-    <style type="text/css">
-        .divmainform {
-            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-style: normal;
-            line-height: 1.6;
-            letter-spacing: 0;
-            direction: ltr;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            text-decoration-color: none;
-            --grayFonts: #a6a6a6;
-            --blueLinkActivee: #588EBC;
-        }
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Partnersly S.A - Formulario de Registro</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet">
+        <style type="text/css">
+            * {
+                box-sizing: border-box;
+                padding: 0 0 0 0;
+                margin: 0 0 0 0;
+                font-family: "Montserrat", sans-serif;
+            }
 
-        .divmainform li,
-        a,
-        button {
-            font-size: 16px;
-            color: var(--grayFonts, gray);
-            text-decoration: none;
-        }
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
 
-        .titleSection h1 {
-            color: var(--grayFonts, gray);
-        }
+            input[type="number"] {
+                -moz-appearance: textfield;
+                /* Para Firefox */
+            }
 
-        .titleSection h2 {
-            color: var(--blueLinkActivee, blue);
-        }
+            p {
+                color: white;
+            }
 
-        .titleSection.numbertit {
-            text-align: left;
-        }
+            table {
+                table-layout: fixed;
+            }
 
-        .underline {
-            border-bottom: 2px solid var(--blueLinkActivee, gray);
-            display: inline-block;
-            line-height: 1.5;
-        }
+            tr {
+                height: 70px;
+                vertical-align: middle;
+            }
 
-        .logo {
-            cursor: pointer;
-            margin-right: auto;
-        }
+            td {
+                padding: 0 10px 0 10px;
+            }
 
-        .divline {
-            border-bottom: 5px solid var(--grayFonts, gray);
-            line-height: 3;
-            width: 100%;
-            margin-top: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
+            .mainForm {
+                background-color: white;
+                min-height: 100%;
+                max-height: fit-content;
+                text-align: center;
+            }
 
-        .numtitle {
-            color: var(--blueLinkActivee, blue);
-            font-size: 3em;
-            font-weight: bold;
-        }
+            .title {
+                color: white;
+                font-size: 20px;
+            }
 
-        .middletitle {
-            color: var(--blueLinkActivee, blue);
-            font-size: 1.2em;
-            font-weight: bold;
-        }
+            .fieldsInput1 {
+                width: 85%;
+                opacity: 100%;
+                padding: 10px 10px 10px 10px;
+                color: black;
+                height: fit-content;
+                text-decoration: none;
+                font-size: 14px;
+                border: none;
+                border-bottom: 2px groove rgb(0, 52, 131);
+                margin-bottom: 2%;
+            }
 
-        .submtitle {
-            color: var(--grayFonts, gray);
-            font-size: 0.8em;
-            text-align: right;
-        }
+            .fieldsInput1::placeholder {
+                color: #969696;
+                font-weight: 400;
+            }
 
-        .imginfoform {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            background-size: cover;
-        }
-
-        .imginfocontainer {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin: 1.5em;
-        }
-
-        .titlenum {
-            width: 100%;
-        }
-
-        .descinfoimg {
-            color: var(--grayFonts, gray);
-            font-size: 0.85em;
-            text-align: left;
-            margin-left: 1em;
-            max-width: 350px;
-        }
-
-        .checkBtn {
-            font-size: 30px;
-            cursor: pointer;
-            display: none;
-            color: #262b33;
-        }
-
-        #check {
-            display: none;
-        }
-
-        .divmainform section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 100px;
-            margin-top: 0.5rem;
-            padding: 1rem;
-        }
-
-        .divmainform ul {
-            text-align: justify;
-        }
-
-        #home {
-            display: flex;
-            flex-direction: row;
-        }
-
-        #principalTitle {
-            font-size: 3rem;
-            font-weight: 500;
-        }
-
-        .description {
-            font-size: 1.25rem;
-            color: var(--grayFonts, gray);
-            margin-top: 1rem;
-        }
-
-        #Presentation {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            color: var(--grayFonts, gray);
-        }
-
-        #imgPresentation {
-            display: flex;
-            justify-content: center;
-        }
-
-        .groupBtnApp {
-            margin-top: 4rem;
-        }
-
-        .btn-icon {
-            padding: 15px 50px;
-            background-color: #22233b;
-            color: #ffffff;
-            display: inline-block;
-            border-radius: 100px;
-            margin-right: 10px;
-            -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
-            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
-        }
-
-        .btn-icon:focus,
-        .btn-icon:hover {
-            color: #ffffff;
-            background-color: var(--blueLinkActivee, blue);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
-        }
-
-        .btn-icon .btn-content {
-            position: relative;
-            padding-left: 50px;
-            display: block;
-        }
-
-        .btn-icon .btn-content .icon {
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 30px;
-            width: 30px;
-        }
-
-        .btn-icon .btn-content .icon img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .btn-icon .btn-content small {
-            display: block;
-            font-size: 12px;
-        }
-
-        .btn-icon .btn-content strong {
-            display: block;
-            font-size: 18px;
-        }
-
-        /*Form*/
-        .divmainform .input {
-            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            width: 100%;
-            padding: 1rem 0.85rem;
-            border-radius: 6px;
-            border: 1px solid var(--grayFonts, gray);
-            outline: none;
-            display: inline-flex;
-            color: var(--grayFonts, gray);
-            font-size: 0.80rem;
-        }
-
-        .divmainform .input::placeholder {
-            /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: var(--grayFonts, gray);
-            opacity: 1;
-            /* Firefox */
-        }
-
-        .divmainform select.input {
-            padding-bottom: 0.85rem;
-        }
-
-        .divmainform .inputextra {
-            width: 100%;
-            height: 83%;
-            padding: 0.5rem;
-            border-radius: 6px;
-            border: 1px solid var(--grayFonts, gray);
-            outline: none;
-            display: inline-flex;
-        }
-
-        .divmainform .inputextra label {
-            color: var(--grayFonts, gray);
-            font-size: 0.7rem;
-        }
-
-        .divmainform .filelabel {
-            color: var(--grayFonts, gray);
-            /*display: flex;*/
-        }
-
-        .form-group {
-            margin: 0 auto 1.25rem auto;
-        }
-
-        .form-double {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-        .flexsimple {
-            flex-grow: 1 !important;
-        }
-
-        .flexdouble {
-            flex-grow: 3 !important;
-        }
-
-        .form-group.last {
-            margin: 0 0 1.25rem 0.5rem;
-        }
-
-        #formContact {
-            margin-top: 1.5rem;
-        }
-
-        .btn-default {
-            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            padding: 20px 50px;
-            border: 1px solid var(--blueLinkActivee, blue);
-            border-radius: 100px;
-            color: var(--blueLinkActivee, blue);
-            padding: 10px 30px;
-            display: inline-block;
-            font-weight: 700;
-            background-color: #ffffff;
-            transition: 0.3s;
-        }
-
-        .btn-default:hover {
-            background-color: var(--blueLinkActivee, blue);
-            color: #ffffff;
-        }
-
-        #video {
-            box-shadow: 0 0 10px;
-            margin-top: 2em;
-        }
-
-        #full {
-            display: block;
-        }
-
-        #mini {
-            display: none;
-        }
-
-        /*Price table*/
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .pricing-table {
-            background: #fbfbfb;
-            flex: 1;
-            margin: 10px;
-            text-transform: uppercase;
-        }
-
-        .pricing-header {
-            color: #fff;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .iconTablePrice {
-            font-size: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 0;
-        }
-
-        .price span {
-            color: var(--blueLinkActivee, blue);
-            font-weight: 700;
-            font-size: 30px;
-        }
-
-        .iconTablePrice span {
-            font-size: 30px;
-        }
-
-        .title {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%, 50%);
-            width: 80%;
-            max-width: 360px;
-            text-align: center;
-            padding: 8px 0;
-        }
-
-        .pricing-list {
-            padding: 10px 20px;
-        }
-
-        .pricing-list li {
-            margin: 8px 0;
-            font-size: 14px;
-            color: #344;
-            text-align: center;
-        }
-
-        .border {
-            width: 80px;
-            height: 1px;
-            background: #ddd;
-            margin: auto;
-        }
-
-        .pricing-table a {
-            display: block;
-            width: 80%;
-            margin: auto;
-            margin-bottom: 20px;
-            text-align: center;
-            padding: 8px 0;
-            font-size: 14px;
-            border: 1px solid;
-            max-width: 360px;
-            transition: .2s linear;
-        }
-
-        .pricing-table a:hover {
-            border-radius: 30px;
-        }
-
-        @media(max-width:858px) {
-            .checkBtn {
+            .submitButton {
+                color: white;
+                background-color: #54C0E8;
                 display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 2%;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 700;
+                padding: 6px 6px 6px 6px;
+                border: 1px solid #54C0E8;
             }
 
-            #check:checked~.checkBtn {
-                color: var(--blueLinkActivee, blue);
+            .infoSectionTitle {
+                text-align: center;
+                font-size: 18px;
+                color: rgb(0, 52, 131);
+                font-weight: bold;
+                margin-bottom: 3%;
+                margin-top: 3%;
             }
 
-            #home {
-                flex-direction: column;
+            .select1 {
+                width: 85%;
+                opacity: 100%;
+                padding: 10px 10px 10px 10px;
+                color: black;
+                height: fit-content;
+                text-decoration: none;
+                font-size: 14px;
+                border: none;
+                border-bottom: 2px groove rgb(0, 52, 131);
+                margin-bottom: 2%;
+                color: #999;
             }
 
-            .form-double {
-                display: flex;
-                flex-direction: column !important;
+            .select1 option:first-child {
+                color: #999;
             }
 
-            .form-double.filescontent {
-                justify-content: center !important;
+            .select1:focus,
+            .select1:valid {
+                color: black;
             }
+        </style>
+    </head>
 
-            .form-double .form-group {
-                margin: 0 0 1.25rem 0 !important;
-            }
+    <body>
+        <div class="mainForm">
+            <h3 class="infoSectionTitle">INFORMACION DE CONTACTO</h3>
+            <input class="fieldsInput1" type="text" name="firstname" id="firstname" placeholder="Nombre *" required>
+            <input class="fieldsInput1" type="text" name="lastname" id="lastname" placeholder="Apellido *" required>
+            <input class="fieldsInput1" type="email" name="email" id="email" placeholder="Email *" required>
+            <input class="fieldsInput1" type="text" name="custentity_ptly_linkedin" id="custentity_ptly_linkedin"
+                placeholder="LinkedIn">
+            <input class="fieldsInput1" type="number" name="phone" id="phone" placeholder="Teléfono Celular">
+            <br>
+            <h3 class="infoSectionTitle">INFORMACION DE EMPRESA</h3>
+            <input class="fieldsInput1" name="companyname" id="companyname" placeholder="Razon Social *" required>
+            <select class="select1" title="tipoIndustria" name="custentity_ptly_industry" id="custentity_ptly_industry"
+                type="select-one" required>
+                <option value="" hidden disabled selected>Tipo de Industria *</option>
+                <option value="1">Software</option>
+                <option value="2">Servicios</option>
+                <option value="7">Advertising, Marketing</option>
+                <option value="8">Consulting</option>
+                <option value="17">Finance, Accounting</option>
+                <option value="22">Servicios de IT y Computación</option>
+                <option value="3">Distribuicón Mayorista</option>
+                <option value="4">Retail</option>
+                <option value="10">Ropa, Calzado y Accesorios</option>
+                <option value="11">Cuidado y Belleza</option>
+                <option value="5">Comida y Bebidas</option>
+                <option value="6">Fintech</option>
+                <option value="9">Construcción</option>
+                <option value="12">Agricultura</option>
+                <option value="13">Salud</option>
+                <option value="14">Biotecnología y Farmacéuticas</option>
+                <option value="15">Sin fines de lucro</option>
+                <option value="18">Educación</option>
+                <option value="19">eCommerce</option>
+                <option value="20">Restaurante y Hospitalidad</option>
+                <option value="21">Inmobiliaria</option>
+                <option value="23">Manufactura</option>
+                <option value="24">Gobierno</option>
+            </select>
+            <select class="select1" title="nroEmployees" class="fieldsInput1" name="custentity_ptly_employee_number"
+                id="custentity_ptly_employee_number" type="select-one" required>
+                <option value="" hidden disabled selected>Numero de Empleados *</option>
+                <option value="1">Entre 1 y 5</option>
+                <option value="2">Entre 6 y 20</option>
+                <option value="3">Entre 21 y 100</option>
+                <option value="4">Entre 101 y 500</option>
+                <option value="5">Entre 501 y 1000</option>
+                <option value="6">Más de 1000</option>
+            </select>
+            <select class="select1" title="annualRev" class="fieldsInput1" name="custentity_ptly_annual_revenue"
+                id="custentity_ptly_annual_revenue" type="select-one" required>
+                <option class="firstSelectOption" value="" hidden disabled selected>Ingresos Anuales *</option>
+                <option value="6">Hasta $100M</option>
+                <option value="1">Entre $0 y $500K</option>
+                <option value="3">Entre $1.01M y $5M</option>
+                <option value="5">Entre $25.1M y $100M</option>
+                <option value="2">Entre $501K y $1M</option>
+                <option value="4">Entre $5.01M y $25M</option>
+            </select>
+            <select class="select1" title="Pais" name="country" id="country" class="fieldsInput1" type="select-one"
+                required>
+                <option value="" hidden="" disabled="" selected="">Pais *</option>
 
-            .btn-icon.playstore {
-                margin-top: 1rem;
-            }
+                <option value="US">Estados Unidos</option>
+                <option value="AF">Afganistán</option>
+                <option value="AL">Albania</option>
+                <option value="DE">Alemania</option>
+                <option value="AD">Andorra</option>
+                <option value="AO">Angola</option>
+                <option value="AI">Anguila</option>
+                <option value="AQ">Antártida</option>
+                <option value="AG">Antigua y Barbuda</option>
+                <option value="SA">Arabia Saudí</option>
+                <option value="DZ">Argelia</option>
+                <option value="Argentina">Argentina</option>
+                <option value="AM">Armenia</option>
+                <option value="AW">Aruba</option>
+                <option value="AU">Australia</option>
+                <option value="AT">Austria</option>
+                <option value="AZ">Azerbaiyán</option>
+                <option value="BS">Bahamas</option>
+                <option value="BD">Bangladés</option>
+                <option value="BB">Barbados</option>
+                <option value="BH">Baréin</option>
+                <option value="BE">Bélgica</option>
+                <option value="BZ">Belice</option>
+                <option value="BJ">Benín</option>
+                <option value="BM">Bermuda</option>
+                <option value="BY">Bielorrusia</option>
+                <option value="BO">Bolivia</option>
+                <option value="BQ">Bonaire, San Eustaquio y Saba</option>
+                <option value="BA">Bosnia y Herzegovina</option>
+                <option value="BW">Botsuana</option>
+                <option value="BR">Brasil</option>
+                <option value="BN">Brunéi</option>
+                <option value="BG">Bulgaria</option>
+                <option value="BF">Burkina Faso</option>
+                <option value="BI">Burundi</option>
+                <option value="BT">Bután</option>
+                <option value="CV">Cabo Verde</option>
+                <option value="KH">Camboya</option>
+                <option value="CM">Camerún</option>
+                <option value="CA">Canadá</option>
+                <option value="QA">Catar</option>
+                <option value="EA">Ceuta y Melilla</option>
+                <option value="CL">Chile</option>
+                <option value="CN">China</option>
+                <option value="CY">Chipre</option>
+                <option value="CO">Colombia</option>
+                <option value="CG">Congo</option>
+                <option value="CD">Congo (República Democrática del)</option>
+                <option value="KR">Corea (República de)</option>
+                <option value="KP">Corea (República Popular Democrática de)</option>
+                <option value="CI">Costa de Marfil</option>
+                <option value="CR">Costa Rica</option>
+                <option value="HR">Croacia</option>
+                <option value="CU">Cuba</option>
+                <option value="CW">Curazao</option>
+                <option value="DK">Dinamarca</option>
+                <option value="DM">Dominica</option>
+                <option value="EC">Ecuador</option>
+                <option value="EG">Egipto</option>
+                <option value="SV">El Salvador</option>
+                <option value="AE">Emiratos Árabes Unidos</option>
+                <option value="ER">Eritrea</option>
+                <option value="SK">Eslovaquia</option>
+                <option value="SI">Eslovenia</option>
+                <option value="ES">España</option>
+                <option value="EE">Estonia</option>
+                <option value="SZ">Esuatini</option>
+                <option value="ET">Etiopía</option>
+                <option value="RU">Federación Rusa</option>
+                <option value="PH">Filipinas</option>
+                <option value="FI">Finlandia</option>
+                <option value="FJ">Fiyi</option>
+                <option value="FR">Francia</option>
+                <option value="GA">Gabón</option>
+                <option value="GM">Gambia</option>
+                <option value="GE">Georgia</option>
+                <option value="GH">Ghana</option>
+                <option value="GI">Gibraltar</option>
+                <option value="GD">Granada</option>
+                <option value="GR">Grecia</option>
+                <option value="GL">Groenlandia</option>
+                <option value="GP">Guadalupe</option>
+                <option value="GU">Guam</option>
+                <option value="GT">Guatemala</option>
+                <option value="GF">Guayana Francesa</option>
+                <option value="GG">Guernsey</option>
+                <option value="GN">Guinea</option>
+                <option value="GQ">Guinea Ecuatorial</option>
+                <option value="GW">Guinea-Bisáu</option>
+                <option value="GY">Guyana</option>
+                <option value="HT">Haití</option>
+                <option value="HN">Honduras</option>
+                <option value="HK">Hong Kong</option>
+                <option value="HU">Hungría</option>
+                <option value="IN">India</option>
+                <option value="ID">Indonesia</option>
+                <option value="IQ">Irak</option>
+                <option value="IR">Irán (República islámica de)</option>
+                <option value="IE">Irlanda</option>
+                <option value="BV">Isla Bouvet</option>
+                <option value="IM">Isla de Man</option>
+                <option value="CX">Isla de Navidad</option>
+                <option value="IS">Islandia</option>
+                <option value="AX">Islas Åland</option>
+                <option value="KY">Islas Caimán</option>
+                <option value="IC">Islas Canarias</option>
+                <option value="CC">Islas Cocos (Keeling)</option>
+                <option value="KM">Islas Comores</option>
+                <option value="CK">Islas Cook</option>
+                <option value="FO">Islas Feroe</option>
+                <option value="GS">Islas Georgias del Sur y Sandwich del Sur</option>
+                <option value="HM">Islas Heard y McDonald</option>
+                <option value="FK">Islas Malvinas (Falkland)</option>
+                <option value="MP">Islas Mariana meridionales</option>
+                <option value="MH">Islas Marshall</option>
+                <option value="NF">Islas Norfolk</option>
+                <option value="PN">Islas Pitcairn</option>
+                <option value="SB">Islas Salomón</option>
+                <option value="TC">Islas Turcos y Caicos</option>
+                <option value="UM">Islas Ultramarinas Menores de Estados Unidos</option>
+                <option value="VG">Islas Vírgenes (Británicas)</option>
+                <option value="VI">Islas Vírgenes (EE UU)</option>
+                <option value="IL">Israel</option>
+                <option value="IT">Italia</option>
+                <option value="JM">Jamaica</option>
+                <option value="JP">Japón</option>
+                <option value="JE">Jersey</option>
+                <option value="JO">Jordania</option>
+                <option value="KZ">Kazajistán</option>
+                <option value="KE">Kenia</option>
+                <option value="KG">Kirguistán</option>
+                <option value="KI">Kiribati</option>
+                <option value="XK">Kosovo</option>
+                <option value="KW">Kuwait</option>
+                <option value="LS">Lesoto</option>
+                <option value="LV">Letonia</option>
+                <option value="LB">Líbano</option>
+                <option value="LR">Liberia</option>
+                <option value="LY">Libia</option>
+                <option value="LI">Liechtenstein</option>
+                <option value="LT">Lituania</option>
+                <option value="LU">Luxemburgo</option>
+                <option value="MO">Macao</option>
+                <option value="MK">Macedonia del Norte</option>
+                <option value="MG">Madagascar</option>
+                <option value="MY">Malasia</option>
+                <option value="MW">Malaui</option>
+                <option value="MV">Maldivas</option>
+                <option value="ML">Malí</option>
+                <option value="MT">Malta</option>
+                <option value="MA">Marruecos</option>
+                <option value="MQ">Martinica</option>
+                <option value="MU">Mauricio</option>
+                <option value="MR">Mauritania</option>
+                <option value="YT">Mayotte</option>
+                <option value="MX">México</option>
+                <option value="FM">Micronesia (Estados Federados de)</option>
+                <option value="MD">Moldavia (República de)</option>
+                <option value="MC">Mónaco</option>
+                <option value="MN">Mongolia</option>
+                <option value="ME">Montenegro</option>
+                <option value="MS">Montserrat</option>
+                <option value="MZ">Mozambique</option>
+                <option value="MM">Myanmar</option>
+                <option value="NA">Namibia</option>
+                <option value="NR">Nauru</option>
+                <option value="NP">Nepal</option>
+                <option value="NI">Nicaragua</option>
+                <option value="NE">Níger</option>
+                <option value="NG">Nigeria</option>
+                <option value="NU">Niue</option>
+                <option value="NO">Noruega</option>
+                <option value="NC">Nueva Caledonia</option>
+                <option value="NZ">Nueva Zelanda</option>
+                <option value="OM">Omán</option>
+                <option value="NL">Países Bajos</option>
+                <option value="PK">Pakistán</option>
+                <option value="PW">Palau</option>
+                <option value="PS">Palestina, Estado de</option>
+                <option value="PA">Panamá</option>
+                <option value="PG">Papúa Nueva Guinea</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Perú</option>
+                <option value="PF">Polinesia Francesa</option>
+                <option value="PL">Polonia</option>
+                <option value="PT">Portugal</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="GB">Reino Unido</option>
+                <option value="SY">República Árabe de Siria</option>
+                <option value="CZ">República Checa</option>
+                <option value="CF">República de África Central</option>
+                <option value="TD">República del Chad</option>
+                <option value="LA">República Democrática Popular Lao</option>
+                <option value="DO">República Dominicana</option>
+                <option value="RE">Reunión</option>
+                <option value="RW">Ruanda</option>
+                <option value="RO">Rumanía</option>
+                <option value="EH">Sahara occidental</option>
+                <option value="KN">Saint Kitts y Nevis</option>
+                <option value="WS">Samoa</option>
+                <option value="AS">Samoa Americana</option>
+                <option value="BL">San Bartolomé</option>
+                <option value="SM">San Marino</option>
+                <option value="MF">San Martín (región francesa)</option>
+                <option value="SX">San Martín (región neerlandesa)</option>
+                <option value="PM">San Pedro y Miquelón</option>
+                <option value="VC">San Vicente y las Granadinas</option>
+                <option value="SH">Santa Elena, Ascensión y Tristán de Acuña&ZeroWidthSpace;</option>
+                <option value="LC">Santa Lucía</option>
+                <option value="VA">Santa Sede</option>
+                <option value="ST">Santo Tomé y Príncipe</option>
+                <option value="SN">Senegal</option>
+                <option value="RS">Serbia</option>
+                <option value="CS">Serbia y Montenegro (en desuso)</option>
+                <option value="SC">Seychelles</option>
+                <option value="SL">Sierra Leona</option>
+                <option value="SG">Singapur</option>
+                <option value="SO">Somalia</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="ZA">Sudáfrica</option>
+                <option value="SD">Sudán</option>
+                <option value="SS">Sudán del Sur</option>
+                <option value="SE">Suecia</option>
+                <option value="CH">Suiza</option>
+                <option value="SR">Surinam</option>
+                <option value="SJ">Svalbard y Jan Mayen</option>
+                <option value="TH">Tailandia</option>
+                <option value="TW">Taiwán (provincia de China)</option>
+                <option value="TZ">Tanzania, República Unida de</option>
+                <option value="TJ">Tayikistán</option>
+                <option value="IO">Territorio británico del océano Índico</option>
+                <option value="TF">Territorios franceses del Sur</option>
+                <option value="TL">Timor Oriental</option>
+                <option value="TG">Togo</option>
+                <option value="TK">Tokelau</option>
+                <option value="TO">Tonga</option>
+                <option value="TT">Trinidad y Tobago</option>
+                <option value="TN">Túnez</option>
+                <option value="TM">Turkmenistán</option>
+                <option value="TR">Turquía</option>
+                <option value="TV">Tuvalu</option>
+                <option value="UA">Ucrania</option>
+                <option value="UG">Uganda</option>
+                <option value="UY">Uruguay</option>
+                <option value="UZ">Uzbekistán</option>
+                <option value="VU">Vanuatu</option>
+                <option value="VE">Venezuela (República Bolivariana de)</option>
+                <option value="VN">Vietnam</option>
+                <option value="WF">Wallis y Futuna</option>
+                <option value="YE">Yemen</option>
+                <option value="DJ">Yibuti</option>
+                <option value="ZM">Zambia</option>
+                <option value="ZW">Zimbabue</option>
+            </select>
+            <input class="fieldsInput1" name="city" id="city" placeholder="Ciudad *" required>
+            <input class="fieldsInput1" name="zipcode" id="zipcode" placeholder="Codigo Postal *" required>
+            <input class="fieldsInput1" name="state" id="state" placeholder="Estado/Provincia *" required>
+            <input class="fieldsInput1" name="address2" id="address2" placeholder="Direccion *" required>
 
-            #Presentation {
-                width: 100%;
-            }
 
-            #principalTitle {
-                font-size: 2rem;
-            }
+            <input class="submitButton" type="submit" value="Enviar">
 
-            .description {
-                font-size: 1rem;
-                margin-top: 1rem;
-            }
-
-            #circleImage {
-                border-radius: 50%;
-                width: 300px;
-                height: 300px;
-                background-image: url("img/phone-talk1.jpg");
-                background-size: cover;
-                margin-top: 1rem;
-            }
-
-            #full {
-                display: none !important;
-            }
-
-            #mini {
-                display: block !important;
-            }
-        }
-
-        @media screen and (max-width:780px) {
-            .pricing-table {
-                flex: 100%;
-            }
-        }
-    </style>
-    <script>
-        // Get height of document
-        function getDocHeight(doc) {
-            doc = doc || document;
-            // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
-            var body = doc.body, html = doc.documentElement;
-            var height = Math.max(body.scrollHeight, body.offsetHeight,
-                html.clientHeight, html.scrollHeight, html.offsetHeight);
-            return height;
-        }
-        // send docHeight onload
-        function sendDocHeightMsg(e) {
-            var ht = getDocHeight();
-            parent.postMessage(JSON.stringify({ 'docHeight': ht }), '*');
-            $_change_selector("category", "Rubro");
-            $_change_selector("custentity_l54_tipo_contribuyente", "Tipo Contribuyente");
-            $_change_selector("custentity_l54_tipo_contribuyente_iibb", "Tipo Contribuyente IIBB");
-            $_change_selector("country", "Pais *", 'AR');
-        }
-        // assign onload handler
-        if (window.addEventListener) {
-            window.addEventListener('load', sendDocHeightMsg, false);
-        } else if (window.attachEvent) { // ie8
-            window.attachEvent('onload', sendDocHeightMsg);
-        }
-        function updateVatregnumber() {
-            let l54cuitObj = document.querySelector('#custentity_l54_cuit_entity');
-            let l54CuitValue = l54cuitObj.value;
-            /*
-            l54CuitValue = l54CuitValue.replace(/[^\d]/g, '');
-            l54cuitObj.value = l54CuitValue;
-            */
-            let vatregnumberObj = document.querySelector('#vatregnumber');
-            vatregnumberObj.value = l54CuitValue;
-        }
-        function $_change_selector(id_selector, name, toBlock) {
-            //usando un Select Vacio y agregando datos del NSTAG
-            /*
-            let countryNLSelect = document.querySelectorAll('#' + id_selector);
-            let countrySelectHtml = countryNLSelect[1].innerHTML;
-            countryNLSelect[0].innerHTML = countrySelectHtml;
-            countryNLSelect[0].options[0].disabled = true;
-            countryNLSelect[0].options[0].hidden = true;
-            countryNLSelect[0].options[0].text = name;
-            console.log(countrySelectHtml);
-            */
-            //usando el NSTAG y cambiando el Label
-            //let NLabel = document.querySelector('#' + id_selector + '_fs_lbl');
-            //NLabel.hidden = true;
-            let NLSelect = document.querySelector('#' + id_selector);
-            if (toBlock) {
-                var opt;
-                for (var i = 0, len = NLSelect.options.length; i < len; i++) {
-                    opt = NLSelect.options[i].value;
-                    if (opt == toBlock) {
-                        NLSelect.options[i].selected = true;
-                        /*NLSelect.disabled = true;*/
-                        break;
-                    }
-                }
-            } else {
-                NLSelect.options[0].disabled = true;
-                NLSelect.options[0].hidden = true;
-                NLSelect.options[0].text = name;
-                NLSelect.options[0].value = "";
-            }
-        }
-        /*
-        function $_GET(q,s) {
-        s = s ? s : window.location.search;
-        var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i');
-        return (s=s.replace(/^[?]/,'&').match(re)) ? (typeof s[1] == 'undefined' ? » : decodeURIComponent(s[1])) : undefined;
-        }
-        var paramsc = $_GET('success');
-        */
-        /*
-        window.addEventListener("load", function(){
-        $_change_selector("category", "Rubro");
-        $_change_selector("custentity_l54_tipo_contribuyente","Tipo Contribuyente");
-        $_change_selector("custentity_l54_tipo_contribuyente_iibb", "Tipo Contribuyente IIBB");
-        $_change_selector("country", "Pais *");
-        });
-        */
-    </script>
-</head>
-
-<body>
-    <div class="divmainform">
-        <section class="titleSection" id="contact">
-            <section class="titleSection" id="newclient">
-                <h2><span class="underline">NUEVO CLIENTE</span>
-                </h2>
-                <p class="description">¡Queremos que seas parte de nuestra cartera de clientes y puedas disfrutar de los
-                    beneficios que te ofrecemos!
-                </p>
-                <p class="description">Para poder continuar con el proceso de alta de nuevo cliente te pedimos que por
-                    favor sigas los procedimientos detallados a continuación y te responderemos a la brevedad.
-                </p>
-            </section>
-            <div class="divline">
+            <div hidden="">
+                <input name="subsidiary" id="subsidiary" value="2">
+                <NLFIRSTNAME>
+                    <NLSUBSIDIARY>
+                        <NLLASTNAME>
+                            <NLCOMPANYNAME>
+                                <NLEMAIL>
+                                    <NLCOUNTRY>
+                                        <NLCITY>
+                                            <NLSTATE>
+                                                <NLZIPCODE>
+                                                    <NLADDRESS2>
+                                                        <NLHOMEPHONE>
+                                                            <NLPHONE>
+                                                                <NLURL>
+                                                                    <NLCOMMENTS>
+                                                                        <NLCUSTENTITY_PTLY_LINKEDIN>
+                                                                            <NLCUSTENTITY_PTLY_ANNUAL_REVENUE>
+                                                                                <NLCUSTENTITY_PTLY_EMPLOYEE_NUMBER>
+                                                                                    <NLCUSTENTITY_PTLY_INDUSTRY>
+                                                                                        <NLCUSTENTITY_PTLY_ANNUAL_REVENUE>
+                                                                                            <NLCUSTENTITY_PTLY_EMPLOYEE_NUMBER>
+                                                                                                <NLCUSTENTITY_PTLY_INDUSTRY>
+                                                                                                    <NLCUSTENTITY_PTLY_COUNTRY>
+                                                                                                        <NLCAMPAIGNEVENT>
+                                                                                                            <NLCAMPAIGNCATEGORY>
             </div>
-            <section class="titleSection" id="documentacionimp">
-                <h2><span class="underline">DOCUMENTACIÓN IMPOSITIVA</span>
-                </h2>
-                <p class="description">Para poder avanzar con el alta necesitamos:
-                </p>
-                <ul>
-                    <li>Constancia de C.U.I.T</li>
-                    <li>Formulario de Inscripción de Ingresos Brutos (En caso de Convenio Multilateral Form. CM01 y CM02
-                        si corresponde).</li>
-                    <li>Convenio Multilateral (Formulario CM05 actualizado con su acuse de presentación.)</li>
-                    <li>Formulario de Inscripción de Ingresos Brutos.</li>
-                    <li>Comprobantes de excención si tuviere.</li>
-                    <li>Empresa registrada bajo el rubro de Informática/Telefonía.</li>
-                    <li>Registro y envio de formulario a completar debajo.</li>
-                </ul>
-            </section>
-            <div class="divline">
-            </div>
-            <div id="formContact">
-                <NLFORM>
-                    <section class="titleSection numbertit" id="infocom">
-                        <span class="titlenum"><span class="numtitle">1</span> <span class=""><span
-                                    class="middletitle underline"> Información Comercial </span> <span
-                                    class="submtitle">(Los campos marcados con * son obligatorios)</span></span></span>
-                    </section>
-                    <div class="form-double">
-                        <div class="form-group last flexsimple">
-                            <input type="text" class="input" pattern="[0-9]{6,12}" autofocus
-                                name="custentity_l54_cuit_entity" id="custentity_l54_cuit_entity" placeholder="CUIT *"
-                                required onchange="updateVatregnumber()">
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="text" class="input" name="custentity_l54_nombre_legal"
-                                id="custentity_l54_nombre_legal" placeholder="Razón Social">
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="text" class="input" name="companyname" id="companyname"
-                                placeholder="Nombre de Fantasía">
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <NLCUSTENTITY_L54_TIPO_CONTRIBUYENTE>
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="text" class="input" name="custentity_l54_cod_iibb" id="custentity_l54_cod_iibb"
-                                placeholder="N° Ingresos Brutos">
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <nlcustentity_l54_tipo_contribuyente_iibb>
-                        </div>
-                    </div>
-                    <div class="form-double">
-                        <div class="form-group last flexsimple">
-                            <!--<select name="category" id="category" class="input" placeholder="Rubro *"></select>-->
-                            <NLCATEGORY>
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="email" class="input" name="email" id="email" placeholder="Email *">
-                        </div>
-                        <div class="form-group last flexdouble">
-                            <input type="url" class="input" name="url" id="url" placeholder="Web">
-                        </div>
-                    </div>
-                    <div class="form-double">
-                        <div class="form-group last flexsimple">
-                            <NLCOUNTRY>
-                        </div>
-                        <div class="form-group last flexdouble">
-                            <select name="state" id="state" class="input">
-                                <option value="" selected="" disabled="" hidden="">Provincia</option>
-                                <option value="B0">Buenos Aires</option>
-                                <option value="C0">Capital Federal</option>
-                                <option value="K0">Catamarca</option>
-                                <option value="H0">Chaco</option>
-                                <option value="U0">Chubut</option>
-                                <option value="X0">Cordoba</option>
-                                <option value="W0">Corrientes</option>
-                                <option value="E0">Entre Rios</option>
-                                <option value="P0">Formosa</option>
-                                <option value="Y0">Jujuy</option>
-                                <option value="L0">La Pampa</option>
-                                <option value="F0">La Rioja</option>
-                                <option value="M0">Mendoza</option>
-                                <option value="N0">Misiones</option>
-                                <option value="Q0">Neuquen</option>
-                                <option value="R0">Rio Negro</option>
-                                <option value="A0">Salta</option>
-                                <option value="J0">San Juan</option>
-                                <option value="D0">San Luis</option>
-                                <option value="Z0">Santa Cruz</option>
-                                <option value="S0">Santa Fe</option>
-                                <option value="G0">Santiago del Estero</option>
-                                <option value="V0">Tierra del Fuego</option>
-                                <option value="T0">Tucuman</option>
-                            </select>
-                            <!--
-<input type="text" class="input" name="state" id="state" placeholder="Provincia *">
--->
-                        </div>
-                        <div class="form-group last flexdouble">
-                            <input type="text" class="input" name="city" id="city" placeholder="Ciudad *">
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="number" class="input" name="zipcode" id="zipcode" placeholder="CP *">
-                        </div>
-                    </div>
-                    <div class="form-double">
-                        <div class="form-group last flexdouble">
-                            <input type="text" class="input" name="address1" id="address1"
-                                placeholder="Dirección Comercial *">
-                        </div>
-                    </div>
-                    <div class="form-double filescontent" style="justify-content: center !important;">
-                        <div class="form-group last flexdouble">
-                            <label for="file1" class="filelabel">Formulario de CUIT Actualizado</label>
-                            <input type="file" class="input" name="file[0]" id="file[0]">
-                        </div>
-                        <div class="form-group last flexdouble">
-                            <label for="file2" class="filelabel">Formulario de Inscripción a Ingresos Brutos</label>
-                            <input type="file" class="input" name="file[1]" id="file[1]">
-                        </div>
-                    </div>
-                    <section class="titleSection numbertit" id="infocom">
-                        <span class="titlenum"><span class="numtitle">2</span> <span class=""><span
-                                    class="middletitle underline"> Información Personal </span> <span
-                                    class="submtitle">(Los campos marcados con * son obligatorios)</span></span></span>
-                    </section>
-                    <div class="form-double">
-                        <div class="form-group last flexdouble">
-                            <input type="text" class="input" name="firstname" id="firstname" placeholder="Nombre *"
-                                required>
-                        </div>
-                        <div class="form-group last flexdouble">
-                            <input type="text" class="input" name="lastname" id="lastname" placeholder="Apellido *"
-                                required>
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="tel" class="input" name="homephone" id="homephone"
-                                placeholder="Telefono Fijo *">
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="tel" class="input" name="phone" id="phone" placeholder="Telefono Celular *">
-                        </div>
-                        <div class="form-group last flexsimple">
-                            <input type="email" class="input" name="altemail" id="altemail"
-                                placeholder="Email de Contacto *">
-                        </div>
-                    </div>
-                    <div class="form-group last">
-                        <textarea class="input" id="comments" name="comments" rows="5"
-                            placeholder="Comentarios"></textarea>
-                    </div>
-                    <section class="titleSection" id="submitbutton">
-                        <div class="form-group">
-                            <input id="submit" type="submit" value="ENVIAR FORMULARIO" class="btn-default">
-                        </div>
-                        <p class="description">Somos el proveedor de productos informáticos que necesitas, te brindamos:
-                        </p>
-                    </section>
-                    <!--
-<select name="leadsource" id="leadsource"> <option value="-6" selected="">Web</option> </select>
-<input name="leadsource" id="leadsource" hidden="" datatype="integer" value="-6">
-<input name="custentity_l54_id_tipo_doc_afip" id="custentity_l54_id_tipo_doc_afip" hidden="" datatype="integer" value="80">
--->
-                    <input name="subsidiary" id="subsidiary" hidden="" value="7">
-                    <input name="vatregnumber" id="vatregnumber" hidden="" value="">
-                    <input name="currency" id="currency" hidden="" value="1">
-                    <input name="pricelevel" id="pricelevel" hidden="" value="1">
-                    <input name="terms" id="terms" hidden="" value="8">
-                    <input name="custentity_formadepagovalores" id="custentity_formadepagovalores" hidden="" value="14">
-                    <input name="weblead" id="weblead" type="checkbox" checked="" value="T" hidden="">
-                    <input name="language" id="language" hidden="" value="es_ES">
-                    <input name="custentity_l54_tipo_documento" id="custentity_l54_tipo_documento" hidden=""
-                        datatype="integer" value="3">
-                    <div hidden="">
-                        <NLCUSTENTITY_ESTADO_FORMULARIOS>
-                            <NLSUBSIDIARY>
-                                <NLCUSTENTITY_L54_NOMBRE_LEGAL>
-                                    <NLCUSTENTITY_L54_CUIT_ENTITY>
-                                        <NLCOMPANYNAME>
-                                            <NLEMAIL>
-                                                <NLURL>
-                                                    <NLCUSTENTITY_L54_TIPO_CONTRIBUYENTE>
-                                                        <NLCUSTENTITY_L54_COD_IIBB>
-                                                            <NLCITY>
-                                                                <NLSTATE>
-                                                                    <NLZIPCODE>
-                                                                        <NLADDRESS1>
-                                                                            <NLFILE>
-                                                                                <NLFIRSTNAME>
-                                                                                    <NLLASTNAME>
-                                                                                        <NLHOMEPHONE>
-                                                                                            <NLPHONE>
-                                                                                                <NLALTEMAIL>
-                                                                                                    <NLCOMMENTS>
-                                                                                                        <NLLEADSOURCE>
-                                                                                                            <NLWEBLEAD>
-                                                                                                                <NLCUSTENTITY_L54_ID_TIPO_DOC_AFIP>
-                                                                                                                    <NLCUSTENTITY_L54_TIPO_DOCUMENTO>
-                                                                                                                        <NLLANGUAGE>
-                                                                                                                            <NLVATREGNUMBER>
-                                                                                                                                <NLCURRENCY>
-                                                                                                                                    <NLPRICELEVEL>
-                                                                                                                                        <NLTERMS>
-                                                                                                                                            <NLCUSTENTITY_FORMADEPAGOVALORES>
-                    </div>
-                </NLFORM>
-            </div>
-            <section class="titleSection" id="imgforcust">
-                <div class="rowspec" style="display: flex; flex-direction: row;">
-                    <div class="imginfocontainer">
-                        <div class="imginfoform"
-                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_1.png');">
-                        </div>
-                        <div class="descinfoimg">Amplia gama de productos a un precio competitivo con distintos medios
-                            de pago y financiación.
-                        </div>
-                    </div>
-                    <div class="imginfocontainer">
-                        <div class="imginfoform"
-                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_2.png');">
-                        </div>
-                        <div class="descinfoimg">Logística eficiente, distribución a todos los puntos del país.
-                        </div>
-                    </div>
-                </div>
-                <div class="rowspec" style="display: flex; flex-direction: row;">
-                    <div class="imginfocontainer">
-                        <div class="imginfoform"
-                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_3.png');">
-                        </div>
-                        <div class="descinfoimg">Atención personalizada, respuesta inmediata y servicio post-venta.
-                        </div>
-                    </div>
-                    <div class="imginfocontainer">
-                        <div class="imginfoform"
-                            style="background-image: url('http://sandboxsca.3ksys.com.ar/SSP Applications/NetSuite Inc. - SCA 2019.2/Source/img/form_cust_reg_img_4.png');">
-                        </div>
-                        <div class="descinfoimg">Flexibilidad para que puedas comprar en cualquier horario desde
-                            cualquier punto del país.
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="titleSection" id="graciasjb">
-                <h2><span class="underline">¡GRACIAS!</span>
-                </h2>
-                <p class="description">Presentados todos los papeles y aprobada su solicitud, recibiras en el transcurso
-                    de las siguientes 48 hs hábiles un e-mail de bienvenida a la dirección que hayas indicado en el
-                    formulario de inscripción.
-                </p>
-                <p class="description">Si necesitas información adicional por favor contáctanos a info@ceven.com
-                </p>
-            </section>
-        </section>
-    </div>
-</body>
+    </body>
 
-</html>
-<!--Custom Form-->
+    </html>
+</NLFORM>

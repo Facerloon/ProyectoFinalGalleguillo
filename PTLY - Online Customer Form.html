@@ -100,7 +100,7 @@
             .select1 {
                 width: 85%;
                 opacity: 100%;
-                padding: 10px 10px 10px 10px;
+                padding: 10px 10px 10px 5px;
                 color: black;
                 height: fit-content;
                 text-decoration: none;
@@ -124,15 +124,15 @@
     </head>
     <body>
         <div class="mainForm">
-            <h3 class="infoSectionTitle">INFORMACION DE CONTACTO</h3>
+            <h3 class="infoSectionTitle">INFORMACIÓN DE CONTACTO</h3>
             <input class="fieldsInput1" type="text" name="firstname" id="firstname" placeholder="Nombre *" required>
             <input class="fieldsInput1" type="text" name="lastname" id="lastname" placeholder="Apellido *" required>
             <input class="fieldsInput1" type="email" name="email" id="email" placeholder="Email *" required>
             <input class="fieldsInput1" type="text" name="custentity_ptly_linkedin" id="custentity_ptly_linkedin" placeholder="LinkedIn">
             <input class="fieldsInput1" type="number" name="phone" id="phone" placeholder="Teléfono Celular">
             <br>
-            <h3 class="infoSectionTitle">INFORMACION DE EMPRESA</h3>
-            <input class="fieldsInput1" name="companyname" id="companyname" placeholder="Razon Social *" required>
+            <h3 class="infoSectionTitle">INFORMACIÓN DE EMPRESA</h3>
+            <input class="fieldsInput1" name="companyname" id="companyname" placeholder="Razón Social *" required>
             <select class="select1" title="tipoIndustria" name="custentity_ptly_industry" id="custentity_ptly_industry" type="select-one" required>
                 <option value="" hidden disabled selected>Tipo de Industria *</option>
                 <option value="1">Software</option>
@@ -160,7 +160,7 @@
                 <option value="24">Gobierno</option>
             </select>
             <select class="select1" title="nroEmployees" class="fieldsInput1" name="custentity_ptly_employee_number" id="custentity_ptly_employee_number" type="select-one" required>
-                <option value="" hidden disabled selected>Numero de Empleados *</option>
+                <option value="" hidden disabled selected>Número de Empleados *</option>
                 <option value="1">Entre 1 y 5</option>
                 <option value="2">Entre 6 y 20</option>
                 <option value="3">Entre 21 y 100</option>
@@ -178,7 +178,7 @@
                 <option value="4">Entre $5.01M y $25M</option>
             </select>
             <select class="select1" title="Pais" name="country" id="country" class="fieldsInput1" type="select-one" required>
-                <option value="" hidden="" disabled="" selected="">Pais *</option>
+                <option value="" hidden="" disabled="" selected="">País *</option>
                 <option value="US">Estados Unidos</option>
                 <option value="AF">Afganistán</option>
                 <option value="AL">Albania</option>
@@ -434,9 +434,9 @@
                 <option value="ZW">Zimbabue</option>
             </select>
             <input class="fieldsInput1" name="city" id="city" placeholder="Ciudad *" required>
-            <input class="fieldsInput1" name="zipcode" id="zipcode" placeholder="Codigo Postal *" required>
+            <input class="fieldsInput1" name="zipcode" id="zipcode" placeholder="Código Postal *" required>
             <input class="fieldsInput1" name="state" id="state" placeholder="Estado/Provincia *" required>
-            <input class="fieldsInput1" name="address1" id="address1" placeholder="Direccion *" required>
+            <input class="fieldsInput1" name="address1" id="address1" placeholder="Dirección *" required>
 
             <input class="submitButton" type="submit" value="Enviar">
 

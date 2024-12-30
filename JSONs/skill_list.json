@@ -1,5 +1,13 @@
 [
     {
+        "id": "custom",
+        "label": "Custom Skill",
+        "attribute": "ST",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
         "id": "accounting",
         "label": "Accounting",
         "attribute": "IQ",
@@ -67,5 +75,2664 @@
             "Equines",
             "Raptors"
         ]
+    },
+    {
+        "id": "anthropology",
+        "label": "Anthropology",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "archaeology",
+        "label": "Archaeology",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "architecture",
+        "label": "Architecture",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "armoury",
+        "label": "Armoury",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Batt lesuits",
+            "Body Armor",
+            "Force Shields"
+        ]
+    },
+    {
+        "id": "armoury",
+        "label": "Armoury",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Small Arms"
+        ]
+    },
+    {
+        "id": "artillery",
+        "label": "Artillery",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Beams",
+            "Bombs",
+            "Cannon",
+            "Catapult",
+            "Torpedoes"
+        ]
+    },
+    {
+        "id": "artist",
+        "label": "Artist",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Body Art",
+            "Calligraphy",
+            "Drawing",
+            "Illumination",
+            "Illusion",
+            "Interior Decorating",
+            "Painting",
+            "Pottery",
+            "Scene Design",
+            "Sculpting",
+            "Woodworking"
+        ]
+    },
+    {
+        "id": "astronomy",
+        "label": "Astronomy",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "autohypnosis",
+        "label": "Autohypnosis",
+        "attribute": "WILL",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "axe_mace",
+        "label": "Axe/Mace",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "axe_mace_art",
+        "label": "Axe/Mace Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "axe_mace_sport",
+        "label": "Axe/Mace Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "battlesuit",
+        "label": "Battlesuit",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "beam_weapons",
+        "label": "Beam Weapons",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Pistol",
+            "Rifle"
+        ]
+    },
+    {
+        "id": "bicycling",
+        "label": "Bicycling",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "biology",
+        "label": "Biology",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": true,
+        "standard_specialties": [
+            "Earthlike",
+            "Gas Giants",
+            "Ice Dwarfs",
+            "Rock Worlds"
+        ]
+    },
+    {
+        "id": "biology",
+        "label": "Biology",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "blind_fighting",
+        "label": "Blind Fighting",
+        "attribute": "PER",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "blowpipe",
+        "label": "Blowpipe",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "boating",
+        "label": "Boating",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Motorboat",
+            "Sailboat",
+            "Unpowered"
+        ]
+    },
+    {
+        "id": "body_control",
+        "label": "Body Control",
+        "attribute": "HT",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "body_language",
+        "label": "Body Language",
+        "attribute": "PER",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "body_sense",
+        "label": "Body Sense",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "bolas",
+        "label": "Bolas",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "bolas_art",
+        "label": "Bolas Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "bolas_sport",
+        "label": "Bolas Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "bow",
+        "label": "Bow",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "bow_art",
+        "label": "Bow Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "bow_sport",
+        "label": "Bow Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "boxing",
+        "label": "Boxing",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "boxing_art",
+        "label": "Boxing Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "boxing_sport",
+        "label": "Boxing Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "brainwashing",
+        "label": "Brainwashing",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "brawling",
+        "label": "Brawling",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "breaking_blow",
+        "label": "Breaking Blow",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "breath_control",
+        "label": "Breath Control",
+        "attribute": "HT",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "broadsword",
+        "label": "Broadsword",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "broadsword_art",
+        "label": "Broadsword Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "broadsword_sport",
+        "label": "Broadsword Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "camouflage",
+        "label": "Camouflage",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "carousing",
+        "label": "Carousing",
+        "attribute": "HT",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "carpentry",
+        "label": "Carpentry",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "cartography",
+        "label": "Cartography",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "chemistry",
+        "label": "Chemistry",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "climbing",
+        "label": "Climbing",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "cloak",
+        "label": "Cloak",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "computer_hacking",
+        "label": "Computer Hacking",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "computer_oPERation",
+        "label": "Computer OPERation",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "computer_programming",
+        "label": "Computer Programming",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "connoisseur",
+        "label": "Connoisseur",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Dance",
+            "Literature",
+            "Music",
+            "Visual Arts",
+            "Wine"
+        ]
+    },
+    {
+        "id": "cooking",
+        "label": "Cooking",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "counterfeiting",
+        "label": "Counterfeiting",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "criminology",
+        "label": "Criminology",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "crossbow",
+        "label": "Crossbow",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "crossbow_art",
+        "label": "Crossbow Art",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "crossbow_sport",
+        "label": "Crossbow Sport",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "cryptography",
+        "label": "Cryptography",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "current_affairs",
+        "label": "Current Affairs",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "People",
+            "Politics",
+            "Sports",
+            "Travel"
+        ]
+    },
+    {
+        "id": "dancing",
+        "label": "Dancing",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "detect_lies",
+        "label": "Detect Lies",
+        "attribute": "PER",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "diagnosis",
+        "label": "Diagnosis",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "diplomacy",
+        "label": "Diplomacy",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "disguise",
+        "label": "Disguise",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Species"
+        ]
+    },
+    {
+        "id": "diving_suit",
+        "label": "Diving Suit",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "dreaming",
+        "label": "Dreaming",
+        "attribute": "WILL",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "driving",
+        "label": "Driving",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Automobile",
+            "Hovercraft",
+            "Locomotive",
+            "Mecha",
+            "Motorcycle",
+            "Tracked"
+        ]
+    },
+    {
+        "id": "dropping",
+        "label": "Dropping",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "economics",
+        "label": "Economics",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "electrician",
+        "label": "Electrician",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "engineer",
+        "label": "Engineer",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Artillery",
+            "Civil",
+            "Clockwork",
+            "Co mbat",
+            "El ectrical",
+            "Electronics",
+            "Materials",
+            "Mining",
+            "Parachronic",
+            "Robotics",
+            "Small Ar ms",
+            "Temporal",
+            "Vehicle Type"
+        ]
+    },
+    {
+        "id": "enthrallment",
+        "label": "Enthrallment",
+        "attribute": "WILL",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Captivate",
+            "PERsuade",
+            "Suggest"
+        ]
+    },
+    {
+        "id": "erotic_art",
+        "label": "Erotic Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "escape",
+        "label": "Escape",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "esoteric_medicine",
+        "label": "Esoteric Medicine",
+        "attribute": "PER",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "exorcism",
+        "label": "Exorcism",
+        "attribute": "WILL",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "exPERt_skill",
+        "label": "ExPERt Skill",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "explosives",
+        "label": "Explosives",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Demolition",
+            "Fir eworks"
+        ]
+    },
+    {
+        "id": "falconry",
+        "label": "Falconry",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "farming",
+        "label": "Farming",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "fast_draw",
+        "label": "Fast-Draw",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Ammo",
+            "Force Sword",
+            "Knife",
+            "Long Arm",
+            "Pistol"
+        ]
+    },
+    {
+        "id": "fast_draw",
+        "label": "Fast-Draw",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Ar row",
+            "Sword"
+        ]
+    },
+    {
+        "id": "fast_talk",
+        "label": "Fast-Talk",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "filch",
+        "label": "Filch",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "finance",
+        "label": "Finance",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "fire_eating",
+        "label": "Fire Eating",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "first_aid",
+        "label": "First Aid",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "fishing",
+        "label": "Fishing",
+        "attribute": "PER",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "flail",
+        "label": "Flail",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "flail_art",
+        "label": "Flail Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "flail_sport",
+        "label": "Flail Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "flight",
+        "label": "Flight",
+        "attribute": "HT",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "flying_leap",
+        "label": "Flying Leap",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "force_sword",
+        "label": "Force Sword",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "force_sword_art",
+        "label": "Force Sword Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "force_sword_sport",
+        "label": "Force Sword Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "force_whip",
+        "label": "Force Whip",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "force_whip_art",
+        "label": "Force Whip Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "force_whip_sport",
+        "label": "Force Whip Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "forced_entry",
+        "label": "Forced Entry",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "forensics",
+        "label": "Forensics",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "forgery",
+        "label": "Forgery",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "fortune_telling",
+        "label": "Fortune-Telling",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Astrology",
+            "Augury",
+            "Feng Shui",
+            "Palmi stry",
+            "Tarot"
+        ]
+    },
+    {
+        "id": "forward_observer",
+        "label": "Forward Observer",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "free_fall",
+        "label": "Free Fall",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "freight_handling",
+        "label": "Freight Handling",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "gambling",
+        "label": "Gambling",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "gardening",
+        "label": "Gardening",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "garrote",
+        "label": "Garrote",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "geography",
+        "label": "Geography",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Physical",
+            "Political",
+            "Regional"
+        ]
+    },
+    {
+        "id": "geology",
+        "label": "Geology",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Earthlike",
+            "Gas Giants",
+            "Ice Dwarfs",
+            "Ice Wo rlds",
+            "Rock Worlds"
+        ]
+    },
+    {
+        "id": "gesture",
+        "label": "Gesture",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "gunner",
+        "label": "Gunner",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Beams",
+            "Cannon",
+            "Catapult",
+            "Machine Gun",
+            "Rockets"
+        ]
+    },
+    {
+        "id": "guns",
+        "label": "Guns",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Gyroc",
+            "Musket",
+            "Pistol",
+            "Rifle",
+            "Shotgun",
+            "Submachine Gun"
+        ]
+    },
+    {
+        "id": "heraldry",
+        "label": "Heraldry",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "herb_lore",
+        "label": "Herb Lore",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "hidden_lore",
+        "label": "Hidden Lore",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Conspiracies",
+            "Demon Lore",
+            "Faerie Lore",
+            "Spirit Lore"
+        ]
+    },
+    {
+        "id": "hiking",
+        "label": "Hiking",
+        "attribute": "HT",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "hobby_skill",
+        "label": "Hobby Skill",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "holdout",
+        "label": "Holdout",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "housekeeping",
+        "label": "Housekeeping",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "hypnotism",
+        "label": "Hypnotism",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "immovable_stance",
+        "label": "Immovable Stance",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "innate_attack",
+        "label": "Innate Attack",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Beam",
+            "Breath",
+            "Gaze",
+            "Projectile"
+        ]
+    },
+    {
+        "id": "intelligence_analysis",
+        "label": "Intelligence Analysis",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "interrogation",
+        "label": "Interrogation",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "intimidation",
+        "label": "Intimidation",
+        "attribute": "WILL",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "invisibility_art",
+        "label": "Invisibility Art",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "jeweler",
+        "label": "Jeweler",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "jitte_sai",
+        "label": "Jitte/Sai",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "jitte_sai_art",
+        "label": "Jitte/Sai Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "jitte_sai_sport",
+        "label": "Jitte/Sai Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "judo",
+        "label": "Judo",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "judo_art",
+        "label": "Judo Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "judo_sport",
+        "label": "Judo Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "jumping",
+        "label": "Jumping",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "karate",
+        "label": "Karate",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "karate_art",
+        "label": "Karate Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "karate_sport",
+        "label": "Karate Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "kiai",
+        "label": "Kiai",
+        "attribute": "HT",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "knife",
+        "label": "Knife",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "knife_art",
+        "label": "Knife Art",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "knife_sport",
+        "label": "Knife Sport",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "knot_tying",
+        "label": "Knot-Tying",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "kusari",
+        "label": "Kusari",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "kusari_art",
+        "label": "Kusari Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "kusari_sport",
+        "label": "Kusari Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lance",
+        "label": "Lance",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lance_art",
+        "label": "Lance Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lance_sport",
+        "label": "Lance Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lasso",
+        "label": "Lasso",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lasso_art",
+        "label": "Lasso Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lasso_sport",
+        "label": "Lasso Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "leadership",
+        "label": "Leadership",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "leatherworking",
+        "label": "Leatherworking",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lifting",
+        "label": "Lifting",
+        "attribute": "HT",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "light_walk",
+        "label": "Light Walk",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "linguistics",
+        "label": "Linguistics",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lip_reading",
+        "label": "Lip Reading",
+        "attribute": "PER",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "literature",
+        "label": "Literature",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "lockpicking",
+        "label": "Lockpicking",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "machinist",
+        "label": "Machinist",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "main_gauche",
+        "label": "Main-Gauche",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "main_gauche_art",
+        "label": "Main-Gauche Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "main_gauche_sport",
+        "label": "Main-Gauche Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "makeup",
+        "label": "Makeup",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "market_analysis",
+        "label": "Market Analysis",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "masonry",
+        "label": "Masonry",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "mathematics",
+        "label": "Mathematics",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Applied",
+            "Pure",
+            "Statistics"
+        ]
+    },
+    {
+        "id": "mechanic",
+        "label": "Mechanic",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Clockwork",
+            "Robotics"
+        ]
+    },
+    {
+        "id": "meditation",
+        "label": "Meditation",
+        "attribute": "WILL",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "mental_strength",
+        "label": "Mental Strength",
+        "attribute": "WILL",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "merchant",
+        "label": "Merchant",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "metallurgy",
+        "label": "Metallurgy",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "meteorology",
+        "label": "Meteorology",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Earthlike"
+        ]
+    },
+    {
+        "id": "mimicry",
+        "label": "Mimicry",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Animal Sounds",
+            "Bird Calls",
+            "Speech"
+        ]
+    },
+    {
+        "id": "mind_block",
+        "label": "Mind Block",
+        "attribute": "WILL",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "monowire_whip",
+        "label": "Monowire Whip",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "monowire_whip_art",
+        "label": "Monowire Whip Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "monowire_whip_sport",
+        "label": "Monowire Whip Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "mount",
+        "label": "Mount",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "musical_composition",
+        "label": "Musical Composition",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "musical_influence",
+        "label": "Musical Influence",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "naturalist",
+        "label": "Naturalist",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "navigation",
+        "label": "Navigation",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Air",
+            "Land",
+            "Sea",
+            "Space"
+        ]
+    },
+    {
+        "id": "nbc_suit",
+        "label": "NBC Suit",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "net",
+        "label": "Net",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "net_art",
+        "label": "Net Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "net_sport",
+        "label": "Net Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "observation",
+        "label": "Observation",
+        "attribute": "PER",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "occultis_m",
+        "label": "Occultis m",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "packing",
+        "label": "Packing",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "panhandling",
+        "label": "Panhandling",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "parachuting",
+        "label": "Parachuting",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "parry_missile_weapons",
+        "label": "Parry Missile Weapons",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "PERformance",
+        "label": "PERformance",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "pharmacy",
+        "label": "Pharmacy",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Herbal",
+            "Synthetic"
+        ]
+    },
+    {
+        "id": "photography",
+        "label": "Photography",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "physician",
+        "label": "Physician",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "physics",
+        "label": "Physics",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "physiology",
+        "label": "Physiology",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "pickpocket",
+        "label": "Pickpocket",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "piloting",
+        "label": "Piloting",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Aerospace",
+            "Autogyro",
+            "Contragravity",
+            "Flight Pack",
+            "Glider",
+            "Helicopter",
+            "Light Airplane",
+            "Lightsail",
+            "Low-G Wings",
+            "Ultralight",
+            "Vertol"
+        ]
+    },
+    {
+        "id": "poetry",
+        "label": "Poetry",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "poisons",
+        "label": "Poisons",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "polearm",
+        "label": "Polearm",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "polearm_art",
+        "label": "Polearm Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "polearm_sport",
+        "label": "Polearm Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "politics",
+        "label": "Politics",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "power_blow",
+        "label": "Power Blow",
+        "attribute": "WILL",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "pressure_points",
+        "label": "Pressure Points",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "pressure_secrets",
+        "label": "Pressure Secrets",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "propaganda",
+        "label": "Propaganda",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "prospecting",
+        "label": "Prospecting",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "psychology",
+        "label": "Psychology",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "public_speaking",
+        "label": "Public Speaking",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "push",
+        "label": "Push",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "rapier",
+        "label": "Rapier",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "rapier_art",
+        "label": "Rapier Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "rapier_sport",
+        "label": "Rapier Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "research",
+        "label": "Research",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "running",
+        "label": "Running",
+        "attribute": "HT",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "saber",
+        "label": "Saber",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "saber_art",
+        "label": "Saber Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "saber_sport",
+        "label": "Saber Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "savoir_faire",
+        "label": "Savoir-Faire",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Dojo",
+            "High Society",
+            "Mafia",
+            "Military",
+            "Police",
+            "Servant"
+        ]
+    },
+    {
+        "id": "scrounging",
+        "label": "Scrounging",
+        "attribute": "PER",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "scuba",
+        "label": "Scuba",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "seamanship",
+        "label": "Seamanship",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sewing",
+        "label": "Sewing",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sex_appeal",
+        "label": "Sex Appeal",
+        "attribute": "HT",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "shadowing",
+        "label": "Shadowing",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "shield",
+        "label": "Shield",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Buckler",
+            "Force",
+            "Shield"
+        ]
+    },
+    {
+        "id": "shiphandling",
+        "label": "Shiphandling",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Airship",
+            "Ship",
+            "Starship"
+        ]
+    },
+    {
+        "id": "shortsword",
+        "label": "Shortsword",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "shortsword_art",
+        "label": "Shortsword Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "shortsword_sport",
+        "label": "Shortsword Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "singing",
+        "label": "Singing",
+        "attribute": "HT",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "skating",
+        "label": "Skating",
+        "attribute": "HT",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "skiing",
+        "label": "Skiing",
+        "attribute": "HT",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sleight_of_hand",
+        "label": "Sleight of Hand",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sling",
+        "label": "Sling",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sling_art",
+        "label": "Sling Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sling_sport",
+        "label": "Sling Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "smallsword",
+        "label": "Smallsword",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "smallsword_art",
+        "label": "Smallsword Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "smallsword_sport",
+        "label": "Smallsword Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "smith",
+        "label": "Smith",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "CopPER",
+            "Iron"
+        ]
+    },
+    {
+        "id": "smith",
+        "label": "Smith",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Lead and Tin"
+        ]
+    },
+    {
+        "id": "smuggling",
+        "label": "Smuggling",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sociology",
+        "label": "Sociology",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "soldier",
+        "label": "Soldier",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "spacer",
+        "label": "Spacer",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "spear",
+        "label": "Spear",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "spear_art",
+        "label": "Spear Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "spear_sport",
+        "label": "Spear Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "spear_thrower",
+        "label": "Spear Thrower",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sports",
+        "label": "Sports",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "staff",
+        "label": "Staff",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "staff_art",
+        "label": "Staff Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "staff_sport",
+        "label": "Staff Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "stage_comb_at",
+        "label": "Stage Combat",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "stealth",
+        "label": "Stealth",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "strategy",
+        "label": "Strategy",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": true,
+        "standard_specialties": [
+            "Air",
+            "Interstellar",
+            "Land",
+            "Naval",
+            "Space"
+        ]
+    },
+    {
+        "id": "streetwise",
+        "label": "Streetwise",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "submarine",
+        "label": "Submarine",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Large Sub",
+            "Mi ni-Sub"
+        ]
+    },
+    {
+        "id": "submariner",
+        "label": "Submariner",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sumo_wrestling",
+        "label": "Sumo Wrestling",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sumo_wrestling_art",
+        "label": "Sumo Wrestling Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "surgery",
+        "label": "Surgery",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "survival",
+        "label": "Survival",
+        "attribute": "PER",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Arctic",
+            "Bank",
+            "Deep Ocean Vent",
+            "Desert",
+            "Fresh-Water Lake",
+            "Island/Beach",
+            "Jungle",
+            "Mountain",
+            "Open Ocean",
+            "Plains",
+            "Reef",
+            "River/Stream",
+            "Salt- Water Sea",
+            "Swampland",
+            "Tropical Lagoon",
+            "Woodlands"
+        ]
+    },
+    {
+        "id": "swimming",
+        "label": "Swimming",
+        "attribute": "HT",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "tactics",
+        "label": "Tactics",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "teaching",
+        "label": "Teaching",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "thaumatology",
+        "label": "Thau matology",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "throwing",
+        "label": "Throwing",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "throwing_art",
+        "label": "Throwing Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "thrown_weapon",
+        "label": "Thrown Weapon",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": true,
+        "standard_specialties": [
+            "Dart",
+            "Harpoon",
+            "Knife",
+            "Shuriken",
+            "Spear",
+            "Stick"
+        ]
+    },
+    {
+        "id": "tonfa",
+        "label": "Tonfa",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "tonfa_art",
+        "label": "Tonfa Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "tonfa_sport",
+        "label": "Tonfa Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "tracking",
+        "label": "Tracking",
+        "attribute": "PER",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "traps",
+        "label": "Traps",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_axe_mace",
+        "label": "Two-Handed Axe/Mace",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_axe_mace_art",
+        "label": "Two-Handed Axe/Mace Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "sport",
+        "label": "Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_flail",
+        "label": "Two-Handed Flail",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_flail_art",
+        "label": "Two-Handed Flail Art",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_flail_sport",
+        "label": "Two-Handed Flail Sport",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_sword",
+        "label": "Two-Handed Sword",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_sword_art",
+        "label": "Two-Handed Sword Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "two_handed_sword_sport",
+        "label": "Two-Handed Sword Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "typing",
+        "label": "Typing",
+        "attribute": "DX",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "urban_survival",
+        "label": "Urban Survival",
+        "attribute": "PER",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "vacc_suit",
+        "label": "Vacc Suit",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "ventriloquism",
+        "label": "Ventriloquism",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "veterinary",
+        "label": "Veterinary",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "weather_sense",
+        "label": "Weather Sense",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "weird_science",
+        "label": "Weird Science",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "whip",
+        "label": "Whip",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "whip_art",
+        "label": "Whip Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "whip_sport",
+        "label": "Whip Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "wrestling",
+        "label": "Wrestling",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "wrestling_art",
+        "label": "Wrestling Art",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "wrestling_sport",
+        "label": "Wrestling Sport",
+        "attribute": "DX",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "writing",
+        "label": "Writing",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "zen_archery",
+        "label": "Zen Archery",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
     }
 ]

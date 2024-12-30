@@ -129,6 +129,10 @@ h1 {
 
         &_tr {
             text-align: center;
+
+            &_name {
+                text-align: left;
+            }
         }
     }
 
@@ -136,10 +140,10 @@ h1 {
         text-align: center;
 
         &_tr {
-            background-color:#ccc;
+            background-color: #ccc;
 
             &_name {
-                text-align: center;
+                text-align: left;
                 display: inline;
                 width: 100%;
                 border: none;
@@ -150,6 +154,7 @@ h1 {
             &_level {
                 display: inline;
                 border: none;
+                margin-left: 13%;
                 width: 80%;
                 height: 50%;
                 text-align: center;
@@ -172,14 +177,33 @@ h1 {
                 height: 50%;
             }
 
-            &_cost {
+            .cost_value {
                 display: inline-block;
                 border: none;
                 text-align: center;
                 border: 1px solid black;
+                margin-left: 10%;
                 width: 80%;
                 height: 30px;
                 font-size: 0.8rem;
+            }
+
+            &_rmvbtn {
+                padding: 1% 1% 1% 1%;
+                background-color: #ccc;
+                font-size: 1.2rem;
+                font-weight: bolder;
+                text-align: center;
+                margin-left: 25%;
+                width: 50%;
+                color: black;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            &_rmvbtn:hover {
+                color: red;
             }
         }
     }

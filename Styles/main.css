@@ -119,6 +119,9 @@ h1 {
 .skill_table_thead_tr {
   text-align: center;
 }
+.skill_table_thead_tr_name {
+  text-align: left;
+}
 .skill_table_tbody {
   text-align: center;
 }
@@ -126,7 +129,7 @@ h1 {
   background-color: #ccc;
 }
 .skill_table_tbody_tr_name {
-  text-align: center;
+  text-align: left;
   display: inline;
   width: 100%;
   border: none;
@@ -136,6 +139,7 @@ h1 {
 .skill_table_tbody_tr_level {
   display: inline;
   border: none;
+  margin-left: 13%;
   width: 80%;
   height: 50%;
   text-align: center;
@@ -155,14 +159,31 @@ h1 {
   width: 40%;
   height: 50%;
 }
-.skill_table_tbody_tr_cost {
+.skill_table_tbody_tr .cost_value {
   display: inline-block;
   border: none;
   text-align: center;
   border: 1px solid black;
+  margin-left: 10%;
   width: 80%;
   height: 30px;
   font-size: 0.8rem;
+}
+.skill_table_tbody_tr_rmvbtn {
+  padding: 1% 1% 1% 1%;
+  background-color: #ccc;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  text-align: center;
+  margin-left: 25%;
+  width: 50%;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.skill_table_tbody_tr_rmvbtn:hover {
+  color: red;
 }
 
 select {

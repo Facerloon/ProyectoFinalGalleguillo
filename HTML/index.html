@@ -35,35 +35,35 @@
             <div class="grid">
                 <div class="field-group-attribute">
                     <label for="fuerza" class="main_attribute">Strength (ST) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="fuerza" name="ST">
+                    <input type="number" class="main_attribute_value" id="ST" name="ST">
                 </div>
                 <div class="field-group-attribute">
                     <label for="destreza" class="main_attribute">Dexterity (DX) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="destreza" name="DX">
+                    <input type="number" class="main_attribute_value" id="DX" name="DX">
                 </div>
                 <div class="field-group-attribute">
                     <label for="inteligencia" class="main_attribute">Intelligence (IQ) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="inteligencia" name="IQ">
+                    <input type="number" class="main_attribute_value" id="IQ" name="IQ">
                 </div>
                 <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Health (HT) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="salud" name="HT">
+                    <input type="number" class="main_attribute_value" id="HT" name="HT">
                 </div>
                 <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Hit Points (HP) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="puntos_golpe" name="HP">
+                    <input type="number" class="main_attribute_value" id="HP" name="HP">
                 </div>
                 <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Will (WILL) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="voluntad" name="WILL">
+                    <input type="number" class="main_attribute_value" id="WILL" name="WILL">
                 </div>
                 <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Perception (PER) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="percepcion" name="PER">
+                    <input type="number" class="main_attribute_value" id="PER" name="PER">
                 </div>
                 <div class="field-group-attribute">
                     <label for="salud" class="main_attribute">Fatigue Points (FP) [<span class="cost_value">0</span>]</label>
-                    <input type="number" class="main_attribute_value" id="fatiga" name="FP">
+                    <input type="number" class="main_attribute_value" id="FP" name="FP">
                 </div>
             </div>
 
@@ -87,7 +87,6 @@
             <h2>Habilidades</h2>
             <br>
             <div class="field-group">
-                <label for="habilidades">Habilidades</label>
                 <table id="skillTable" class="skill_table">
                     <thead class="skill_table_thead">
                         <tr class="skill_table_thead_tr">
@@ -95,25 +94,10 @@
                             <th colspan="1" class="skill_table_thead_tr_level">Level</th>
                             <th colspan="1"class="skill_table_thead_tr_dif">Difficulty</th>
                             <th colspan="1" class="skill_table_thead_tr_cost">Cost</th>
+                            <th colspan="1" class="skill_table_thead_tr_remove">Remove</th>
                         </tr>
                     </thead>
                     <tbody class="skill_table_tbody">
-                        <tr class="skill_table_tbody_tr">
-                            <td colspan="4"><input type="text" id="skillAddText" class="skill_table_tbody_tr_name" placeholder="Nombre de habilidad"></td>
-                            <td colspan="1"><input type="number" id="skillAddLevel" class="skill_table_tbody_tr_level" placeholder="Nivel"></td>
-                            <td colspan="1"><select name="" id="" class="skill_table_tbody_tr_att">
-                                <option value="ST">ST</option>
-                                <option value="DX">DX</option>
-                                <option value="IQ">IQ</option>
-                                <option value="HT">WILL</option>
-                            </select>/<select name="" id="" class="skill_table_tbody_tr_dif">
-                                <option value="E">E</option>
-                                <option value="A">A</option>
-                                <option value="H">H</option>
-                                <option value="VH">VH</option>
-                            </select></td>
-                            <td><input type="number" id="skillAddCost" class="skill_table_tbody_tr_cost" placeholder="Costo"></td>
-                        </tr>
                     </tbody>
                 </table>
                 <ul class="main_list">
@@ -129,15 +113,13 @@
             <!-- Equipamiento -->
             <h2>Equipamiento</h2>
             <div class="field-group">
-                <label for="equipamiento">Equipamiento</label>
-                <textarea id="equipamiento" name="equipamiento" placeholder="Proximamente"></textarea>
+                <textarea id="equipamiento" name="equipamiento" placeholder=""></textarea>
             </div>
 
             <!-- Notas -->
             <h2>Notas Adicionales</h2>
             <div class="field-group">
-                <label for="notas">Notas</label>
-                <textarea id="notas" name="notas" placeholder="Proximamente"></textarea>
+                <textarea id="notas" name="notas" placeholder=""></textarea>
             </div>
 
             <!-- Botón -->

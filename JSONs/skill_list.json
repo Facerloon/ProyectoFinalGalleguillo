@@ -1,0 +1,71 @@
+[
+    {
+        "id": "accounting",
+        "label": "Accounting",
+        "attribute": "IQ",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "acrobatics",
+        "label": "Acrobatics",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "acting",
+        "label": "Acting",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "administration",
+        "label": "Administration",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "aerobatics",
+        "label": "Aerobatics",
+        "attribute": "DX",
+        "difficulty": "H",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "airshipman",
+        "label": "Airshipman",
+        "attribute": "IQ",
+        "difficulty": "E",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "alchemy",
+        "label": "Alchemy",
+        "attribute": "IQ",
+        "difficulty": "VH",
+        "specialty": false,
+        "standard_specialties": []
+    },
+    {
+        "id": "animal_handling",
+        "label": "Animal Handling",
+        "attribute": "IQ",
+        "difficulty": "A",
+        "specialty": true,
+        "standard_specialties": [
+            "Big Cats",
+            "Dogs",
+            "Equines",
+            "Raptors"
+        ]
+    }
+]

@@ -1,6 +1,14 @@
 const primaryAttributesCost = 10; // Valor fijo, el costo base siempre es 10
 const mainAttributesBasis = 10; // Valor fijo, siempre empiezan en 10
 const skillDifficulties = ['E', 'A', 'H', 'VH'] // Dificultades de las habilidades
+
+const SKILLDIFFICULTYCHART = {
+    "E": 0,
+    "A": -1,
+    "H": -2,
+    "VH": -3
+}
+
 let attributesNames = [];
 
 // --------- Manejo de Atributos Principales ---------
@@ -8,19 +16,19 @@ let attributesNames = [];
 let mainAttributes = document.querySelectorAll(".main_attribute");
 let mainAttributesValues = document.querySelectorAll(".main_attribute_value");
 let mainAttributesCost = document.querySelectorAll(".cost_value");
-//console.log(`11. Main Attributes: ${mainAttributesValues} | Cost Boxed Quantity: ${mainAttributesCost.length}`);
+//console.log(`19. Main Attributes: ${mainAttributesValues} | Cost Boxed Quantity: ${mainAttributesCost.length}`);
 
 for (let i = 0; i < 8; i++) {
     // Se setean dinamicamente los valores de cada atributo
-    //console.log(`15. Attribute ID: ${mainAttributesValues[i].name}`);
-    //console.log(`16. Attribute Cost: ${mainAttributesCost[i].innerHTML}`);
+    //console.log(`23. Attribute ID: ${mainAttributesValues[i].name}`);
+    //console.log(`24. Attribute Cost: ${mainAttributesCost[i].innerHTML}`);
 
     if (!isEmpty(mainAttributesValues[i].name)) {
         attributesNames.push(mainAttributesValues[i].name);
     }
 
     let attibuteBasis = mainAttributesValues[i];
-    //console.log(`23. Attribute: ${attibuteBasis.innerHTML}`);
+    //console.log(`31. Attribute: ${attibuteBasis.innerHTML}`);
     attibuteBasis.setAttribute('value', primaryAttributesCost);
 
     attibuteBasis.addEventListener('input', (event) => {
@@ -37,7 +45,7 @@ for (let i = 0; i < 8; i++) {
         let attributeId = event.target.id;
         let newValue = event.target.value;
         let newPointCost = sumValue(primaryAttributesCost, newValue, mainAttributesBasis);
-        //console.log(`40. Atributo: ${attributeId} | Nuevo Valor: ${newValue} | Nuevo Cost: ${newPointCost}`)
+        //console.log(`48. Atributo: ${attributeId} | Nuevo Valor: ${newValue} | Nuevo Cost: ${newPointCost}`)
 
         let attributeCostElement = mainAttributesCost[i];
         attributeCostElement.innerHTML = newPointCost;
@@ -54,7 +62,7 @@ addAdvantageBtn.addEventListener('click', (event) => {
 
     let advantageText = document.getElementById("advAddText");
     let advantageCost = document.getElementById("advAddCost");
-    //console.log(`57. New Advantage Text: ${advantageText.value} | New Advantage Cost: ${advantageCost.value}`);
+    //console.log(`65. New Advantage Text: ${advantageText.value} | New Advantage Cost: ${advantageCost.value}`);
 
     if (!isEmpty(advantageCost.value) && !isEmpty(advantageText.value)) {
         addAdvantage(advantageText.value, advantageCost.value);
@@ -70,7 +78,6 @@ addDisadvantageBtn.addEventListener('click', (event) => {
 
     let disadvantageText = document.getElementById("disadvAddText");
     let disadvantageCost = document.getElementById("disadvAddCost");
-    //console.log(`73. New Advantage Text: ${disadvantageText.value} | New Advantage Cost: ${disadvantageCost.value}`);
 
     if (!isEmpty(disadvantageText.value) && !isEmpty(disadvantageCost.value)) {
         addDisadvantage(disadvantageText.value, disadvantageCost.value);
@@ -81,38 +88,41 @@ addDisadvantageBtn.addEventListener('click', (event) => {
 
 // ---------- Manejo de lista de Skills ----------
 
-console.log(`84. Skill Difficulties: ${JSON.stringify(skillDifficulties)} | Skill Attributes: ${JSON.stringify(attributesNames)}`);
+//console.log(`91. Skill Difficulties: ${JSON.stringify(skillDifficulties)} | Skill Attributes: ${JSON.stringify(attributesNames)}`);
 let skillsList = null;
 let skillListData = loadSkills('/JSONs/skill_list.json').then(data => {
 
     skillsList = data;
-    //console.log(`89. Skills List: ${skillsList}`);
 
     if (skillsList !== null && skillsList.length > 0) {
 
         let htmlSkillList = document.getElementById('skillList');
 
         for (let i = 0; i < skillsList.length; i++) {
-
-            //console.log(`97. Skill: ${skillsList[i].label} | ID: ${skillsList[i].id}`);
             let newOption = document.createElement('option');
             newOption.setAttribute('value', skillsList[i].id);
             newOption.innerHTML = skillsList[i].label;
             htmlSkillList.appendChild(newOption);
         }
+
+        let addSkillBtn = document.getElementById("addSkillBtn");
+        addSkillBtn.addEventListener('click', (event) => {
+
+            let skillText = document.getElementById("skillList");
+
+            if (!isEmpty(skillText.value)) {
+
+                let skillDataFilter = skillsList.filter(element => element.id == skillText.value);
+                console.log(`116. Skill Data Filter: ${JSON.stringify(skillDataFilter)}`);
+
+                if (skillDataFilter.length > 0) {
+                    addSkill(skillDataFilter[0], skillDifficulties, attributesNames);
+                    skillText.value = '';
+                }
+            }
+
+        });
     }
-});
-
-let addSkillBtn = document.getElementById("addSkillBtn");
-addSkillBtn.addEventListener('click', (event) => {
-
-    let skillText = document.getElementById("skillList");
-
-    if (!isEmpty(skillText.value)) {
-        addSkill(skillText.value);
-        skillText.value = '';
-    }
-
 });
 
 // --------- Funciones ---------
@@ -153,7 +163,7 @@ function voidFields() {
         updateTotalCost();
     }
     catch (e) {
-        console.log(`144. Error: ${e.message}`);
+        console.log(`166. Error: ${e.message}`);
     }
 }
 
@@ -173,7 +183,7 @@ function loadCharacter() {
             if (loadConfirm) {
 
                 voidFields();
-                console.log(`164. Personaje cargado: ${JSON.stringify(parsedValues)}`);
+                console.log(`186. Personaje cargado: ${JSON.stringify(parsedValues)}`);
 
                 let charPlayer = parsedValues.player;
                 let characterNameElement = document.getElementById('nombre_personaje');
@@ -188,7 +198,7 @@ function loadCharacter() {
                 if (mainAttributes.length > 0) {
 
                     for (let i = 0; i < mainAttributes.length; i++) {
-                        //console.log(`179. Line: ${i} | Main Attribute: ${JSON.stringify(mainAttributes[i])}`);
+                        //console.log(`201. Line: ${i} | Main Attribute: ${JSON.stringify(mainAttributes[i])}`);
                         let attributeElement = document.getElementById(mainAttributes[i].id);
                         attributeElement.setAttribute('value', mainAttributes[i].attribute_value);
                         let parentDiv = attributeElement.parentElement;
@@ -200,14 +210,14 @@ function loadCharacter() {
 
                 if (advantageList.length > 0) {
                     for (let i = 0; i < advantageList.length; i++) {
-                        //console.log(`191. Line: ${i} | Advantage: ${JSON.stringify(advantageList[i])}`);
+                        //console.log(`213. Line: ${i} | Advantage: ${JSON.stringify(advantageList[i])}`);
                         addAdvantage(advantageList[i].name, advantageList[i].cost_value);
                     }
                 }
 
                 if (disadvantageList.length > 0) {
                     for (let i = 0; i < disadvantageList.length; i++) {
-                        //console.log(`198. Line: ${i} | Disadvantage: ${JSON.stringify(disadvantageList[i])}`);
+                        //console.log(`220. Line: ${i} | Disadvantage: ${JSON.stringify(disadvantageList[i])}`);
                         addDisadvantage(disadvantageList[i].name, disadvantageList[i].cost_value);
                     }
                 }
@@ -217,7 +227,7 @@ function loadCharacter() {
         }
     }
     catch (e) {
-        console.log(`208. ${e.message}`);
+        console.log(`230. ${e.message}`);
     }
 }
 
@@ -228,9 +238,9 @@ function saveCharacter() {
     try {
 
         let characterName = document.getElementById('nombre_personaje');
-        //console.log(`219. Character Name: ${characterName.value}`);
+        //console.log(`241. Character Name: ${characterName.value}`);
         let characterCost = document.getElementById('puntos_totales');
-        //console.log(`221. Character Total Points: ${characterCost.value}`);
+        //console.log(`243. Character Total Points: ${characterCost.value}`);
         let characterPlayer = document.getElementById('jugador');
 
         if (!isEmpty(characterPlayer.value) && !isEmpty(characterName.value) && characterName.value !== " " && !isEmpty(characterCost.value)) {
@@ -240,21 +250,21 @@ function saveCharacter() {
             characterObj.total_cost = characterCost.value;
 
             let attributesData = getMainAttributesData();
-            //console.log(`231. Attributes Data (${attributesData.length}): ${JSON.stringify(attributesData)}`);
+            //console.log(`253. Attributes Data (${attributesData.length}): ${JSON.stringify(attributesData)}`);
 
             if (attributesData.length > 0) {
                 characterObj.main_attributes = attributesData;
             }
 
             let advantagesData = getAdvantagesAndDisadvantagesData('advantageList');
-            //console.log(`238. Advantages Data (${advantagesData.length}): ${JSON.stringify(advantagesData)}`);
+            //console.log(`260. Advantages Data (${advantagesData.length}): ${JSON.stringify(advantagesData)}`);
 
             if (advantagesData.length > 0) {
                 characterObj.advantages = advantagesData;
             }
 
             let disadvantageData = getAdvantagesAndDisadvantagesData('disadvantageList');
-            //console.log(`245. Disadvantages Data (${disadvantageData.length}): ${JSON.stringify(disadvantageData)}`);
+            //console.log(`267. Disadvantages Data (${disadvantageData.length}): ${JSON.stringify(disadvantageData)}`);
 
             if (disadvantageData.length > 0) {
                 characterObj.disadvantages = disadvantageData;
@@ -269,7 +279,7 @@ function saveCharacter() {
 
             if (confirmSave) {
                 localStorage.clear();
-                console.log(`260. Saved Character: ${JSON.stringify(characterObj)}`);
+                console.log(`282. Saved Character: ${JSON.stringify(characterObj)}`);
                 localStorage.setItem('onlyCharacterForNow', JSON.stringify(characterObj));
                 alert(`${characterObj.name} guardado correctamente!`);
             }
@@ -279,7 +289,7 @@ function saveCharacter() {
         }
     }
     catch (e) {
-        console.log(`270. Error: ${JSON.stringify(e)}`)
+        console.log(`292. Error: ${JSON.stringify(e)}`)
     }
 }
 
@@ -296,7 +306,7 @@ function getMainAttributesData() {
             let attributeId = group.querySelector('.main_attribute_value').id;
             let attributeValue = group.querySelector('.main_attribute_value').value;
             let costValue = group.querySelector('.cost_value').innerHTML;
-            //console.log(`287. Attribute: ${attributeId} | Cost Value: ${costValue} | Attribute Value: ${attributeValue}`);
+            //console.log(`309. Attribute: ${attributeId} | Cost Value: ${costValue} | Attribute Value: ${attributeValue}`);
 
             if (!isEmpty(costValue) && !isEmpty(attributeId) && !isEmpty(attributeValue)) {
 
@@ -312,7 +322,7 @@ function getMainAttributesData() {
 
     }
     catch (e) {
-        console.log(`303. Error: ${JSON.stringify(e.message)}`)
+        console.log(`325. Error: ${JSON.stringify(e.message)}`)
     }
 
     return result;
@@ -334,7 +344,7 @@ function getAdvantagesAndDisadvantagesData(list) {
                     let elementName = element.querySelector('.main_list_elementAdded_text').innerHTML;
                     let elementCost = element.querySelector('.cost_value').innerHTML;
 
-                    //console.log(`325. Advantage: ${advantageName} | Cost Value: ${advantageCost}`);
+                    //console.log(`347. Advantage: ${advantageName} | Cost Value: ${advantageCost}`);
                     if (!isEmpty(elementName) && !isEmpty(elementCost)) {
 
                         let advObj = {
@@ -349,7 +359,7 @@ function getAdvantagesAndDisadvantagesData(list) {
         }
     }
     catch (e) {
-        console.log(`340. Error: ${JSON.stringify(e.message)}`)
+        console.log(`362. Error: ${JSON.stringify(e.message)}`)
     }
 
     return result;
@@ -372,12 +382,12 @@ function addAdvantage(advantageText, advantageCost) {
         advantageCost = '';
 
         let removeAdvantageBtns = document.querySelectorAll(".main_list_elementAdded_rmvbtn");
-        //console.log(`363. Remove Buttons Quantity: ${removeAdvantageBtns.length}: ${removeAdvantageBtns}`);
+        //console.log(`385. Remove Buttons Quantity: ${removeAdvantageBtns.length}: ${removeAdvantageBtns}`);
 
         for (let i = 0; i < removeAdvantageBtns.length; i++) {
-            removeButton = removeAdvantageBtns[i]; // Se le agrega el evento para borrar el elemento de la lista
+            let removeButton = removeAdvantageBtns[i]; // Se le agrega el evento para borrar el elemento de la lista
             removeButton.addEventListener('click', (event) => {
-                //console.log(`368. Event Target: ${event.target}`);
+                //console.log(`390. Event Target: ${event.target}`);
                 event.target.parentElement.remove();
                 updateTotalCost();
             });
@@ -385,7 +395,7 @@ function addAdvantage(advantageText, advantageCost) {
 
     }
     catch (e) {
-        console.log(`376. Error: ${e.message}`);
+        console.log(`398. Error: ${e.message}`);
     }
 }
 
@@ -405,42 +415,67 @@ function addDisadvantage(disadvantageText, disadvantageCost) {
         disadvantageCost = '';
 
         let removeDisadvantageBtns = document.querySelectorAll(".main_list_elementAdded_rmvbtn");
-        //console.log(`396. Remove Buttons Quantity: ${removeAdvantageBtns.length}: ${removeAdvantageBtns}`);
 
         for (let i = 0; i < removeDisadvantageBtns.length; i++) {
-            removeButton = removeDisadvantageBtns[i]; // Se le agrega el evento para borrar el elemento de la lista
+            let removeButton = removeDisadvantageBtns[i]; // Se le agrega el evento para borrar el elemento de la lista
             removeButton.addEventListener('click', (event) => {
-                //console.log(`401. Event Target: ${event.target}`);
                 event.target.parentElement.remove();
                 updateTotalCost();
             });
         }
     }
     catch (e) {
-        console.log(`408. Error: ${e.message}`);
+        console.log(`428. Error: ${e.message}`);
     }
 
 }
 
-function addSkill(skillName, skillLevel) {
+function addSkill(skillData, skillDifficulties, attributesNames, skillDifChart) {
 
     try {
+
+        let skillName = skillData.label;
+        let skillAttribute = skillData.attribute;
+        let skillDifficulty = skillData.difficulty;
+        //console.log(`440. Skill Name: ${skillName} | Attribute: ${skillAttribute} | Difficulty: ${skillDifficulty}`);
+
         let table = document.getElementById("skillTable");
         let newRow = table.insertRow();
         newRow.className = 'skill_table_tbody_tr';
 
         let nameCell = newRow.insertCell(0);
         nameCell.setAttribute('colspan', 4);
-        nameCell.innerHTML = `<input type="text" id="skillAddText" class="skill_table_tbody_tr_name" value="${skillName}" placeholder="Nombre de habilidad">`
+        nameCell.innerHTML = `<input type="text" id="skillAddText" class="skill_table_tbody_tr_name" value="${skillName}" placeholder="Skill">`
+
+        let mainAttributeValue = document.getElementById(skillAttribute).value;
+
+        let currentLevel = parseFloat(mainAttributeValue) + SKILLDIFFICULTYCHART[skillDifficulty];
+
+        if (currentLevel == 0 || currentLevel < 0) {
+            currentLevel = 0;
+        }
 
         let levelCell = newRow.insertCell(1);
-        levelCell.innerHTML = `<input type="number" id="skillAddLevel" class="skill_table_tbody_tr_level" value="10" placeholder="Nivel">`
+        levelCell.innerHTML = `<input type="number" id="skillAddLevel" class="skill_table_tbody_tr_level" value="${currentLevel}" placeholder="Level">`
 
         let difficultyCell = newRow.insertCell(2);
-        let attributeCell = newRow.insertCell(3);
 
+        let attributeSelect = document.createElement("select");
+        attributeSelect.className = `skill_table_tbody_tr_att`;
+        attributesNames.forEach(attribute => {
+            let option = document.createElement("option");
+            option.value = attribute;
+            option.text = attribute;
+            attributeSelect.appendChild(option);
+        });
+        difficultyCell.appendChild(attributeSelect);
+        attributeSelect.value = skillAttribute;
+
+        let separator = document.createTextNode("/");
+        difficultyCell.appendChild(separator);
 
         let difficultySelect = document.createElement("select");
+        difficultySelect.className = `skill_table_tbody_tr_dif`;
         skillDifficulties.forEach(difficulty => {
             let option = document.createElement("option");
             option.value = difficulty;
@@ -448,17 +483,36 @@ function addSkill(skillName, skillLevel) {
             difficultySelect.appendChild(option);
         });
         difficultyCell.appendChild(difficultySelect);
+        difficultySelect.value = skillDifficulty;
 
-        let attributeSelect = document.createElement("select");
-        attributesNames.forEach(attribute => {
-            let option = document.createElement("option");
-            option.value = attribute;
-            option.text = attribute;
-            attributeSelect.appendChild(option);
-        });
-        attributeCell.appendChild(attributeSelect);
+        let costCell = newRow.insertCell(3);
+        costCell.innerHTML = `<input type="number" id="skillAddCost" class="cost_value" value="1" placeholder="Cost">`;
+
+        let skillCostsElements = document.querySelectorAll('.skill_table_tbody_tr .cost_value');
+        
+        for (let i = 0; i < skillCostsElements.length; i++) {
+            let costValues = skillCostsElements[i]; // Se le agrega el evento para borrar el elemento de la lista
+            costValues.addEventListener('change', (event) => {
+                updateTotalCost();
+            });
+        }
+
+        let removeBtnCell = newRow.insertCell(4);
+        removeBtnCell.innerHTML = `<button type="button" class="skill_table_tbody_tr_rmvbtn">-</button>`;
+
+        let removeBtns = document.querySelectorAll(".skill_table_tbody_tr_rmvbtn");
+
+        for (let i = 0; i < removeBtns.length; i++) {
+            let removeButton = removeBtns[i]; // Se le agrega el evento para borrar el elemento de la lista
+            removeButton.addEventListener('click', (event) => {
+                event.target.parentElement.parentElement.remove();
+                updateTotalCost();
+            });
+        }
+
+        updateTotalCost();
     }
-    catch(e){
+    catch (e) {
         console.error(`Error: ${e.message}`);
     }
 }
@@ -473,12 +527,17 @@ function updateTotalCost() {
 
     let finalCost = 0;
     let valuesCost = document.querySelectorAll(".cost_value");
-    //console.log(`439. Cost Boxed Quantity: ${mainAttributesCost.length}`);
+    //console.log(`522. Cost Boxed Quantity: ${mainAttributesCost.length}`);
     let totalCost = document.getElementById("puntos_totales");
 
     for (let i = 0; i < valuesCost.length; i++) {
-        //console.log(`443.  ${mainAttributesCost[i].innerHTML}`)
-        let costValue = !isEmpty(valuesCost[i].innerHTML) ? parseFloat(valuesCost[i].innerHTML) : 0;
+        //console.log(`526.  ${mainAttributesCost[i].innerHTML}`)
+        let costValue = !isEmpty(valuesCost[i].innerHTML) ? parseFloat(valuesCost[i].innerHTML) : null;
+    
+        if (costValue == null) {
+            costValue = !isEmpty(valuesCost[i].value) ? parseFloat(valuesCost[i].value) : 0;
+        }
+
         finalCost += costValue;
     }
 

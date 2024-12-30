@@ -83,6 +83,16 @@ h1 {
 .main_list_element_addbtn:hover {
   color: #0056b3;
 }
+.main_list_element_skillSelect {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  text-align: left;
+  border: 1px solid black;
+  width: 75%;
+  height: 40px;
+  font-size: 0.8rem;
+}
 .main_list_elementAdded {
   margin-bottom: 2px;
 }
@@ -99,6 +109,70 @@ h1 {
 }
 .main_list_elementAdded_rmvbtn:hover {
   color: red;
+}
+
+.skill_table {
+  width: 100%;
+  border: black 1px solid;
+  table-layout: fixed;
+}
+.skill_table_thead_tr {
+  text-align: center;
+}
+.skill_table_tbody {
+  text-align: center;
+}
+.skill_table_tbody_tr {
+  background-color: #ccc;
+}
+.skill_table_tbody_tr_name {
+  text-align: center;
+  display: inline;
+  width: 100%;
+  border: none;
+  height: 50%;
+  background-color: #ccc;
+}
+.skill_table_tbody_tr_level {
+  display: inline;
+  border: none;
+  width: 80%;
+  height: 50%;
+  text-align: center;
+  background-color: #ccc;
+}
+.skill_table_tbody_tr_att {
+  display: inline;
+  border: none;
+  width: 50%;
+  height: 50%;
+  text-align: right;
+}
+.skill_table_tbody_tr_dif {
+  display: inline;
+  text-align: left;
+  border: none;
+  width: 40%;
+  height: 50%;
+}
+.skill_table_tbody_tr_cost {
+  display: inline-block;
+  border: none;
+  text-align: center;
+  border: 1px solid black;
+  width: 80%;
+  height: 30px;
+  font-size: 0.8rem;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  overflow: visible;
+  appearance: none;
+  background: none;
+  background-repeat: no-repeat;
+  background-position: right center;
 }
 
 label {

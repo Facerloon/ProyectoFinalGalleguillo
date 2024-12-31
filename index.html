@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Sheet - GURPS</title>
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="icon" href="/Multimedia/Gurps Logo Small.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <h1>Character Sheet - GURPS</h1>
+    </header>
+    <div class="container">
+        <form>
+            <!-- Información Básica -->
+            <div class="field-group">
+                <label for="nombre">Character Name *</label>
+                <input type="text" id="nombre_personaje" name="nombre" placeholder="Character Name">
+            </div>
+            <div class="grid">
+                <div class="field-group">
+                    <label for="jugador">Player *</label>
+                    <input type="text" id="jugador" name="jugador" placeholder="Player Name">
+                </div>
+                <div class="field-group">
+                    <label for="puntos">Total Points</label>
+                    <input type="number" id="puntos_totales" value="0" disabled="true" name="puntos">
+                </div>
+            </div>
+
+            <!-- Atributos -->
+            <h2>Attributes</h2>
+            <div class="grid">
+                <div class="field-group-attribute">
+                    <label for="fuerza" class="main_attribute">Strength (ST) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="ST" name="ST">
+                </div>
+                <div class="field-group-attribute">
+                    <label for="destreza" class="main_attribute">Dexterity (DX) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="DX" name="DX">
+                </div>
+                <div class="field-group-attribute">
+                    <label for="inteligencia" class="main_attribute">Intelligence (IQ) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="IQ" name="IQ">
+                </div>
+                <div class="field-group-attribute">
+                    <label for="salud" class="main_attribute">Health (HT) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="HT" name="HT">
+                </div>
+                <div class="field-group-attribute">
+                    <label for="salud" class="main_attribute">Hit Points (HP) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="HP" name="HP">
+                </div>
+                <div class="field-group-attribute">
+                    <label for="salud" class="main_attribute">Will (WILL) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="WILL" name="WILL">
+                </div>
+                <div class="field-group-attribute">
+                    <label for="salud" class="main_attribute">Perception (PER) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="PER" name="PER">
+                </div>
+                <div class="field-group-attribute">
+                    <label for="salud" class="main_attribute">Fatigue Points (FP) [<span class="cost_value">0</span>]</label>
+                    <input type="number" class="main_attribute_value" id="FP" name="FP">
+                </div>
+            </div>
+
+            <!-- Ventajas y Desventajas -->
+            <h2>Advantages & Disadvantages</h2>
+            <br>
+            <div class="field-group">
+                <label for="ventajas">Advantages</label>
+                <ul class="main_list" id="advantageList">
+                    <li class="main_list_element"><input type="text" id="advAddText" class="main_list_element_textInput" placeholder="Advantage Detail"> <input type="number" id="advAddCost" class="main_list_element_costInput" placeholder="Cost"> <button id="addAdvBtn" type="button" class="main_list_element_addbtn">+</button></li>
+                </ul>
+            </div>
+            <div class="field-group">
+                <label for="desventajas">Disadvantages</label>
+                <ul class="main_list" id="disadvantageList">
+                    <li class="main_list_element"><input type="text" id="disadvAddText" class="main_list_element_textInput" placeholder="Disadvantage Detail"> <input type="number" id="disadvAddCost" class="main_list_element_costInput" placeholder="Cost"> <button id="addDisadvBtn" type="button" class="main_list_element_addbtn">+</button></li>
+                </ul>
+            </div>
+
+            <!-- Habilidades -->
+            <h2>Skills</h2>
+            <br>
+            <div class="field-group">
+                <table id="skillTable" class="skill_table">
+                    <thead class="skill_table_thead">
+                        <tr class="skill_table_thead_tr">
+                            <th colspan="4" class="skill_table_thead_tr_name">Skill Name</th>
+                            <th colspan="1" class="skill_table_thead_tr_level">Level</th>
+                            <th colspan="1"class="skill_table_thead_tr_dif">Difficulty</th>
+                            <th colspan="1" class="skill_table_thead_tr_cost">Cost</th>
+                            <th colspan="1" class="skill_table_thead_tr_remove">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody id="skill_table" class="skill_table_tbody">
+                    </tbody>
+                </table>
+                <ul class="main_list">
+                    <li class="main_list_element">
+                        <select class="main_list_element_skillSelect" name="" id="skillList">
+                            <option value="" hidden disabled selected>Select *</option>
+                        </select>
+                        <button id="addSkillBtn" type="button" class="main_list_element_addbtn">+</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Equipamiento -->
+            <h2>Equipment</h2>
+            <div class="field-group">
+                <textarea id="equipamiento" name="equipamiento" placeholder=""></textarea>
+            </div>
+
+            <!-- Notas -->
+            <h2>Additional Notes</h2>
+            <div class="field-group">
+                <textarea id="notas" name="notas" placeholder=""></textarea>
+            </div>
+
+            <!-- Botón -->
+            <button class="submitBtn" type="button" onclick="saveCharacter()">Save Character</button>
+            <button class="submitBtn" id="loadButton" type="button" onclick="loadCharacter()">Load Character File</button>
+            <input type="file" id="fileInput" accept=".json" />
+        </form>
+    </div>
+    <script src="/Scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

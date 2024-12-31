@@ -16,19 +16,15 @@ let attributesNames = [];
 let mainAttributes = document.querySelectorAll(".main_attribute");
 let mainAttributesValues = document.querySelectorAll(".main_attribute_value");
 let mainAttributesCost = document.querySelectorAll(".cost_value");
-//console.log(`19. Main Attributes: ${mainAttributesValues} | Cost Boxed Quantity: ${mainAttributesCost.length}`);
 
 for (let i = 0; i < 8; i++) {
     // Se setean dinamicamente los valores de cada atributo
-    //console.log(`23. Attribute ID: ${mainAttributesValues[i].name}`);
-    //console.log(`24. Attribute Cost: ${mainAttributesCost[i].innerHTML}`);
 
     if (!isEmpty(mainAttributesValues[i].name)) {
         attributesNames.push(mainAttributesValues[i].name);
     }
 
     let attibuteBasis = mainAttributesValues[i];
-    //console.log(`31. Attribute: ${attibuteBasis.innerHTML}`);
     attibuteBasis.setAttribute('value', primaryAttributesCost);
 
     attibuteBasis.addEventListener('input', (event) => {
@@ -45,7 +41,6 @@ for (let i = 0; i < 8; i++) {
         let attributeId = event.target.id;
         let newValue = event.target.value;
         let newPointCost = sumValue(primaryAttributesCost, newValue, mainAttributesBasis);
-        //console.log(`48. Atributo: ${attributeId} | Nuevo Valor: ${newValue} | Nuevo Cost: ${newPointCost}`)
 
         let attributeCostElement = mainAttributesCost[i];
         attributeCostElement.innerHTML = newPointCost;
@@ -62,7 +57,6 @@ addAdvantageBtn.addEventListener('click', (event) => {
 
     let advantageText = document.getElementById("advAddText");
     let advantageCost = document.getElementById("advAddCost");
-    //console.log(`65. New Advantage Text: ${advantageText.value} | New Advantage Cost: ${advantageCost.value}`);
 
     if (!isEmpty(advantageCost.value) && !isEmpty(advantageText.value)) {
         addAdvantage(advantageText.value, advantageCost.value);
@@ -88,7 +82,6 @@ addDisadvantageBtn.addEventListener('click', (event) => {
 
 // ---------- Manejo de lista de Skills ----------
 
-//console.log(`91. Skill Difficulties: ${JSON.stringify(skillDifficulties)} | Skill Attributes: ${JSON.stringify(attributesNames)}`);
 let skillsList = null;
 let skillListData = loadSkills('/JSONs/skill_list.json').then(data => {
 
@@ -113,7 +106,6 @@ let skillListData = loadSkills('/JSONs/skill_list.json').then(data => {
             if (!isEmpty(skillText.value)) {
 
                 let skillDataFilter = skillsList.filter(element => element.id == skillText.value);
-                console.log(`116. Skill Data Filter: ${JSON.stringify(skillDataFilter)}`);
 
                 if (skillDataFilter.length > 0) {
                     addSkill(skillDataFilter[0], skillDifficulties, attributesNames);
@@ -144,6 +136,14 @@ function voidFields() {
             });
         }
 
+        let skills = document.querySelectorAll('.skill_table_tbody_tr');
+
+        if (skills.length > 0) {
+            skills.forEach(element => {
+                element.remove();
+            });
+        }
+
         let mainAttributesValues = document.querySelectorAll(".main_attribute_value");
 
         if (mainAttributesValues.length > 0) {
@@ -163,77 +163,142 @@ function voidFields() {
         updateTotalCost();
     }
     catch (e) {
-        console.log(`166. Error: ${e.message}`);
+        //console.log(`165. Error: ${e.message}`);
     }
 }
 
-function loadCharacter() {
-
+async function loadCharacter() {
     try {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
 
-        let loadValues = localStorage.getItem('onlyCharacterForNow');
+        if (!file) {
+            Swal.fire({
+                title: "JSON File Required",
+                text: "Please Upload a .json Character File",
+                icon: "warning"
+            });
+            return;
+        }
 
-        if (!isEmpty(loadValues)) {
+        if (file.type !== "application/json") {
+            Swal.fire({
+                title: "Invalid File Type",
+                text: "The uploaded file is not a valid .json file.",
+                icon: "error"
+            });
+            return;
+        }
 
-            let parsedValues = JSON.parse(loadValues);
-            let charName = parsedValues.name;
-            let loadConfirm = confirm(`Su personaje guardado es "${charName}" si lo carga perderá todos los cambios realizados hasta ahora.\n
-                ¿Está seguro que quiere continuar?`);
+        const loadValues = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const jsonContent = JSON.parse(event.target.result);
+                    resolve(jsonContent); // Resolver la promesa con el contenido JSON
+                } catch (error) {
+                    reject(new Error("Invalid JSON format")); // Rechazar si el JSON no es válido
+                }
+            };
+            reader.onerror = () => reject(new Error("Failed to read file"));
+            reader.readAsText(file);
+        }).catch((error) => {
+            Swal.fire({
+                title: "File Format Error",
+                text: "Please verify that the uploaded file is a valid .json",
+                icon: "error"
+            });
+            //console.error(`Error al leer el archivo: ${error.message}`);
+            return null;
+        });
 
-            if (loadConfirm) {
+        if (!loadValues) {
+            return;
+        }
+        else {
 
+            // Confirmación del usuario
+            const saveConfirm = await Swal.fire({
+                title: 'Are you sure you want to load your character?',
+                text: 'This action will delete all the character information of your current session',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            });
+
+            if (saveConfirm.isConfirmed) {
+
+                // Limpiar los campos actuales
                 voidFields();
-                console.log(`186. Personaje cargado: ${JSON.stringify(parsedValues)}`);
 
-                let charPlayer = parsedValues.player;
-                let characterNameElement = document.getElementById('nombre_personaje');
-                characterNameElement.setAttribute('value', charName);
-                let characterPlayerElement = document.getElementById('jugador');
-                characterPlayerElement.setAttribute('value', charPlayer);
+                // Asignar valores al personaje
+                const charName = loadValues.name;
+                const charPlayer = loadValues.player;
+                document.getElementById('nombre_personaje').setAttribute('value', charName);
+                document.getElementById('jugador').setAttribute('value', charPlayer);
 
-                let mainAttributes = parsedValues.main_attributes;
-                let advantageList = parsedValues.advantages;
-                let disadvantageList = parsedValues.disadvantages;
-
-                if (mainAttributes.length > 0) {
-
-                    for (let i = 0; i < mainAttributes.length; i++) {
-                        //console.log(`201. Line: ${i} | Main Attribute: ${JSON.stringify(mainAttributes[i])}`);
-                        let attributeElement = document.getElementById(mainAttributes[i].id);
-                        attributeElement.setAttribute('value', mainAttributes[i].attribute_value);
-                        let parentDiv = attributeElement.parentElement;
-                        let pointsCostSon = parentDiv.querySelector('.cost_value');
-                        pointsCostSon.innerHTML = mainAttributes[i].cost_value;
-                    }
-
-                }
-
-                if (advantageList.length > 0) {
-                    for (let i = 0; i < advantageList.length; i++) {
-                        //console.log(`213. Line: ${i} | Advantage: ${JSON.stringify(advantageList[i])}`);
-                        addAdvantage(advantageList[i].name, advantageList[i].cost_value);
+                // Cargar atributos principales
+                if (loadValues.main_attributes && loadValues.main_attributes.length > 0) {
+                    for (const attribute of loadValues.main_attributes) {
+                        const attributeElement = document.getElementById(attribute.id);
+                        if (attributeElement) {
+                            attributeElement.setAttribute('value', attribute.attribute_value);
+                            const parentDiv = attributeElement.parentElement;
+                            const pointsCostSon = parentDiv.querySelector('.cost_value');
+                            if (pointsCostSon) {
+                                pointsCostSon.innerHTML = attribute.cost_value;
+                            }
+                        }
                     }
                 }
 
-                if (disadvantageList.length > 0) {
-                    for (let i = 0; i < disadvantageList.length; i++) {
-                        //console.log(`220. Line: ${i} | Disadvantage: ${JSON.stringify(disadvantageList[i])}`);
-                        addDisadvantage(disadvantageList[i].name, disadvantageList[i].cost_value);
+                // Cargar ventajas
+                if (loadValues.advantages && loadValues.advantages.length > 0) {
+                    for (const advantage of loadValues.advantages) {
+                        addAdvantage(advantage.name, advantage.cost_value);
                     }
                 }
 
+                // Cargar desventajas
+                if (loadValues.disadvantages && loadValues.disadvantages.length > 0) {
+                    for (const disadvantage of loadValues.disadvantages) {
+                        addDisadvantage(disadvantage.name, disadvantage.cost_value);
+                    }
+                }
+
+                if (loadValues.skills && loadValues.skills.length > 0) {
+                    for (const skill of loadValues.skills) {
+
+                        let skillObj = {
+                            label: skill.name,
+                            attribute: skill.attribute,
+                            difficulty: skill.difficulty
+                        }
+
+                        let skillCostValue = skill.cost_value;
+
+                        addSkill(skillObj, skillDifficulties, attributesNames, skillCostValue);
+                    }
+                }
+
+                // Actualizar el costo total
                 updateTotalCost();
+            }
+            else {
+                return;
             }
         }
     }
     catch (e) {
-        console.log(`230. ${e.message}`);
+        //console.error(`Character Load Error: ${e.message}`);
     }
 }
 
+
 async function saveCharacter() {
 
-    let characterObj = { name: null, player: null, main_attributes: [], advantages: [], disadvantages: [], total_cost: 0 };
+    let characterObj = { name: null, player: null, main_attributes: [], advantages: [], disadvantages: [], skills: [], total_cost: 0 };
 
     try {
 
@@ -265,6 +330,12 @@ async function saveCharacter() {
                 characterObj.disadvantages = disadvantageData;
             }
 
+            let skillsData = getSkillsData('skill_table');
+
+            if (skillsData.length > 0) {
+                characterObj.skills = skillsData;
+            }
+
             let saveConfirm = await Swal.fire({
                 title: 'Are you sure you want to save your character?',
                 text: 'This action will download a JSON file containing your character information.',
@@ -278,22 +349,17 @@ async function saveCharacter() {
 
             if (saveConfirm.isConfirmed) {
 
-                /*let jsonStr = JSON.stringify(characterObj);
+                let jsonStr = JSON.stringify(characterObj);
                 const blob = new Blob([jsonStr], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
-                
+
                 a.href = url;
-                a.download = `${characterName.value}.json`; 
+                a.download = `${characterName.value}.json`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
-                URL.revokeObjectURL(url);*/
-
-                localStorage.clear();
-                console.log(`294. Saved Character: ${JSON.stringify(characterObj)}`);
-                localStorage.setItem('onlyCharacterForNow', JSON.stringify(characterObj));
-                alert(`${characterObj.name} guardado correctamente!`);                
+                URL.revokeObjectURL(url);
             }
         }
         else {
@@ -317,7 +383,7 @@ async function saveCharacter() {
         }
     }
     catch (e) {
-        console.log(`327. Error: ${JSON.stringify(e.message)}`)
+        //console.log(`326. Error: ${JSON.stringify(e.message)}`)
     }
 }
 
@@ -334,7 +400,6 @@ function getMainAttributesData() {
             let attributeId = group.querySelector('.main_attribute_value').id;
             let attributeValue = group.querySelector('.main_attribute_value').value;
             let costValue = group.querySelector('.cost_value').innerHTML;
-            //console.log(`344. Attribute: ${attributeId} | Cost Value: ${costValue} | Attribute Value: ${attributeValue}`);
 
             if (!isEmpty(costValue) && !isEmpty(attributeId) && !isEmpty(attributeValue)) {
 
@@ -350,7 +415,7 @@ function getMainAttributesData() {
 
     }
     catch (e) {
-        console.log(`360. Error: ${JSON.stringify(e.message)}`)
+        //console.log(`359. Error: ${JSON.stringify(e.message)}`)
     }
 
     return result;
@@ -372,7 +437,6 @@ function getAdvantagesAndDisadvantagesData(list) {
                     let elementName = element.querySelector('.main_list_elementAdded_text').innerHTML;
                     let elementCost = element.querySelector('.cost_value').innerHTML;
 
-                    //console.log(`382. Advantage: ${advantageName} | Cost Value: ${advantageCost}`);
                     if (!isEmpty(elementName) && !isEmpty(elementCost)) {
 
                         let advObj = {
@@ -387,7 +451,47 @@ function getAdvantagesAndDisadvantagesData(list) {
         }
     }
     catch (e) {
-        console.log(`397. Error: ${JSON.stringify(e.message)}`)
+        //console.log(`396. Error: ${JSON.stringify(e.message)}`)
+    }
+
+    return result;
+}
+
+function getSkillsData(list) {
+
+    let result = [];
+
+    try {
+
+        if (!isEmpty(list)) {
+
+            let mainList = document.getElementById("skill_table");
+            let listElements = mainList.querySelectorAll('.skill_table_tbody_tr');
+
+            if (listElements.length > 0) {
+                listElements.forEach((element) => {
+                    let elementName = element.querySelector('.skill_table_tbody_tr_name').value;
+                    let elementCost = element.querySelector('.cost_value').value;
+                    let elementAttribute = element.querySelector('.skill_table_tbody_tr_att').value;
+                    let elementDifficulty = element.querySelector('.skill_table_tbody_tr_dif').value;
+
+                    if (!isEmpty(elementName) && !isEmpty(elementCost) && !isEmpty(elementAttribute) && !isEmpty(elementDifficulty)) {
+
+                        let skillObj = {
+                            name: elementName,
+                            cost_value: elementCost,
+                            attribute: elementAttribute,
+                            difficulty: elementDifficulty
+                        }
+
+                        result.push(skillObj);
+                    }
+                });
+            }
+        }
+    }
+    catch (e) {
+        //console.log(`436. Error: ${JSON.stringify(e.message)}`)
     }
 
     return result;
@@ -410,12 +514,10 @@ function addAdvantage(advantageText, advantageCost) {
         advantageCost = '';
 
         let removeAdvantageBtns = document.querySelectorAll(".main_list_elementAdded_rmvbtn");
-        //console.log(`420. Remove Buttons Quantity: ${removeAdvantageBtns.length}: ${removeAdvantageBtns}`);
 
         for (let i = 0; i < removeAdvantageBtns.length; i++) {
             let removeButton = removeAdvantageBtns[i]; // Se le agrega el evento para borrar el elemento de la lista
             removeButton.addEventListener('click', (event) => {
-                //console.log(`425. Event Target: ${event.target}`);
                 event.target.parentElement.remove();
                 updateTotalCost();
             });
@@ -423,7 +525,7 @@ function addAdvantage(advantageText, advantageCost) {
 
     }
     catch (e) {
-        console.log(`433. Error: ${e.message}`);
+        //console.log(`472. Error: ${e.message}`);
     }
 }
 
@@ -453,21 +555,20 @@ function addDisadvantage(disadvantageText, disadvantageCost) {
         }
     }
     catch (e) {
-        console.log(`463. Error: ${e.message}`);
+        //console.log(`502. Error: ${e.message}`);
     }
 
 }
 
-function addSkill(skillData, skillDifficulties, attributesNames, skillDifChart) {
+function addSkill(skillData, skillDifficulties, attributesNames, skillCostValue) {
 
     try {
 
         let skillName = skillData.label;
         let skillAttribute = skillData.attribute;
         let skillDifficulty = skillData.difficulty;
-        //console.log(`475. Skill Name: ${skillName} | Attribute: ${skillAttribute} | Difficulty: ${skillDifficulty}`);
 
-        let table = document.getElementById("skillTable");
+        let table = document.getElementById("skill_table");
         let newRow = table.insertRow();
         newRow.className = 'skill_table_tbody_tr';
 
@@ -514,10 +615,11 @@ function addSkill(skillData, skillDifficulties, attributesNames, skillDifChart) 
         difficultySelect.value = skillDifficulty;
 
         let costCell = newRow.insertCell(3);
-        costCell.innerHTML = `<input type="number" id="skillAddCost" class="cost_value" value="1" placeholder="Cost">`;
+        let skillCost = !isEmpty(skillCostValue) ? skillCostValue : 1;
+        costCell.innerHTML = `<input type="number" id="skillAddCost" class="cost_value" value="${skillCost}" placeholder="Cost">`;
 
         let skillCostsElements = document.querySelectorAll('.skill_table_tbody_tr .cost_value');
-        
+
         for (let i = 0; i < skillCostsElements.length; i++) {
             let costValues = skillCostsElements[i]; // Se le agrega el evento para borrar el elemento de la lista
             costValues.addEventListener('change', (event) => {
@@ -541,13 +643,12 @@ function addSkill(skillData, skillDifficulties, attributesNames, skillDifChart) 
         updateTotalCost();
     }
     catch (e) {
-        console.error(`Error: ${e.message}`);
+        //console.error(`Error: ${e.message}`);
     }
 }
 
 function sumValue(cost, score, basis) {
     let result = (score - basis) * cost;
-    //console.log(result);
     return result;
 }
 
@@ -555,13 +656,11 @@ function updateTotalCost() {
 
     let finalCost = 0;
     let valuesCost = document.querySelectorAll(".cost_value");
-    //console.log(`565. Cost Boxed Quantity: ${mainAttributesCost.length}`);
     let totalCost = document.getElementById("puntos_totales");
 
     for (let i = 0; i < valuesCost.length; i++) {
-        //console.log(`569.  ${mainAttributesCost[i].innerHTML}`)
         let costValue = !isEmpty(valuesCost[i].innerHTML) ? parseFloat(valuesCost[i].innerHTML) : null;
-    
+
         if (costValue == null) {
             costValue = !isEmpty(valuesCost[i].value) ? parseFloat(valuesCost[i].value) : 0;
         }
@@ -601,6 +700,6 @@ async function loadSkills(filePath) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error(`Error loading JSON file: ${error}`);
+        //console.error(`Error loading JSON file: ${error}`);
     }
 }

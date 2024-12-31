@@ -97,7 +97,7 @@
                             <th colspan="1" class="skill_table_thead_tr_remove">Remove</th>
                         </tr>
                     </thead>
-                    <tbody class="skill_table_tbody">
+                    <tbody id="skill_table" class="skill_table_tbody">
                     </tbody>
                 </table>
                 <ul class="main_list">
@@ -123,8 +123,9 @@
             </div>
 
             <!-- Botón -->
-            <button class="submitBtn" type="button" onclick="saveCharacter()">Guardar Personaje</button>
-            <button class="submitBtn" type="button" onclick="loadCharacter()">Cargar Personaje</button>
+            <button class="submitBtn" type="button" onclick="saveCharacter()">Save Character</button>
+            <button class="submitBtn" id="loadButton" type="button" onclick="loadCharacter()">Load Character File</button>
+            <input type="file" id="fileInput" accept=".json" />
         </form>
     </div>
     <script src="/Scripts/main.js"></script>

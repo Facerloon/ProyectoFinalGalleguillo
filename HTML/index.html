@@ -4,34 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoja de Personaje - GURPS</title>
+    <title>Character Sheet - GURPS</title>
     <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="icon" href="/Multimedia/Gurps Logo Small.png" type="image/x-icon">
 </head>
 
 <body>
     <header>
-        <h1>Hoja de Personaje - GURPS</h1>
+        <h1>Character Sheet - GURPS</h1>
     </header>
     <div class="container">
         <form>
             <!-- Información Básica -->
             <div class="field-group">
-                <label for="nombre">Nombre del Personaje *</label>
+                <label for="nombre">Character Name *</label>
                 <input type="text" id="nombre_personaje" name="nombre" placeholder="Introduce el nombre">
             </div>
             <div class="grid">
                 <div class="field-group">
-                    <label for="jugador">Jugador *</label>
+                    <label for="jugador">Player *</label>
                     <input type="text" id="jugador" name="jugador">
                 </div>
                 <div class="field-group">
-                    <label for="puntos">Puntos Totales</label>
+                    <label for="puntos">Total Points</label>
                     <input type="number" id="puntos_totales" value="0" disabled="true" name="puntos">
                 </div>
             </div>
 
             <!-- Atributos -->
-            <h2>Atributos</h2>
+            <h2>Attributes</h2>
             <div class="grid">
                 <div class="field-group-attribute">
                     <label for="fuerza" class="main_attribute">Strength (ST) [<span class="cost_value">0</span>]</label>
@@ -68,23 +69,23 @@
             </div>
 
             <!-- Ventajas y Desventajas -->
-            <h2>Ventajas y Desventajas</h2>
+            <h2>Advantages & Disadvantages</h2>
             <br>
             <div class="field-group">
-                <label for="ventajas">Ventajas</label>
+                <label for="ventajas">Advantages</label>
                 <ul class="main_list" id="advantageList">
                     <li class="main_list_element"><input type="text" id="advAddText" class="main_list_element_textInput" placeholder="Nombre y detalles de ventaja"> <input type="number" id="advAddCost" class="main_list_element_costInput" placeholder="Costo"> <button id="addAdvBtn" type="button" class="main_list_element_addbtn">+</button></li>
                 </ul>
             </div>
             <div class="field-group">
-                <label for="desventajas">Desventajas</label>
+                <label for="desventajas">Disadvantages</label>
                 <ul class="main_list" id="disadvantageList">
                     <li class="main_list_element"><input type="text" id="disadvAddText" class="main_list_element_textInput" placeholder="Nombre y detalles de desventaja"> <input type="number" id="disadvAddCost" class="main_list_element_costInput" placeholder="Costo"> <button id="addDisadvBtn" type="button" class="main_list_element_addbtn">+</button></li>
                 </ul>
             </div>
 
             <!-- Habilidades -->
-            <h2>Habilidades</h2>
+            <h2>Skills</h2>
             <br>
             <div class="field-group">
                 <table id="skillTable" class="skill_table">
@@ -103,7 +104,7 @@
                 <ul class="main_list">
                     <li class="main_list_element">
                         <select class="main_list_element_skillSelect" name="" id="skillList">
-                            <option value="" hidden disabled selected>Seleccionar *</option>
+                            <option value="" hidden disabled selected>Select *</option>
                         </select>
                         <button id="addSkillBtn" type="button" class="main_list_element_addbtn">+</button>
                     </li>
@@ -111,13 +112,13 @@
             </div>
 
             <!-- Equipamiento -->
-            <h2>Equipamiento</h2>
+            <h2>Equipment</h2>
             <div class="field-group">
                 <textarea id="equipamiento" name="equipamiento" placeholder=""></textarea>
             </div>
 
             <!-- Notas -->
-            <h2>Notas Adicionales</h2>
+            <h2>Additional Notes</h2>
             <div class="field-group">
                 <textarea id="notas" name="notas" placeholder=""></textarea>
             </div>

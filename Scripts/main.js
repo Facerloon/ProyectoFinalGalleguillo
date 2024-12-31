@@ -160,6 +160,18 @@ function voidFields() {
             });
         }
 
+        let equipment = document.getElementById('equipamiento');
+
+        if (!isEmpty(equipment)) {
+            let equipmentValue = equipment.value = '';
+        }
+
+        let notas = document.getElementById('notas');
+
+        if (!isEmpty(notas)) {
+            let notasValue = notas.value = '';
+        }
+
         updateTotalCost();
     }
     catch (e) {
@@ -181,7 +193,7 @@ async function loadCharacter() {
             return;
         }
 
-        if (file.type !== "application/json") {
+        if (!file.name.endsWith(".json") || file.type !== "application/json") {
             Swal.fire({
                 title: "Invalid File Type",
                 text: "The uploaded file is not a valid .json file.",
@@ -190,6 +202,7 @@ async function loadCharacter() {
             return;
         }
 
+        // Leer el archivo como texto usando FileReader con promesa
         const loadValues = await new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onload = (event) => {
@@ -208,7 +221,7 @@ async function loadCharacter() {
                 text: "Please verify that the uploaded file is a valid .json",
                 icon: "error"
             });
-            //console.error(`Error al leer el archivo: ${error.message}`);
+            console.error(`Error al leer el archivo: ${error.message}`);
             return null;
         });
 
@@ -282,6 +295,16 @@ async function loadCharacter() {
                     }
                 }
 
+                if (!isEmpty(loadValues.equipment)) {
+                    let equipment = document.getElementById('equipamiento');
+                    equipment.value = loadValues.equipment;
+                }
+
+                if (!isEmpty(loadValues.notes)) {
+                    let notas = document.getElementById('notas');
+                    notas.value = loadValues.notes;
+                }
+
                 // Actualizar el costo total
                 updateTotalCost();
             }
@@ -295,16 +318,17 @@ async function loadCharacter() {
     }
 }
 
-
 async function saveCharacter() {
 
-    let characterObj = { name: null, player: null, main_attributes: [], advantages: [], disadvantages: [], skills: [], total_cost: 0 };
+    let characterObj = { name: null, player: null, main_attributes: [], advantages: [], disadvantages: [], skills: [], equipment: '', notes: '', total_cost: 0 };
 
     try {
 
         let characterName = document.getElementById('nombre_personaje');
         let characterCost = document.getElementById('puntos_totales');
         let characterPlayer = document.getElementById('jugador');
+        let equipment = document.getElementById('equipamiento');
+        let notas = document.getElementById('notas');
 
         if (!isEmpty(characterPlayer.value) && !isEmpty(characterName.value) && characterName.value !== " " && !isEmpty(characterCost.value)) {
 
@@ -334,6 +358,18 @@ async function saveCharacter() {
 
             if (skillsData.length > 0) {
                 characterObj.skills = skillsData;
+            }
+
+            let equipmentText = equipment.value;
+
+            if (!isEmpty(equipmentText)) {
+                characterObj.equipment = equipmentText;
+            }
+
+            let notesText = notas.value;
+
+            if (!isEmpty(notesText)) {
+                characterObj.notes = notesText;
             }
 
             let saveConfirm = await Swal.fire({

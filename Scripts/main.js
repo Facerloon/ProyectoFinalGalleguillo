@@ -29,13 +29,11 @@ for (let i = 0; i < 8; i++) {
 
     attibuteBasis.addEventListener('input', (event) => {
 
-        if (event.target.value > 20) {
-            event.target.value = 20;
-            alert('El valor mínimo de cada atributo es 20');
+        if (event.target.value > 1000) {
+            event.target.value = 1000;
         } // 20 es el valor maximo
         else if (event.target.value < 1) {
             event.target.value = 1;
-            alert('El valor mínimo de cada atributo es 1');
         } // 1 es el valor minimo
 
         let attributeId = event.target.id;

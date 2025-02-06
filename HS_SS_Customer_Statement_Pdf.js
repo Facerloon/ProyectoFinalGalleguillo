@@ -1,13 +1,41 @@
 function customerStatementPdf(type) {
 
-	try {
-		var searchresults = nlapiSearchRecord('customer', 'customsearch_hs_customer_stmt_email');
+	//try {
 
-		var resultLength = searchresults.length;
-		nlapiLogExecution('DEBUG', 'searchresults', 'Search Results (' + resultLength + '): ' + JSON.stringify(searchresults));
+	var search = nlapiLoadSearch('customer', 'customsearch_hs_customer_stmt_email');
+	var searchData = [];
+	var searchResults = search.runSearch();
 
-		for (var i = 0; searchresults != null && i < searchresults.length; i++) {
-			var id = searchresults[i].getId();
+	// resultIndex points to record starting current resultSet in the entire results array
+	var resultIndex = 0;
+	var resultStep = 1000; // Number of records returned in one step (maximum is 1000)
+	var resultSet; // temporary variable used to store the result set
+	do {
+		// fetch one result set
+		resultSet = searchResults.getResults(resultIndex, resultIndex + resultStep);
+
+		// increase pointer
+		resultIndex = resultIndex + resultStep;
+
+		// process or log the results
+		//nlapiLogExecution('DEBUG', 'resultSet returned', resultSet.length + ' records returned');
+
+		if (resultSet.length > 0) {
+			searchData = searchData.concat(resultSet);
+		}
+
+		// once no records are returned we already got all of them
+	} while (resultSet.length > 0)
+
+	//var searchresults = nlapiSearchRecord('customer', 'customsearch_hs_customer_stmt_email');
+
+	var resultLength = searchData.length;
+	nlapiLogExecution('DEBUG', 'searchresults', 'Search Results: ' + resultLength);
+
+	if (resultLength > 0) {
+
+		for (var i = 0; i < resultLength; i++) {
+			var id = searchData[i].id;
 			//nlapiLogExecution('DEBUG', 'ID = ' , id);
 
 			var record = nlapiLoadRecord('customer', id);
@@ -60,11 +88,12 @@ function customerStatementPdf(type) {
 				nlapiYieldScript();
 			}
 		}
-
-		nlapiLogExecution('DEBUG', 'END', 'Script Execution Completed Without Errors');
 	}
+
+	nlapiLogExecution('DEBUG', 'END', 'Script Execution Completed Without Errors');
+	/*}
 	catch(e) {
 		nlapiLogExecution('ERROR', 'Error', 'Error Message: ' + e.message + ' | Full Details: ' + JSON.stringify(e));
 		nlapiLogExecution('DEBUG', 'END', 'Script Execution Completed With Errors');
-	}
+	}*/
 }

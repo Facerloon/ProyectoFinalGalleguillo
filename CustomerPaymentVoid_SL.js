@@ -123,7 +123,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     var fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
                     var arAcct = recCustPayment.getValue({ fieldId: 'aracct' });
                     var nLines = recCustPayment.getLineCount({ sublistId: 'apply' });
-                    log.debug(proceso, `126. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+                    //log.debug(proceso, `126. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
 
                     //Unapply invoices
                     if (nLines > 0) {
@@ -301,6 +301,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                                 });
 
                                 bLineFound = true;
+
+                                recDeposit.commitLine({
+                                    sublistId: 'payment',
+                                });
                             }
                             else if (lineId == refundId) {
 
@@ -308,6 +312,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                                     sublistId: 'payment',
                                     fieldId: 'deposit',
                                     value: true
+                                });
+
+                                recDeposit.commitLine({
+                                    sublistId: 'payment',
                                 });
 
                                 dLineFound = true;
@@ -323,12 +331,13 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         fieldId: 'total'
                     });
 
-                    log.debug('makeDeposit', `326. Payment ID: ${idPayment} | Refund ID: ${refundId} | Deposit Amount: ${depositAmount}`);
+                    log.emergency('makeDeposit', `334. Payment Line Found: ${bLineFound} | Refund Line Found: ${dLineFound} | Deposit Amount: ${depositAmount}`);
+                    log.debug('makeDeposit', `335. Payment ID: ${idPayment} | Refund ID: ${refundId} | Deposit Amount: ${depositAmount}`);
 
                     if (bLineFound && dLineFound && depositAmount == 0) {
                         idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
                     }
-                    log.debug('makeDeposit', `331. Id Deposit: ${idDeposit}`);
+                    log.emergency('makeDeposit', `340. Id Deposit: ${idDeposit}`);
 
                     /*const paymentIndex = idDepLineIds.indexOf(idPayment);
                     if (paymentIndex !== -1) {
@@ -347,8 +356,8 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
                 //log.debug('Make Deposit', 'idDeposit:' + idDeposit + ' idDepAcct:' + idDepAcct);
             } catch (e) {
-                //log.error('makeDeposit error paymentID:' + idPayment, `350. ${e}`);
-                log.error('makeDeposit error paymentID:' + idPayment, `351. ${e.message}`);
+                //log.error('makeDeposit error paymentID:' + idPayment, `359. ${e}`);
+                log.error('makeDeposit error paymentID:' + idPayment, `360. ${e.message}`);
             }
 
             return idDepAcct;
@@ -388,7 +397,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
         /*function getAllSearchResults(options) {
             const curScript = runtime.getCurrentScript();
-            log.debug(`getAllSearchResults`, `391. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `400. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             var stRecordType = options.type;
             var stSavedSearch = options.searchId;
             var arrFilters = options.filters;
@@ -408,14 +417,14 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 end += 1000;
                 count = results.length;
             }
-            log.debug(`getAllSearchResults`, `411. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-            log.debug(`getAllSearchResults`, `412. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
+            log.debug(`getAllSearchResults`, `420. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `421. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
             return arrResults;
         }*/
 
         let getAllSearchResults2 = (options, voidSearch) => {
             const curScript = runtime.getCurrentScript();
-            //log.debug(`getAllSearchResults`, `418. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `427. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             const functionProcess = `getAllSearchResults2()`;
 
             let data = [];
@@ -473,10 +482,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `476. Error: ${e.message}`);
+                log.error(functionProcess, `485. Error: ${e.message}`);
             }
 
-            //log.debug(`getAllSearchResults`, `479. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `488. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             return data;
         }
 
@@ -540,10 +549,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `543. Error: ${e.message}`);
+                log.error(functionProcess, `552. Error: ${e.message}`);
             }
 
-            log.debug(functionProcess, `546. Result: ${result}`);
+            log.debug(functionProcess, `555. Result: ${result}`);
             return result;
         }
 

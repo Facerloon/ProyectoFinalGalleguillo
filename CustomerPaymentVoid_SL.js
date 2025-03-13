@@ -30,29 +30,29 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
             const ACCT_UNDEPFUNDS = '122';
             const PAYMETHOD_PAYMENTVOID = '16';
 
-            var PARAM_ID = 'custparam_id';
+            let PARAM_ID = 'custparam_id';
 
             log.debug(proceso, `35. START`);
 
             try {
-                var oRequestParameters = context.request.parameters;
+                let oRequestParameters = context.request.parameters;
                 log.debug(proceso, `39. On Request Parameters: ${JSON.stringify(oRequestParameters)}`);
 
                 if (context.request.method === 'GET') {
-                    var custPaymentId = oRequestParameters[PARAM_ID];
+                    let custPaymentId = oRequestParameters[PARAM_ID];
                     log.debug('Payment ID', custPaymentId);
 
-                    var frm = serverWidget.createForm({ title: 'Approve Bill', hideNavBar: false });
+                    let frm = serverWidget.createForm({ title: 'Approve Bill', hideNavBar: false });
                     frm.clientScriptModulePath = './CustomerPaymentVoid_CS.js';
 
-                    var fldStatus = frm.addField({ id: FLD_STATUS, type: 'text', label: 'Status', container: null });
+                    let fldStatus = frm.addField({ id: FLD_STATUS, type: 'text', label: 'Status', container: null });
                     fldStatus.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
 
-                    var fldPaymentId = frm.addField({ id: FLD_PAYMENTID, type: 'text', label: 'Payment', container: null });
+                    let fldPaymentId = frm.addField({ id: FLD_PAYMENTID, type: 'text', label: 'Payment', container: null });
                     fldPaymentId.defaultValue = custPaymentId;
                     fldPaymentId.updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
 
-                    var fldVoidReason = frm.addField({ id: FLD_REASON, type: 'select', source: 'customlist_ctr_voidreason', label: 'Void Reason', container: null });
+                    let fldVoidReason = frm.addField({ id: FLD_REASON, type: 'select', source: 'customlist_ctr_voidreason', label: 'Void Reason', container: null });
                     fldVoidReason.isMandatory = true;
 
                     frm.addSubmitButton({ label: 'Void' });
@@ -60,10 +60,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     context.response.writePage(frm);
                 }//-- End Get method
                 else {
-                    var refundId = '';
-                    var idDepositAcct;
-                    var custPaymentId = oRequestParameters[FLD_PAYMENTID];
-                    var voidReasonId = oRequestParameters[FLD_REASON];
+                    let refundId = '';
+                    let idDepositAcct;
+                    let custPaymentId = oRequestParameters[FLD_PAYMENTID];
+                    let voidReasonId = oRequestParameters[FLD_REASON];
                     const authNetLocation = oRequestParameters[AUTHNET_LOCATION];
                     const authNetAccount = oRequestParameters[AUTHNET_ACCOUNT];
                     log.debug(proceso, '66. ' + custPaymentId + ' ' + voidReasonId);
@@ -75,21 +75,21 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         parameters: { paymentid: custPaymentId, voidreasonid: voidReasonId }
                     });*/
 
-                    var recCustPayment = record.load({ type: 'customerpayment', id: custPaymentId, isDynamic: false });
-                    var subsidiaryId = recCustPayment.getValue({ fieldId: 'subsidiary' });
-                    var refNumber = recCustPayment.getValue({ fieldId: 'checknum' });
-                    var fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
-                    var fAmount = recCustPayment.getValue({ fieldId: 'payment' });
-                    var refTranNum = getVoidNumber();
+                    let recCustPayment = record.load({ type: 'customerpayment', id: custPaymentId, isDynamic: false });
+                    let subsidiaryId = recCustPayment.getValue({ fieldId: 'subsidiary' });
+                    let refNumber = recCustPayment.getValue({ fieldId: 'checknum' });
+                    let fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
+                    let fAmount = recCustPayment.getValue({ fieldId: 'payment' });
+                    let refTranNum = getVoidNumber();
                     log.debug(proceso, `84. Ref Number: ${refTranNum}`);
                     //log.debug(proceso, `85. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-                    var refundMemo = 'Void Check ' + refNumber + ' ' + fileNumber;
+                    let refundMemo = 'Void Check ' + refNumber + ' ' + fileNumber;
 
                     //Get Deposit Account and make deposit if Payment is undeposited
-                    var bUndepFunds = recCustPayment.getValue({ fieldId: 'undepfunds' });
-                    var cashAcct = ACCT_UNDEPFUNDS;
-                    var depAcctSearch;
-                    var bDepositFound;
+                    let bUndepFunds = recCustPayment.getValue({ fieldId: 'undepfunds' });
+                    let cashAcct = ACCT_UNDEPFUNDS;
+                    let depAcctSearch;
+                    let bDepositFound;
                     log.debug(proceso, `93. Custpayment bUndepFunds: ${bUndepFunds}`);
 
                     if (bUndepFunds == 'F' || bUndepFunds == false) {
@@ -98,14 +98,14 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     }
 
                     if (cashAcct == ACCT_UNDEPFUNDS) {
-                        var depAcctSearch = getPaymentDeposits(custPaymentId);
+                        let depAcctSearch = getPaymentDeposits(custPaymentId);
                         log.debug(proceso, `102. depAcctSearch: ${JSON.stringify(depAcctSearch)}`);
                         log.debug(proceso, `103. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-                        var bDepositFound = false;
+                        let bDepositFound = false;
 
                         if (depAcctSearch.length > 0) {
-                            var depAcct = depAcctSearch[0].accountmain;
-                            var depId = depAcctSearch[0].applyingtransaction;
+                            let depAcct = depAcctSearch[0].accountmain;
+                            let depId = depAcctSearch[0].applyingtransaction;
 
                             if (depAcct && depAcct != '') {
                                 cashAcct = depAcct;
@@ -116,18 +116,18 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     }
 
                     //Load Customer Payment record to unapply any invoices
-                    var recCustPayment = record.load({ type: 'customerpayment', id: custPaymentId, isDynamic: false });
-                    var customerId = recCustPayment.getValue({ fieldId: 'customer' });
-                    var subsidiaryId = recCustPayment.getValue({ fieldId: 'subsidiary' });
-                    var refNumber = recCustPayment.getValue({ fieldId: 'checknum' });
-                    var fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
-                    var arAcct = recCustPayment.getValue({ fieldId: 'aracct' });
-                    var nLines = recCustPayment.getLineCount({ sublistId: 'apply' });
+                    recCustPayment = record.load({ type: 'customerpayment', id: custPaymentId, isDynamic: false });
+                    let customerId = recCustPayment.getValue({ fieldId: 'customer' });
+                    subsidiaryId = recCustPayment.getValue({ fieldId: 'subsidiary' });
+                    refNumber = recCustPayment.getValue({ fieldId: 'checknum' });
+                    fileNumber = recCustPayment.getValue({ fieldId: FLD_CTR_FILENUMBER });
+                    let arAcct = recCustPayment.getValue({ fieldId: 'aracct' });
+                    let nLines = recCustPayment.getLineCount({ sublistId: 'apply' });
                     //log.debug(proceso, `126. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
 
                     //Unapply invoices
                     if (nLines > 0) {
-                        for (var i = 0; i < nLines; i++) {
+                        for (let i = 0; i < nLines; i++) {
                             recCustPayment.setSublistValue({ sublistId: 'apply', fieldId: 'apply', value: false, line: i, ignoreFieldChange: false, forceSyncSourcing: true });
                         }
 
@@ -138,10 +138,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
                     //after choosing a void reason, the refund will be generated.
                     if (cashAcct && cashAcct != '') {
-                        var refTranNum = getVoidNumber();
+                        let refTranNum = getVoidNumber();
                         //log.debug(proceso, `142. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-                        var refundMemo = 'Void Check ' + refNumber + ' ' + fileNumber;
-                        var recRefund = record.create({ type: 'customerrefund', isDynamic: true });
+                        let refundMemo = 'Void Check ' + refNumber + ' ' + fileNumber;
+                        let recRefund = record.create({ type: 'customerrefund', isDynamic: true });
                         recRefund.setValue('customer', customerId);
                         recRefund.setValue('subsidiary', subsidiaryId);
                         if (authNetLocation) {
@@ -158,11 +158,11 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                         recRefund.setValue(FLD_FORELECBANKPAYMENTDD, false);
 
                         //refund should be applied to the customer payment after everything
-                        var refundLines = recRefund.getLineCount({ sublistId: 'apply' });
+                        let refundLines = recRefund.getLineCount({ sublistId: 'apply' });
                         log.debug('refundLines:' + refundLines, 'tranid:' + refTranNum);
 
-                        for (var i = 0; i < refundLines; i++) {
-                            var creditsLineId = recRefund.getSublistValue({ sublistId: 'apply', fieldId: 'internalid', line: i });
+                        for (let i = 0; i < refundLines; i++) {
+                            let creditsLineId = recRefund.getSublistValue({ sublistId: 'apply', fieldId: 'internalid', line: i });
                             //log.debug('creditsLineId', i + ' ' + creditsLineId);
 
                             if (custPaymentId == creditsLineId) {
@@ -195,7 +195,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
                     log.debug(proceso, `196. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
 
-                    var sOutput = '<html><script>';
+                    let sOutput = '<html><script>';
                     //sOutput += 'window.parent.document.getElementsByClassName("x-tool x-tool-close")[0].click();';
                     sOutput += 'window.parent.open("/app/accounting/transactions/custrfnd.nl?id=' + refundId + '&e=T", "_self");';
                     sOutput += '</script></html>';
@@ -210,10 +210,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
         }
 
         function getVoidNumber() {
-            var voidPrefix = 'Void-';
-            var voidNumber = voidPrefix + 100000;
+            let voidPrefix = 'Void-';
+            let voidNumber = voidPrefix + 100000;
 
-            var voidSearchOptions = new Object();
+            let voidSearchOptions = new Object();
             voidSearchOptions['type'] = 'transaction';
             voidSearchOptions['filters'] = [
                 ['type', 'anyof', 'CustRfnd'],
@@ -224,12 +224,12 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
             ]
 
             voidSearchOptions['columns'] = [search.createColumn({ name: 'tranid', sort: search.Sort.DESC })];
-            var voidSearch = getAllSearchResults2(voidSearchOptions, true);
+            let voidSearch = getAllSearchResults2(voidSearchOptions, true);
             //log.debug('voidSearch.length', `228. Void Search (${voidSearch.length}): ${JSON.stringify(voidSearch)}`);
 
             if (voidSearch.length > 0) {
-                var sTranId = voidSearch[0].tranid;
-                var fVoidNum = parseFloat(sTranId.split('-')[1]) + 1;
+                let sTranId = voidSearch[0].tranid;
+                let fVoidNum = parseFloat(sTranId.split('-')[1]) + 1;
                 voidNumber = voidPrefix + (fVoidNum.toFixed(0));
                 //log.debug('Current Void Number', sTranId);
             }
@@ -240,151 +240,180 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
         function makeDeposit(idPayment, refundId, addtnlArgs = {}) {
 
-            var idDeposit = '';
-            var bLineFound = false;
+            let idDeposit = '';
+            let bLineFound = false;
             let dLineFound = false;
+            let idDepAcct
 
             try {
-                var subsidiaryLookUp = search.lookupFields({ type: 'customerpayment', id: idPayment, columns: ['subsidiary'] });
+                let subsidiaryLookUp = search.lookupFields({ type: 'customerpayment', id: idPayment, columns: ['subsidiary'] });
                 //log.debug('makeDeposit', 'subsidiaryLookUp:' + subsidiaryLookUp + 'idPayment:' + idPayment + ' refundIs tId:' + refundId);
                 const authnetAccount = addtnlArgs.authNetAccount;
                 const authnetLocation = addtnlArgs.authnetLocation;
-                var idSubsidiary = subsidiaryLookUp.subsidiary[0].value;
-                var idDepAcct = authnetAccount ? authnetAccount : getDepositAccount(idSubsidiary);
-                log.debug('makeDeposit', `254. idDepAcct: ${idDepAcct} | idLocation: ${authnetLocation}`);
+                const sublistId = `dasdsa`;
+                let idSubsidiary = subsidiaryLookUp.subsidiary[0].value;
+                let depAccSearch = authnetAccount ? authnetAccount : getDepositAccount(idSubsidiary);
 
-                if (idDepAcct && idDepAcct != '') {
+                if (depAccSearch.length > 0) {
 
-                    let recDeposit = record.create({
-                        type: 'deposit',
-                        isDynamic: true
-                    });
+                    idDepAcct = depAccSearch[0].internalid;
+                    log.debug('makeDeposit', `260. idDepAcct: ${idDepAcct} | idLocation: ${authnetLocation} | idPayment: ${idPayment} | idRefund: ${refundId}`);
 
-                    recDeposit.setValue({
-                        fieldId: 'account',
-                        value: idDepAcct
-                    })
+                    if (idDepAcct && idDepAcct != '') {
 
-                    if (!isEmpty(authnetLocation)) {
+                        let recDeposit = record.create({
+                            type: 'deposit',
+                            isDynamic: true
+                        });
+
                         recDeposit.setValue({
-                            fieldId: 'location',
-                            value: authnetLocation
-                        });
-                    }
+                            fieldId: 'account',
+                            ignoreFieldChange: false,
+                            value: idDepAcct
+                        })
 
-                    const nLines = recDeposit.getLineCount({ sublistId: 'payment' });
-                    //const idDepLineIds = recDeposit.getCurrentSublistTexts({ sublistId: 'payment', fieldId: 'id', start: 0, end: nLines });
-                    let lineIds = [];
+                        if (!isEmpty(authnetLocation)) {
+                            recDeposit.setValue({
+                                fieldId: 'location',
+                                value: authnetLocation
+                            });
+                        }
 
-                    for (let i = 0; i < nLines; i++) {
+                        let sublists = recDeposit.getSublists();
+                        log.debug(recDeposit, `283. Record Sublists: ${JSON.stringify(sublists)}`);
 
-                        recDeposit.selectLine({
-                            sublistId: 'payment',
-                            line: i
-                        });
-
-                        let lineId = recDeposit.getCurrentSublistValue({
-                            sublistId: 'payment',
-                            fieldId: 'id'
+                        let currentAccountValue = recDeposit.getValue({
+                            fieldId: 'account'
                         });
 
-                        if (!isEmpty(lineId)) {
+                        let currentDateValue = recDeposit.getValue({
+                            fieldId: 'trandate'
+                        });
 
-                            lineIds.push(lineId);
+                        log.debug('makeDeposit', `293. Current Record Values | Date: ${currentDateValue} | Account: ${currentAccountValue}`);
 
-                            if (lineId == idPayment) {
+                        let sublistsData = [];
 
-                                recDeposit.setCurrentSublistValue({
-                                    sublistId: 'payment',
-                                    fieldId: 'deposit',
-                                    value: true
-                                });
+                        for (let b = 0; b < sublists.length; b++) {
 
-                                bLineFound = true;
+                            let sublistName = sublists[b];
+                            let sublistLineCount = recDeposit.getLineCount({
+                                sublistId: sublistName
+                            });
 
-                                recDeposit.commitLine({
-                                    sublistId: 'payment',
-                                });
-                            }
-                            else if (lineId == refundId) {
-
-                                recDeposit.setCurrentSublistValue({
-                                    sublistId: 'payment',
-                                    fieldId: 'deposit',
-                                    value: true
-                                });
-
-                                recDeposit.commitLine({
-                                    sublistId: 'payment',
-                                });
-
-                                dLineFound = true;
+                            let sublistObj = {
+                                name: sublistName,
+                                lines: sublistLineCount
                             }
 
-                            if (dLineFound && bLineFound) {
-                                break;
+                            sublistsData.push(sublistObj);
+                        }
+
+                        log.debug('makeDeposit', `310. Sublists Data (${sublistsData.length}): ${JSON.stringify(sublistsData)}`);
+
+                        let lineCount = recDeposit.getLineCount({
+                            sublistId: sublistId
+                        });
+
+                        log.debug('makeDeposit', `316. Deposit Line Count: ${lineCount}`);
+                        //const idDepLineIds = recDeposit.getCurrentSublistTexts({ sublistId: 'payment', fieldId: 'id', start: 0, end: nLines });
+                        let lineIds = [];
+
+                        //log.debug('makeDeposit', `320. Deposit Record: ${JSON.stringify(recDeposit)}`);
+
+                        for (let i = 0; i < lineCount; i++) {
+
+                            recDeposit.selectLine({
+                                sublistId: sublistId,
+                                line: i
+                            });
+
+                            let lineId = recDeposit.getCurrentSublistValue({
+                                sublistId: sublistId,
+                                fieldId: 'id'
+                            });
+
+                            //log.debug('makeDeposit', `334. Line ID: ${lineId}`);
+
+                            if (!isEmpty(lineId)) {
+
+                                lineIds.push(lineId);
+
+                                if (lineId == idPayment) {
+
+                                    recDeposit.setCurrentSublistValue({
+                                        sublistId: sublistId,
+                                        fieldId: 'deposit',
+                                        value: true
+                                    });
+
+                                    bLineFound = true;
+
+                                    recDeposit.commitLine({
+                                        sublistId: sublistId,
+                                    });
+                                }
+                                else if (lineId == refundId) {
+
+                                    recDeposit.setCurrentSublistValue({
+                                        sublistId: sublistId,
+                                        fieldId: 'deposit',
+                                        value: true
+                                    });
+
+                                    recDeposit.commitLine({
+                                        sublistId: sublistId,
+                                    });
+
+                                    dLineFound = true;
+                                }
+
+                                if (dLineFound && bLineFound) {
+                                    break;
+                                }
                             }
                         }
-                    }
 
-                    let depositAmount = recDeposit.getValue({
-                        fieldId: 'total'
-                    });
+                        let depositAmount = recDeposit.getValue({
+                            fieldId: 'total'
+                        });
 
-                    log.emergency('makeDeposit', `334. Payment Line Found: ${bLineFound} | Refund Line Found: ${dLineFound} | Deposit Amount: ${depositAmount}`);
-                    log.debug('makeDeposit', `335. Payment ID: ${idPayment} | Refund ID: ${refundId} | Deposit Amount: ${depositAmount}`);
+                        log.emergency('makeDeposit', `379. Payment Line Found: ${bLineFound} | Refund Line Found: ${dLineFound} | Deposit Amount: ${depositAmount}`);
+                        log.debug('makeDeposit', `380. Payment ID: ${idPayment} | Refund ID: ${refundId} | Deposit Amount: ${depositAmount}`);
 
-                    if (bLineFound && dLineFound && depositAmount == 0) {
+                        // if (bLineFound && dLineFound && depositAmount == 0) {
+                        //     idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
+                        // }
                         idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
+                        log.emergency('makeDeposit', `386. Id Deposit: ${idDeposit}`);
                     }
-                    log.emergency('makeDeposit', `340. Id Deposit: ${idDeposit}`);
-
-                    /*const paymentIndex = idDepLineIds.indexOf(idPayment);
-                    if (paymentIndex !== -1) {
-                        recDeposit.selectLine({ sublistId: 'payment', line: paymentIndex });
-                        recDeposit.setCurrentSublistValue({ sublistId: 'payment', fieldId: 'deposit', value: true });
-                        bLineFound = true;
-                    } else {
-                        const refundIndex = idDepLineIds.indexOf(refundId);
-                        if (refundIndex !== -1) {
-                            recDeposit.selectLine({ sublistId: 'payment', line: refundIndex });
-                            recDeposit.setCurrentSublistValue({ sublistId: 'payment', fieldId: 'deposit', value: true });
-                            bLineFound = true;
-                        }
-                    }*/
-
+                    //log.debug('Make Deposit', 'idDeposit:' + idDeposit + ' idDepAcct:' + idDepAcct);
                 }
-                //log.debug('Make Deposit', 'idDeposit:' + idDeposit + ' idDepAcct:' + idDepAcct);
             } catch (e) {
-                //log.error('makeDeposit error paymentID:' + idPayment, `359. ${e}`);
-                log.error('makeDeposit error paymentID:' + idPayment, `360. ${e.message}`);
+                //log.error('makeDeposit error paymentID:' + idPayment, `391. ${e}`);
+                log.error('makeDeposit error paymentID:' + idPayment, `392. ${e.message}`);
             }
 
             return idDepAcct;
         }
+        async function waitForLineCount(recDeposit, sublistId, timeout = 5000) {
+            const startTime = Date.now();
 
-        /*function getDepositAccount(idSubsidiary) {
-            var depAcctSearchOptions = new Object();
-            depAcctSearchOptions['type'] = 'account';
-            depAcctSearchOptions['filters'] = [
-                ['type', 'anyof', 'Bank'],
-                'and',
-                ['isinactive', 'is', 'F'],
-                'and',
-                ['subsidiary', 'anyof', idSubsidiary]
-            ];
-            depAcctSearchOptions['columns'] = ['subsidiary', search.createColumn({ name: 'number', sort: search.Sort.ASC })];
-            var result = search.find(depAcctSearchOptions);
-
-            if (result) {
-                return result.id;
-            }
-
-            return null;
-        }*/
+            return new Promise((resolve, reject) => {
+                (function checkLineCount() {
+                    recDeposit.getLineCount({ sublistId: sublistId }).then(lineCount => {
+                        if (lineCount > 0 || Date.now() - startTime > timeout) {
+                            resolve(lineCount);
+                        } else {
+                            setTimeout(checkLineCount, 100); // Revisa cada 100ms
+                        }
+                    }).catch(reject);
+                })();
+            });
+        }
 
         function getPaymentDeposits(custPaymentId) {
-            var depAcctSearchOptions = new Object();
+            let depAcctSearchOptions = new Object();
             depAcctSearchOptions['type'] = 'transaction';
             depAcctSearchOptions['filters'] = [
                 ['internalid', 'anyof', custPaymentId],
@@ -397,34 +426,34 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
         /*function getAllSearchResults(options) {
             const curScript = runtime.getCurrentScript();
-            log.debug(`getAllSearchResults`, `400. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-            var stRecordType = options.type;
-            var stSavedSearch = options.searchId;
-            var arrFilters = options.filters;
-            var arrColumns = options.columns;
-            var arrResults = [];
-            var count = 1000;
-            var start = 0;
-            var end = 1000;
-            var searchObj = (stSavedSearch) ? arrFilters ? search.load({ id: stSavedSearch, filters: arrFilters }) :
+            log.debug(`getAllSearchResults`, `427. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            let stRecordType = options.type;
+            let stSavedSearch = options.searchId;
+            let arrFilters = options.filters;
+            let arrColumns = options.columns;
+            let arrResults = [];
+            let count = 1000;
+            let start = 0;
+            let end = 1000;
+            let searchObj = (stSavedSearch) ? arrFilters ? search.load({ id: stSavedSearch, filters: arrFilters }) :
                 search.load({ id: stSavedSearch }) :
                 search.create({ type: stRecordType, filters: arrFilters, columns: arrColumns });
-            var rs = searchObj.run();
+            let rs = searchObj.run();
             while (count == 1000) {
-                var results = rs.getRange(start, end);
+                let results = rs.getRange(start, end);
                 arrResults = arrResults.concat(results);
                 start = end;
                 end += 1000;
                 count = results.length;
             }
-            log.debug(`getAllSearchResults`, `420. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-            log.debug(`getAllSearchResults`, `421. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
+            log.debug(`getAllSearchResults`, `447. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `448. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
             return arrResults;
         }*/
 
         let getAllSearchResults2 = (options, voidSearch) => {
             const curScript = runtime.getCurrentScript();
-            //log.debug(`getAllSearchResults`, `427. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `454. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             const functionProcess = `getAllSearchResults2()`;
 
             let data = [];
@@ -482,10 +511,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `485. Error: ${e.message}`);
+                log.error(functionProcess, `512. Error: ${e.message}`);
             }
 
-            //log.debug(`getAllSearchResults`, `488. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `515. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             return data;
         }
 
@@ -505,7 +534,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     'and',
                     ['subsidiary', 'anyof', idSubsidiary]
                 ];
-                let columns = ['internalid', 'subsidiary', search.createColumn({ name: 'number', sort: search.Sort.ASC })];
+                let columns = ['internalid', 'subsidiary', 'name', search.createColumn({ name: 'number', sort: search.Sort.ASC })];
 
                 let searchObj = search.create({
                     type: 'account',
@@ -544,16 +573,14 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     data.push(obj)
                 }
 
-                if (data.length > 0) {
-                    result = data[0].internalid;
-                }
+                log.debug(functionProcess, `574. Deposit Accounts Result (${data.length}): ${JSON.stringify(data)}`);
             }
             catch (e) {
-                log.error(functionProcess, `552. Error: ${e.message}`);
+                log.error(functionProcess, `577. Error: ${e.message}`);
             }
 
-            log.debug(functionProcess, `555. Result: ${result}`);
-            return result;
+            //log.debug(functionProcess, `580. Result: ${result}`);
+            return data;
         }
 
         let isEmpty = (value) => {

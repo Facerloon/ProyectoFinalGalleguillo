@@ -243,7 +243,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
             let idDeposit = '';
             let bLineFound = false;
             let dLineFound = false;
-            let idDepAcct
+            let idDepAcct = null;
 
             try {
                 let subsidiaryLookUp = search.lookupFields({ type: 'customerpayment', id: idPayment, columns: ['subsidiary'] });
@@ -252,126 +252,130 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 const authnetLocation = addtnlArgs.authnetLocation;
                 const sublistId = `payment`;
                 let idSubsidiary = subsidiaryLookUp.subsidiary[0].value;
-                let depAccSearch = authnetAccount ? authnetAccount : getDepositAccount(idSubsidiary);
+                idDepAcct = authnetAccount;
+                let depAccSearch = !isEmpty(authnetAccount) ? authnetAccount : getDepositAccount(idSubsidiary);
 
-                if (depAccSearch.length > 0) {
-
+                if (depAccSearch.length > 0 && isEmpty(authnetAccount)) {
                     idDepAcct = depAccSearch[0].internalid;
-                    log.debug('makeDeposit', `260. idDepAcct: ${idDepAcct} | idLocation: ${authnetLocation} | idPayment: ${idPayment} | idRefund: ${refundId}`);
+                }
 
-                    if (idDepAcct && idDepAcct != '') {
+                log.debug('makeDeposit', `262. idDepAcct: ${idDepAcct} | authnetAccount: ${authnetAccount} |  idLocation: ${authnetLocation} | idPayment: ${idPayment} | idRefund: ${refundId}`);
 
-                        let recDeposit = record.create({
-                            type: 'deposit',
-                            isDynamic: true,
-                            defaultValues: {
-                                account: idDepAcct
-                            }
-                        });
+                if (idDepAcct && idDepAcct != '') {
 
-                        if (!isEmpty(authnetLocation)) {
-                            recDeposit.setValue({
-                                fieldId: 'location',
-                                value: authnetLocation
-                            });
+                    let recDeposit = record.create({
+                        type: 'deposit',
+                        isDynamic: true,
+                        defaultValues: {
+                            account: idDepAcct
                         }
+                    });
 
-                        let sublists = recDeposit.getSublists();
-                        log.debug(recDeposit, `280. Record Sublists: ${JSON.stringify(sublists)}`);
+                    if (!isEmpty(authnetLocation)) {
+                        recDeposit.setValue({
+                            fieldId: 'location',
+                            value: authnetLocation
+                        });
+                    }
 
-                        let currentAccountValue = recDeposit.getValue({
-                            fieldId: 'account'
+                    let sublists = recDeposit.getSublists();
+                    log.debug(recDeposit, `282. Record Sublists: ${JSON.stringify(sublists)}`);
+
+                    let currentAccountValue = recDeposit.getValue({
+                        fieldId: 'account'
+                    });
+
+                    let currentDateValue = recDeposit.getValue({
+                        fieldId: 'trandate'
+                    });
+
+                    log.debug('makeDeposit', `292. Current Record Values | Date: ${currentDateValue} | Account: ${currentAccountValue}`);
+
+                    let lineCount = 0;
+
+                    for (let c = 0; c < 1000; c++) {
+
+                        lineCount = recDeposit.getLineCount({
+                            sublistId: sublistId
                         });
 
-                        let currentDateValue = recDeposit.getValue({
-                            fieldId: 'trandate'
+                        if (lineCount > 0) {
+                            break;
+                        }
+                    }
+
+                    log.debug('makeDeposit', `307. Deposit Line Count: ${lineCount}`);
+                    //const idDepLineIds = recDeposit.getCurrentSublistTexts({ sublistId: 'payment', fieldId: 'id', start: 0, end: nLines });
+                    let lineIds = [];
+
+                    for (let i = 0; i < lineCount; i++) {
+
+                        recDeposit.selectLine({
+                            sublistId: sublistId,
+                            line: i
                         });
 
-                        log.debug('makeDeposit', `290. Current Record Values | Date: ${currentDateValue} | Account: ${currentAccountValue}`);
+                        let lineId = recDeposit.getCurrentSublistValue({
+                            sublistId: sublistId,
+                            fieldId: 'id'
+                        });
 
-                        let lineCount = 0;
+                        //log.debug('makeDeposit', `323. Line ID: ${lineId}`);
 
-                        for (let c = 0; c < 1000; c++) {
+                        if (!isEmpty(lineId)) {
 
-                            lineCount = recDeposit.getLineCount({
-                                sublistId: sublistId
-                            });
+                            lineIds.push(lineId);
 
-                            if (lineCount > 0) {
+                            if (lineId == idPayment) {
+
+                                recDeposit.setCurrentSublistValue({
+                                    sublistId: sublistId,
+                                    fieldId: 'deposit',
+                                    value: true
+                                });
+
+                                bLineFound = true;
+
+                                recDeposit.commitLine({
+                                    sublistId: sublistId,
+                                });
+                            }
+                            else if (lineId == refundId) {
+
+                                recDeposit.setCurrentSublistValue({
+                                    sublistId: sublistId,
+                                    fieldId: 'deposit',
+                                    value: true
+                                });
+
+                                recDeposit.commitLine({
+                                    sublistId: sublistId,
+                                });
+
+                                dLineFound = true;
+                            }
+
+                            if (dLineFound && bLineFound) {
                                 break;
                             }
                         }
-
-                        log.debug('makeDeposit', `305. Deposit Line Count: ${lineCount}`);
-                        //const idDepLineIds = recDeposit.getCurrentSublistTexts({ sublistId: 'payment', fieldId: 'id', start: 0, end: nLines });
-                        let lineIds = [];
-
-                        for (let i = 0; i < lineCount; i++) {
-
-                            recDeposit.selectLine({
-                                sublistId: sublistId,
-                                line: i
-                            });
-
-                            let lineId = recDeposit.getCurrentSublistValue({
-                                sublistId: sublistId,
-                                fieldId: 'id'
-                            });
-
-                            //log.debug('makeDeposit', `321. Line ID: ${lineId}`);
-
-                            if (!isEmpty(lineId)) {
-
-                                lineIds.push(lineId);
-
-                                if (lineId == idPayment) {
-
-                                    recDeposit.setCurrentSublistValue({
-                                        sublistId: sublistId,
-                                        fieldId: 'deposit',
-                                        value: true
-                                    });
-
-                                    bLineFound = true;
-
-                                    recDeposit.commitLine({
-                                        sublistId: sublistId,
-                                    });
-                                }
-                                else if (lineId == refundId) {
-
-                                    recDeposit.setCurrentSublistValue({
-                                        sublistId: sublistId,
-                                        fieldId: 'deposit',
-                                        value: true
-                                    });
-
-                                    recDeposit.commitLine({
-                                        sublistId: sublistId,
-                                    });
-
-                                    dLineFound = true;
-                                }
-
-                                if (dLineFound && bLineFound) {
-                                    break;
-                                }
-                            }
-                        }
-
-                        let depositAmount = recDeposit.getValue({
-                            fieldId: 'total'
-                        });
-
-                        log.emergency('makeDeposit', `366. Payment Line Found: ${bLineFound} | Refund Line Found: ${dLineFound} | Deposit Amount: ${depositAmount}`);
-                        idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
-                        log.emergency('makeDeposit', `368. Id Deposit: ${idDeposit}`);
                     }
-                    //log.debug('Make Deposit', 'idDeposit:' + idDeposit + ' idDepAcct:' + idDepAcct);
+
+                    let depositAmount = recDeposit.getValue({
+                        fieldId: 'total'
+                    });
+
+                    log.emergency('makeDeposit', `368. Payment Line Found: ${bLineFound} | Refund Line Found: ${dLineFound} | Deposit Amount: ${depositAmount}`);
+                    idDeposit = recDeposit.save({ enableSourcing: false, ignoreMandatoryFields: true });
+                    log.emergency('makeDeposit', `370. Id Deposit: ${idDeposit}`);
                 }
+                else {
+                    log.error(`makeDeposit`, `373. Deposit Account Not Found.`);
+                }
+                //log.debug('Make Deposit', 'idDeposit:' + idDeposit + ' idDepAcct:' + idDepAcct);
             } catch (e) {
-                //log.error('makeDeposit error paymentID:' + idPayment, `373. ${e}`);
-                log.error('makeDeposit error paymentID:' + idPayment, `374. ${e.message}`);
+                //log.error('makeDeposit error paymentID:' + idPayment, `377. ${e}`);
+                log.error('makeDeposit error paymentID:' + idPayment, `378. ${e.message}`);
             }
 
             return idDepAcct;
@@ -406,7 +410,7 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
 
         /*function getAllSearchResults(options) {
             const curScript = runtime.getCurrentScript();
-            log.debug(`getAllSearchResults`, `409. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `413. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             let stRecordType = options.type;
             let stSavedSearch = options.searchId;
             let arrFilters = options.filters;
@@ -426,14 +430,14 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 end += 1000;
                 count = results.length;
             }
-            log.debug(`getAllSearchResults`, `429. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
-            log.debug(`getAllSearchResults`, `430. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
+            log.debug(`getAllSearchResults`, `433. Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            log.debug(`getAllSearchResults`, `434. Search Results (${arrResults.length}): ${JSON.stringify(arrResults)}`);
             return arrResults;
         }*/
 
         let getAllSearchResults2 = (options, voidSearch) => {
             const curScript = runtime.getCurrentScript();
-            //log.debug(`getAllSearchResults`, `436. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `440. INICIO - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             const functionProcess = `getAllSearchResults2()`;
 
             let data = [];
@@ -491,10 +495,10 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                 }
             }
             catch (e) {
-                log.error(functionProcess, `494. Error: ${e.message}`);
+                log.error(functionProcess, `498. Error: ${e.message}`);
             }
 
-            //log.debug(`getAllSearchResults`, `497. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
+            //log.debug(`getAllSearchResults`, `501. FIN - Script Remaining Usage: ${curScript.getRemainingUsage()}`);
             return data;
         }
 
@@ -553,13 +557,13 @@ define(['N/ui/serverWidget', 'N/log', 'N/search', 'N/record', 'N/redirect', `N/r
                     data.push(obj)
                 }
 
-                log.debug(functionProcess, `556. Deposit Accounts Result (${data.length}): ${JSON.stringify(data)}`);
+                log.debug(functionProcess, `560. Deposit Accounts Result (${data.length}): ${JSON.stringify(data)}`);
             }
             catch (e) {
-                log.error(functionProcess, `559. Error: ${e.message}`);
+                log.error(functionProcess, `563. Error: ${e.message}`);
             }
 
-            //log.debug(functionProcess, `562. Result: ${result}`);
+            //log.debug(functionProcess, `566. Result: ${result}`);
             return data;
         }
 
